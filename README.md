@@ -1,6 +1,6 @@
-# serverless-aws-app-template
+# Mevou App
 
-Plantilla para crear una Web App sobre un dominio, usando Serverless para AWS
+App para no tener que usar papel en los menus de los restaurantes.
 
 ## Requisitos
 
