@@ -12,7 +12,7 @@ plugins:
 custom:
   customDomain:
     # [{Modificar - Dominio en el que se trabajará }]
-    domainName: example.com
+    domainName: mevouapp.com
     basePath: ''
     stage: ${self:provider.stage}
     createRoute53Record: true
@@ -24,7 +24,7 @@ functions:
   app:
     iamRoleConfig:
     # [{Modificar - Rol IAM de AWS}]
-      roleId: dteapirole
+      roleId: slsapirole
     handler: app.app
     events: 
       - http: 

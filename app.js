@@ -18,7 +18,7 @@ const MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
 var userDB = require('./models/userModel');
 
-mongoose.connect('mongodb+srv://testmongo:01123581321@sandboxtestinganddevelop-vocxz.mongodb.net/dte?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://testmongo:01123581321@sandboxtestinganddevelop-vocxz.mongodb.net/mevou?retryWrites=true&w=majority', {
   useNewUrlParser: true
 });
 mongoose.Promise = global.Promise;
