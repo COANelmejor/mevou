@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "slsoff" : "sls offline --skipCacheInvalidation"
+    "slsoff": "sls offline --skipCacheInvalidation"
   },
   "dependencies": {
     "aws-sdk": "^2.618.0",
