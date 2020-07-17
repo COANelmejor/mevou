@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.send({
-    message: 'Bienvenido a DTE API. v2'
+    message: 'Bienvenido a Movou API.'
   });
 });
 

@@ -78,7 +78,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./routes_api')(app)
+require('./routes_api_v1')(app)
 
 app.post('/api/login',
   passport.authenticate('local', {
@@ -102,13 +102,13 @@ app.get('/api/login/success', function (req, res) {
   })
 })
 
-app.get('/api/logout', function (req, res, next) {
+app.get('/api/logout', function (req, res) {
   req.logout();
   res.send({
     mmessage: 'Sesión cerrada con éxito.'
   })
 });
-app.get('/logout', function (req, res, next) {
+app.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/')
 });
@@ -127,6 +127,7 @@ app.use(function(req, res, next) {
 // });
 
 // error handler
+// eslint-disable-next-line no-unused-vars
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
