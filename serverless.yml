@@ -1,4 +1,4 @@
-service: serverless-aws-app-template
+service: mevou-aws-app
 
 provider:
   name: aws
@@ -10,9 +10,14 @@ plugins:
   - serverless-domain-manager
   - serverless-apigw-binary
 custom:
+  defaultStage: dev
+  profiles:
+    dev: COANelmejor
+    prod: COANelmejor
   customDomain:
     # [{Modificar - Dominio en el que se trabajará }]
     domainName: mevouapp.com
+    certificateName: '*.mevouapp.com'
     basePath: ''
     stage: ${self:provider.stage}
     createRoute53Record: true
