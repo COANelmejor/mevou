@@ -40,7 +40,7 @@ custom:
 
 ```js
 var mongoose = require('mongoose');
-var userDB = require('./models/userModel');
+var UserModel = require('./models/UserModel');
 
 // [{Modificar - Conexión a la Base de Datos}]
 mongoose.connect('mongodb+srv://usuario:contrasenia@hostmongodb/db?retryWrites=true&w=majority', {

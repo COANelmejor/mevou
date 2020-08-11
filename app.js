@@ -16,7 +16,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session);
 
 var mongoose = require('mongoose');
-var userDB = require('./models/userModel');
+var UserModel = require('./models/UserModel');
 
 mongoose.connect('mongodb+srv://testmongo:01123581321@sandboxtestinganddevelop-vocxz.mongodb.net/mevou?retryWrites=true&w=majority', {
   useNewUrlParser: true
@@ -26,7 +26,7 @@ const db = mongoose.connection
 
 passport.use(new Strategy(
   function (username, password, callback) {
-    userDB.findOne({
+    UserModel.findOne({
       username: username.toLowerCase()
     }, function (err, user) {
       if (err) {
@@ -46,7 +46,7 @@ passport.serializeUser(function (user, callback) {
 });
 
 passport.deserializeUser(function (id, callback) {
-  userDB.findById(id, "-password -salt", function (err, user) {
+  UserModel.findById(id, "-password -salt", function (err, user) {
     if (err) {
       return callback(err);
     }
