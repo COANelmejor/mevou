@@ -68,7 +68,6 @@ serverless config credentials --provider aws --key XXXXXXXXXXXXXXXXXXXX --secret
 
 # Usuario Personalizado
 aws configure --profile XXXXXXXXXXXX
-
 ```
 
 ### Ejecutando el proyecto con Serverless
