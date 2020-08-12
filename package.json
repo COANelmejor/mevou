@@ -1,11 +1,11 @@
 {
-  "name": "dte-ff",
+  "name": "mevou-app-modules",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "slsoff": "sls offline --aws-profile COANelmejor --skipCacheInvalidation",
-    "deploy": "sls deploy --aws-profile COANelmejor --verbose"
+    "slsoff": "sls offline --aws-profile --skipCacheInvalidation",
+    "deployC": "sls deploy --aws-profile COANelmejor --verbose",
+    "deployU": "sls deploy --aws-profile udanpy --verbose"
   },
   "dependencies": {
     "aws-sdk": "^2.618.0",
