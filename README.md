@@ -60,11 +60,28 @@ npm install -g serverless
 
 #### Configurando Serveless
 
+Puedes configurar el usuario principal con serverless o configurar uno personalizado con AWS CLI
+
 ```bash
+# Usuario Primario
 serverless config credentials --provider aws --key XXXXXXXXXXXXXXXXXXXX --secret XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -o --verbose
+
+# Usuario Personalizado
+aws configure --profile XXXXXXXXXXXX
+
 ```
 
-### Serveress-CLI
+### Ejecutando el proyecto con Serverless
+
+Usa el CLI de Serverless parahacer deploy.
+
+```bash
+# Deploy con usuario principal
+serverless deploy --verbose
+
+# Deploy con usuario personalizado
+serverless deploy --aws-profile XXXXXXXXXXX --verbose
+```
 
 ## Apéndice
 
