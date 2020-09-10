@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "slsoff": "sls offline --aws-profile --skipCacheInvalidation",
+    "slsoff": "sls offline --skipCacheInvalidation",
     "deployC": "sls deploy --aws-profile COANelmejor --verbose",
     "deployU": "sls deploy --aws-profile udanpy --verbose"
   },
