@@ -10,9 +10,9 @@ module.exports = function (req, res) {
       if (err) {
         console.log(err)
         // eslint-disable-next-line no-prototype-builtins
-        if (err.code === 11000 && err.keyPattern.hasOwnProperty('username')) {
+        if (err.code === 11000 && err.keyPattern.hasOwnProperty('email')) {
           res.status(409).send({
-            message: `El usuario '${err.keyValue.username}' ya existe en el sitio.`,
+            message: `El usuario '${err.keyValue.email}' ya existe en el sitio.`,
             error: err
           })
         } else {

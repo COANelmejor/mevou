@@ -5,8 +5,8 @@ const validateEmail = require('../lib/validateEmail');
 const UserSchema = new Schema({
   email: {
     type: String,
-    required: true,
-    unique: [true, 'Valor necesario: email'],
+    required: [true, 'Valor necesario: email'],
+    unique: [true, 'El correo ya ha sido registrado.'],
     validate: {
       validator: function (v) {
         return validateEmail(v)
