@@ -66,3 +66,4 @@ typings/
 # Lugares extra para anotaciones
 .design
 .anotaciones
+.ssh
