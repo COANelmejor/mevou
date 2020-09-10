@@ -3,11 +3,6 @@ const Schema = mongoose.Schema;
 const validateEmail = require('../lib/validateEmail');
 
 const UserSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: [true, 'Valor necesario: username']
-  },
   email: {
     type: String,
     required: true,
@@ -19,29 +14,37 @@ const UserSchema = new Schema({
       message: 'Error en valor: email'
     }
   },
-  tipo: {
-    type: String,
-    required: true
-  },
   salt: {
     type: String,
-    required: true,
+    required: [true, 'Valor necesario: salt'],
   },
   password: {
     type: String,
-    required: true,
+    required: [true, 'Valor necesario: password'],
   },
   nombre: {
     type: String,
     required: [true, 'Valor necesario: nombre'],
-    default: 'Anónimo'
   },
-  activo_hasta: {
+  apellido: {
+    type: String,
+      required: [true, 'Valor necesario: apellido'],
+  },
+  telefono: {
     type: Number,
-    required: [true, 'Valor necesario: activo_hasta'],
-    default: function () {
-
-    }
+    required: false
+  },
+  pais: {
+    type: String,
+    required: false
+  },
+  ciudad: {
+    type: String,
+    required: false
+  },
+  foto_perfil: {
+    type: Object,
+    required: false,
   }
 }, {
   strict: true
