@@ -1,0 +1,8 @@
+{
+  "Source": "Noreply Mevouapp <noreply@mevouapp.com>",
+  "Template": "mevouapp_general_template",
+  "Destination": {
+    "ToAddresses": ["coanelmejor@gmail.com"]
+  },
+  "TemplateData": "{ \"subject_string\":\"Test Generla Mevou\", \"html_string\": \"<h1 style='color: green'>Hola Testeo Green<h1>\", \"html_text\":\"Hola Texteo\" }"
+}

@@ -1,0 +1,8 @@
+{
+  "Template": {
+    "TemplateName": "mevouapp_general_template",
+    "SubjectPart": "{{subject_string}}",
+    "HtmlPart": "{{html_string}}",
+    "TextPart": "{{html_text}}"
+  }
+}

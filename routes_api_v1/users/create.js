@@ -45,7 +45,7 @@ module.exports = function (req, res) {
           Destination: {
             ToAddresses: [emailSend]
           },
-          Source: 'noreply@mevouapp.com', // use the SES domain or email verified in your account
+          Source: 'Noreply Mevouapp <noreply@mevouapp.com>', // use the SES domain or email verified in your account
           TemplateData: JSON.stringify(dataTemplate)
         }
         ses.sendTemplatedEmail(params, (err, dataMail) => {
