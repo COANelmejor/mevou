@@ -195,3 +195,11 @@ serverless deploy --aws-profile XXXXXXXXXXX --verbose
     ]
 }
 ```
+
+### Índices de MongoDB
+
+```bash
+
+db.users.createIndex({"email": 1 })
+db.users.createIndex({"email": 1 })
+```

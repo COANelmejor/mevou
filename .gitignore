@@ -67,3 +67,4 @@ typings/
 .design
 .anotaciones
 .ssh
+.secrets
