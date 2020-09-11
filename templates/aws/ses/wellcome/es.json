@@ -1,0 +1,9 @@
+{
+  "Template": {
+    "TemplateName": "mevouapp_bienvenido_es",
+
+    "SubjectPart": "Mevou, Bienvenido {{name}}!",
+    "HtmlPart": "<!DOCTYPE html><html lang=\"es\"><head><meta charset=\"utf-8\"></head><body><h1>Hola {{name}}</h1><p>Te damos la bienvenida a MevouApp.</p><p>Estas a un paso de crear una mejor experiencia para tus clientes. Solo debes verificar tu correo electronico haciendo clic en el siguiente enlace:</p><a href=\"{{url_validar}}\" target=\"_blank\" rel=\"noopener noreferrer\">Validar mi correo electronico</a><p>Si no puedes hacer clic en el enlace, copia el siguiente texto en tu navegador.</p><code>{{url_validar}}</code><p></p></body>",
+    "TextPart": "Hola {{name}}\n\nTe damos la bienvenida a Mevou.\n\nEstás a un paso de crear una mejor experiencia para tus clientes. Solo debes verificar tu correo electrónico usando el siguiente enlace:\n\n{{url_validar}}"
+  }
+}

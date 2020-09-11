@@ -1,0 +1,8 @@
+{
+  "Source": "Noreply Mevouapp <noreply@mevouapp.com>",
+  "Template": "mevouapp_bienvenido_es",
+  "Destination": {
+    "ToAddresses": ["coanelmejor@gmail.com"]
+  },
+  "TemplateData": "{ \"name\":\"Christian\", \"url_validar\": \"https://mevouapp.com/validate-email?rcv=0123456789abcdef\" }"
+}
