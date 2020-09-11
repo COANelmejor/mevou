@@ -12,7 +12,7 @@ module.exports = function (req, res) {
         // eslint-disable-next-line no-prototype-builtins
         if (err.code === 11000 && err.keyPattern.hasOwnProperty('email')) {
           res.status(409).send({
-            message: `El usuario '${err.keyValue.email}' ya existe en el sitio.`,
+            message: `El correo '${err.keyValue.email}' ya existe en el sitio.`,
             error: err
           })
         } else {
