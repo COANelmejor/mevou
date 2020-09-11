@@ -1,13 +1,22 @@
 const UserModel = require('../../models/UserModel')
 const ut = require('../../lib/userTools')
+const aws = require('aws-sdk')
+const uuidv4 = require('uuid').v4
+
+const awskey = require('../../.secrets/awskey')
+const ses = new aws.SES(awskey)
 
 module.exports = function (req, res) {
     var nuevoUsuario = req.body
     const passRaw = req.body.password
+    const rcv = uuidv4()
     nuevoUsuario.salt = ut.createSalt()
     nuevoUsuario.password = ut.createHash(passRaw, nuevoUsuario.salt)
+    nuevoUsuario.email_verificado = false
+    nuevoUsuario.rcv = rcv
     UserModel.create(nuevoUsuario, function (err, userCreado) {
       if (err) {
+        console.log('/users/create.js:19')
         console.log(err)
         // eslint-disable-next-line no-prototype-builtins
         if (err.code === 11000 && err.keyPattern.hasOwnProperty('email')) {
@@ -16,16 +25,45 @@ module.exports = function (req, res) {
             error: err
           })
         } else {
-          console.log('err', err)
+        console.log('/users/create.js:28')
+          console.log(err)
           res.status(500).send({
-            message: 'Hubo un error al crear al Administrador de Sede.',
+            message: 'Hubo un error al crear al usuario.',
             error: err
           })
         }
       } else {
         userCreado.salt = null
         userCreado.password = null
-        res.status(201).send(userCreado)
+        const dataTemplate = {
+          name : userCreado.nombre,
+          url_validar: `https://mevouapp.com/verificar-email?email=${userCreado.email}&rcv=${userCreado.rcv}`
+        }
+        const emailSend = userCreado.email
+        const params = {
+          Template: 'mevouapp_bienvenido_es',
+          Destination: {
+            ToAddresses: [emailSend]
+          },
+          Source: 'noreply@mevouapp.com', // use the SES domain or email verified in your account
+          TemplateData: JSON.stringify(dataTemplate)
+        }
+        ses.sendTemplatedEmail(params, (err, dataMail) => {
+        console.log('/users/create.js:52')
+          if (err) {
+            res.status(500).send({
+              message: 'Hubo un error al enviar el correo de verificación. El usuario ha sido creado',
+              error: err,
+              usuario: nuevoUsuario 
+            });
+          } else {
+            res.status(201).send({
+              message: 'Usario regitrado con exito. Te hemos enviado un email para verficarlo.',
+              usuario: userCreado,
+              mail: dataMail
+            })
+          }
+        })
       }
     })
   
