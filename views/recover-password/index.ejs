@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://www.google.com/recaptcha/api.js"></script>
   <title><%= title %>></title>
 </head>
 <body>
@@ -13,17 +12,4 @@
     <input type="password" id="repassword">
     <button id="enviar_password">Submit</button>
 </body>
-<script>
-  document.getElementById('enviar_password').addEventListener('click', function(e){
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const repassword = document.getElementById('repassword').value;
-
-    if (password === repassword) {
-      
-    } else {
-      alert('Las contraseñas escritas no coinciden.')
-    }
-  })
-</script>
 </html>
