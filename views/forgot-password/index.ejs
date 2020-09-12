@@ -1,0 +1,73 @@
+<% include ../layouts/not-logged/header-open.ejs %>
+
+<!-- Espacios para Agregar CSS's y Scripts -->
+<style>
+    body.bg-gradient-primary {
+        background-image: url(https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-pixabay-326279.jpg)!important;
+        background-size: cover!important;
+        background-repeat: no-repeat!important;
+    }
+
+    .flex-grow-1.bg-password-image {
+        background-image: url(https://mevouappcdn.s3.amazonaws.com/assets/img/Logo_Completo_Only_M_Negro_Circle.svg);
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-right: 1px solid #000;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 0rem 2rem rgba(0,0,0,0.5) !important;
+    }
+
+</style>
+
+<% include ../layouts/not-logged/header-close.ejs %>
+    
+<div class="row justify-content-center">
+    <div class="col-md-9 col-lg-12 col-xl-10">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-flex">
+                        <div class="flex-grow-1 bg-password-image"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-2">¿Olvidaste tu contraseña?</h4>
+                                <p class="mb-4">Lo entendemos, pasan cosas. Simplemente ingrese su dirección de correo electrónico a continuación y le enviaremos un enlace para restablecer su contraseña.</p>
+                            </div>
+                            <form class="user">
+                                <div class="form-group"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico..." name="email" required="" autocomplete="on" multiple=""></div>
+                                <button
+                                    class="btn btn-primary btn-block text-white btn-user" type="submit" data-toggle="modal" data-target="#success-email">Restablecer contraseña</button>
+                            </form>
+                            <div class="text-center">
+                                <hr><a class="small" href="/register.html">¡Crea una cuenta!</a></div>
+                            <div class="text-center"><a class="small" href="/login.html">¿Ya tienes una cuenta? ¡Iniciar sesión!</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<% include ../layouts/not-logged/footer-open.ejs %>
+
+<!-- Espacios para agregar Scripts, Modals,... -->
+<div class="modal fade" role="dialog" tabindex="-1" id="success-email">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Verifica tu correo</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <p>Se ha enviado un enlace a tu correo para recuperar tu contraseña.</p>
+            </div>
+            <div class="modal-footer"><a class="btn btn-primary text-light" role="button" href="/index.html">Aceptar</a></div>
+        </div>
+    </div>
+</div>
+
+<% include ../layouts/not-logged/footer-close.ejs %>
