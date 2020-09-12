@@ -1,11 +1,9 @@
 var express = require('express');
 var router = express.Router();
+const send = require('./send')
+const home = require('./home')
+router.get('/', home);
 
-/* GET home page. */
-router.get('/', function (req, res) {
-  res.render('recover-password', {
-    title: 'Recuperar Contraseña'
-  });
-});
+router.post('/send', send)
 
 module.exports = router;

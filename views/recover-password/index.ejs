@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,8 @@
 </head>
 <body>
   <h1><%= title %></h1>
-  <form action="/recover" method="post" id="demo-form">
+  <form action="/recover-password/send" method="post" id="demo-form">
+  <input type="hidden" name="email" value="<%= email %>">
   <input type="password" name="password">
   <input type="password" name="repassword">
   <button type="submit"
