@@ -67,6 +67,14 @@ const UserSchema = new Schema({
     required: false,
     unique: true
   },
+  /** Permit Recover Pasword Change
+   * Habilita si se permite el cambio de contraseña por recuperación.
+   */
+  prpc:{
+    type: String,
+    required: false,
+    default: false
+  },
   /** Register Code Validator
    * Codigo validador que se envia conla creación del usuario. 
    * Se utiliza para validad si el correo es real.
