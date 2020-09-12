@@ -25,9 +25,9 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection
 
 passport.use(new Strategy(
-  function (username, password, callback) {
+  function (email, password, callback) {
     UserModel.findOne({
-      username: username.toLowerCase()
+      email: email.toLowerCase()
     }, function (err, user) {
       if (err) {
         return callback(err);
