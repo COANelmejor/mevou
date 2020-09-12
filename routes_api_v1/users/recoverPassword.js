@@ -40,12 +40,13 @@ module.exports = function (req, res) {
           const dataTemplate = {
             subject_string: `Reinicio de Contraseña Mevou`,
             html_string: `<h1>Has pedido un reinicio de contraseña</h1>
-<p>Ingresa al siguiente link para reiniciar tu contrasena.</p>
+<p>Ingresa al siguiente link para reiniciar tu contraseña.</p>
 <p><a href='http://mevouapp.com/recover-password?email=${email}&rpv=${rpv}' target='_blank' rel='noopener noreferrer'>Haz clic aqui.</a></p>
 <p>Tienes 10 minutos para usar este link.</p>
-<p>Si no puede hacer clic, copia el siguiente enlace en en tu navegador:</p>
-<code>http://mevouapp.com/recover-password?email=${email}&rpv=${rpv}</code>`,
-            html_text: `Has pedido un reinicio de contraseña\nUsa el siguiente enlace para recuperar tu contrasena:\nhttp://mevouapp.com/recover-password?email=${email}&rpv=${rpv}`
+<p>Si no puedes hacer clic, copia el siguiente enlace en en tu navegador:</p>
+<code>http://mevouapp.com/recover-password?email=${email}&rpv=${rpv}</code>
+<h3><b>Nota:</b> El link solo puede ser usado una vez.</h3>`,
+            html_text: `Has pedido un reinicio de contraseña\nUsa el siguiente enlace para recuperar tu contrasena:\nhttp://mevouapp.com/recover-password?email=${email}&rpv=${rpv}\n\nNota: El link solo puede ser usado una vez.`
           }
           const emailSend = email
           const params = {
