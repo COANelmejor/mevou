@@ -4,23 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://www.google.com/recaptcha/api.js"></script>
-  <title><%= title %></title>
-   <script>
-     function onSubmit(token) {
-       document.getElementById("demo-form").submit();
-     }
-   </script>
+  <title><%= title %>></title>
 </head>
 <body>
   <h1><%= title %></h1>
-  <form action="/recover-password/send" method="post" id="demo-form">
-  <input type="hidden" name="email" value="<%= email %>">
-  <input type="password" name="password">
-  <input type="password" name="repassword">
-  <button type="submit"
-    class="g-recaptcha"
-    data-sitekey="6LelQ8sZAAAAANmH_cG75D159gHw34KF8r8dL7T7"
-    data-callback='onSubmit'
-    data-action='submit'>Submit</button></form>
+    <input type="hidden" id="email" value="<%= email %>">
+    <input type="password" id="password">
+    <input type="password" id="repassword">
+    <button id="enviar_password">Submit</button>
 </body>
+<script>
+  document.getElementById('enviar_password').addEventListener('click', function(e){
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const repassword = document.getElementById('repassword').value;
+
+    if (password === repassword) {
+      
+    } else {
+      alert('Las contraseñas escritas no coinciden.')
+    }
+  })
+</script>
 </html>
