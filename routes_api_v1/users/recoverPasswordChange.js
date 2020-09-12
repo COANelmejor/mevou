@@ -17,7 +17,10 @@ module.exports = function (req, res) {
         password,
         prpc: false
       }
-    }, function (err, usuarioPassword) {
+    }, {
+      new: true
+    },
+    function (err, usuarioPassword) {
       if (err) {
         res.status(500).send({
           message: 'Error al recuperar la contraseña',
