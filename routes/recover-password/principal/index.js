@@ -10,6 +10,7 @@ module.exports = function (req, res) {
     UserModel.findOneAndUpdate({
       email,
       rpv,
+      prpc: false,
       rpmt: {
         $gte: rpmtNow
       }
@@ -17,7 +18,7 @@ module.exports = function (req, res) {
       $set: {
         prpc: true
       }
-    }, function (err, usuario) {     
+    }, function (err, usuario) {
       if (err) {
         console.log(err)
         res.status(500).send(err);
