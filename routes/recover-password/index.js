@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const send = require('./send')
-const home = require('./home')
+const principal = require('./principal')
 
-router.get('/', home);
+router.get('/', principal);
 router.post('/send', send)
 
 module.exports = router;
