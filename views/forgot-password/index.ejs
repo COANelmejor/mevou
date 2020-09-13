@@ -38,7 +38,7 @@
                                 <h4 class="text-dark mb-2">¿Olvidaste tu contraseña?</h4>
                                 <p class="mb-4">Lo entendemos, pasan cosas. Simplemente ingrese su dirección de correo electrónico a continuación y le enviaremos un enlace para restablecer su contraseña.</p>
                             </div>
-                            <form class="user">
+                            <form class="user" onsubmit="return mySubmitFunction(event)">
                                 <div class="form-group">
                                     <input class="form-control form-control-user" type="email" id="inputEmail" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico..." autocomplete="on">
                                 </div>
@@ -63,6 +63,11 @@
 
 <!-- Espacios para agregar Scripts, Modals,... -->
 <script>
+    function mySubmitFunction(e) {
+        e.preventDefault();
+        console.log(e)
+        return false;
+    }
     $('#recuperar-pass').click(function(){
         const email = $('#inputEmail').val();
         const data = JSON.stringify({
@@ -83,10 +88,10 @@
                 },
                 error: function (a, b, c) {
                     console.log(a, b, c);
-                    alert("Revisa tu correo. Se ha enviado un enlace de recuperación.")
-                    setTimeout(function () {
-                        location.href = `/login`
-                    }, 1000);
+                    alert("Parece que el correo no es valido o no existe.")
+                    // setTimeout(function () {
+                    //     location.href = `/login`
+                    // }, 1000);
                 }
             })
         }else{
