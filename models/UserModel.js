@@ -91,14 +91,27 @@ const UserSchema = new Schema({
     default: false
   },
   /** Máximo de Menus
-   * Cantidad máxima permitda para crear menus
+    * Cantidad máxima permitda para crear menus.
   */
   max_menus: {
-
-  } 
+    type: Number,
+    required: true,
+    default: 1
+  },
+  /** Id de los Menus */
+  Menus:[{
+    type: Schema.Types.ObjectId,
+    required: false,
+    ref: 'menu',
+    autopopulate: {
+      maxDepth: 1
+    }
+  }]
 }, {
   strict: true
 })
+
+UserSchema.plugin(require('mongoose-autopopulate'))
 
 const UserModel = mongoose.model('user', UserSchema);
 
