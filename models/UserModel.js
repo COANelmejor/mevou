@@ -65,7 +65,6 @@ const UserSchema = new Schema({
   rpv: {
     type: String,
     required: false,
-    unique: true
   },
   /** Permit Recover Pasword Change
    * Habilita si se permite el cambio de contraseña por recuperación.
@@ -90,7 +89,13 @@ const UserSchema = new Schema({
   email_verificado_timestamp: {
     type: Number,
     default: false
-  }
+  },
+  /** Máximo de Menus
+   * Cantidad máxima permitda para crear menus
+  */
+  max_menus: {
+
+  } 
 }, {
   strict: true
 })
