@@ -38,17 +38,18 @@
                                     <h4 class="text-dark mb-4">¡Bienvenido de nuevo!</h4>
                                 </div>
                                 <form class="user">
-                                    <div class="form-group"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico..." name="email"></div>
-                                    <div class="form-group"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Contraseña" name="password"></div>
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
-                                            <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Recuerdame</label></div>
-                                        </div>
-                                    </div><button class="btn btn-primary btn-block text-white btn-user" type="submit">Iniciar Sesión</button>
+                                        <input class="form-control form-control-user" type="email" id="inputEmail" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico..." name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-user" type="password" id="inputPassword" placeholder="Contraseña" name="password" required>
+                                    </div>
+                                    
                                     <hr>
+                                    <button id="submit-login" class="btn btn-primary btn-block text-white btn-user" type="button">Iniciar Sesión</button>
                                 </form>
-                                <div class="text-center"><a class="small" href="/forgot-password.html">¿Se te olvidó tu contraseña?</a></div>
-                                <div class="text-center"><a class="small" href="/register.html">¡Crea una cuenta!</a></div>
+                                <div class="text-center"><a class="small" href="/forgot-password">¿Se te olvidó tu contraseña?</a></div>
+                                <div class="text-center"><a class="small" href="/register">¡Crea una cuenta!</a></div>
                             </div>
                         </div>
                     </div>
@@ -60,6 +61,32 @@
 <% include ../layouts/not-logged/footer-open.ejs %>
 
 <!-- Espacios para agregar Scripts, Modals,... -->
+<script>
+    $('#submit-login').click(function(){
+        const email = $('#inputEmail').val();
+        const pass = $('#inputPassword').val();
+        const data = JSON.stringify({
+                "username": email,
+                "password": pass,
+            });
 
+        $.ajax({
+            method:"POST",
+            url: "/api/login",
+            contentType: 'application/json',
+            dataType: 'json',
+            data,
+            success: function () {
+                setTimeout(function () {
+                    location.href = `/dashboard`
+                }, 1000);
+            },
+            error: function (a, b, c) {
+                console.log(a, b, c);
+                alert("No se a logrado iniciar sesión. Vuelve a intentarlo.")
+            }
+        })
+    });
+</script>
 
 <% include ../layouts/not-logged/footer-close.ejs %>

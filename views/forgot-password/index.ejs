@@ -39,13 +39,18 @@
                                 <p class="mb-4">Lo entendemos, pasan cosas. Simplemente ingrese su dirección de correo electrónico a continuación y le enviaremos un enlace para restablecer su contraseña.</p>
                             </div>
                             <form class="user">
-                                <div class="form-group"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico..." name="email" required="" autocomplete="on" multiple=""></div>
-                                <button
-                                    class="btn btn-primary btn-block text-white btn-user" type="submit" data-toggle="modal" data-target="#success-email">Restablecer contraseña</button>
+                                <div class="form-group">
+                                    <input class="form-control form-control-user" type="email" id="inputEmail" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico..." name="email" required="" autocomplete="on" multiple="">
+                                </div>
+                                <button id="recuperar-pass" class="btn btn-primary btn-block text-white btn-user" type="button" data-toggle="modal" data-target="#success-email">Restablecer contraseña</button>
                             </form>
                             <div class="text-center">
-                                <hr><a class="small" href="/register.html">¡Crea una cuenta!</a></div>
-                            <div class="text-center"><a class="small" href="/login.html">¿Ya tienes una cuenta? ¡Iniciar sesión!</a></div>
+                                <hr>
+                                <a class="small" href="/register">¡Crea una cuenta!</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="/login">¿Ya tienes una cuenta? ¡Iniciar sesión!</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -57,17 +62,34 @@
 <% include ../layouts/not-logged/footer-open.ejs %>
 
 <!-- Espacios para agregar Scripts, Modals,... -->
-<div class="modal fade" role="dialog" tabindex="-1" id="success-email">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Verifica tu correo</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-            <div class="modal-body">
-                <p>Se ha enviado un enlace a tu correo para recuperar tu contraseña.</p>
-            </div>
-            <div class="modal-footer"><a class="btn btn-primary text-light" role="button" href="/index.html">Aceptar</a></div>
-        </div>
-    </div>
-</div>
+<script>
+    $('#recuperar-pass').click(function(){
+        const email = $('#inputEmail').val();
+        const data = JSON.stringify({
+                "email": email,
+            });
+
+        $.ajax({
+            method:"POST",
+            url: "/api/v1/users/recover-password",
+            contentType: 'application/json',
+            dataType: 'json',
+            data,
+            success: function () {
+                alert("Se ha enviado un enlace a tu correo.")
+                setTimeout(function () {
+                    location.href = `/login`
+                }, 1000);
+            },
+            error: function (a, b, c) {
+                console.log(a, b, c);
+                alert("Se ha enviado un enlace a tu correo.")
+                setTimeout(function () {
+                    location.href = `/login`
+                }, 1000);
+            }
+        })
+    });
+</script>
 
 <% include ../layouts/not-logged/footer-close.ejs %>
