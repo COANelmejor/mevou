@@ -62,7 +62,8 @@
 
 <!-- Espacios para agregar Scripts, Modals,... -->
 <script>
-    $('#submit-login').click(function(){
+
+    function actionForm(){
         const email = $('#inputEmail').val();
         const pass = $('#inputPassword').val();
         const data = JSON.stringify({
@@ -86,6 +87,15 @@
                 alert("No se a logrado iniciar sesión. Vuelve a intentarlo.")
             }
         })
+    }
+
+    $('#submit-login').click(actionForm);
+    
+    $(document).keypress(function(event){
+        console.log(event.keyCode)
+        if (event.keyCode === 13) { 
+            actionForm();
+        }
     });
 </script>
 

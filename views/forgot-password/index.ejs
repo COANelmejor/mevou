@@ -40,9 +40,9 @@
                             </div>
                             <form class="user">
                                 <div class="form-group">
-                                    <input class="form-control form-control-user" type="email" id="inputEmail" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico..." name="email" required="" autocomplete="on" multiple="">
+                                    <input class="form-control form-control-user" type="email" id="inputEmail" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico..." autocomplete="on">
                                 </div>
-                                <button id="recuperar-pass" class="btn btn-primary btn-block text-white btn-user" type="button" data-toggle="modal" data-target="#success-email">Restablecer contraseña</button>
+                                <button id="recuperar-pass" class="btn btn-primary btn-block text-white btn-user">Restablecer contraseña</button>
                             </form>
                             <div class="text-center">
                                 <hr>
@@ -68,27 +68,30 @@
         const data = JSON.stringify({
                 "email": email,
             });
-
-        $.ajax({
-            method:"POST",
-            url: "/api/v1/users/recover-password",
-            contentType: 'application/json',
-            dataType: 'json',
-            data,
-            success: function () {
-                alert("Se ha enviado un enlace a tu correo.")
-                setTimeout(function () {
-                    location.href = `/login`
-                }, 1000);
-            },
-            error: function (a, b, c) {
-                console.log(a, b, c);
-                alert("Se ha enviado un enlace a tu correo.")
-                setTimeout(function () {
-                    location.href = `/login`
-                }, 1000);
-            }
-        })
+        if(email != ''){
+            $.ajax({
+                method:"POST",
+                url: "/api/v1/users/recover-password",
+                contentType: 'application/json',
+                dataType: 'json',
+                data,
+                success: function () {
+                    alert("Revisa tu correo. Se ha enviado un enlace de recuperación.")
+                    setTimeout(function () {
+                        location.href = `/login`
+                    }, 1000);
+                },
+                error: function (a, b, c) {
+                    console.log(a, b, c);
+                    alert("Revisa tu correo. Se ha enviado un enlace de recuperación.")
+                    setTimeout(function () {
+                        location.href = `/login`
+                    }, 1000);
+                }
+            })
+        }else{
+            alert("No has proporcionado un correo electrónico.")
+        }
     });
 </script>
 

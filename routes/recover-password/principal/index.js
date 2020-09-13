@@ -28,10 +28,19 @@ module.exports = function (req, res) {
           email: req.query.email
         });
       } else {
-        res.send(404)
+        // Página que buscas no existe
+        res.status(404).render("others/error.ejs", {
+          title: "404 No Encontrado - Μενού",
+          codeError: "404",
+          textError: "No Encontrado",
+        })
       }
     })
   } else {
-    res.send(403)
+    res.status(403).render("others/error.ejs", {
+      title: "403 Solicitud Prohibida - Μενού",
+      codeError: "403",
+      textError: "Solicitud Prohibida",
+    })
   }
 }

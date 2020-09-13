@@ -1,0 +1,56 @@
+<% include ../layouts/not-logged/header-open.ejs %>
+
+<!-- Espacios para Agregar CSS's y Scripts -->
+<style>
+    body.bg-gradient-primary {
+        background-image: url(https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-pixabay-326279.jpg)!important;
+        background-size: cover!important;
+        background-repeat: no-repeat!important;
+    }
+
+    .flex-grow-1.bg-password-image {
+        background-image: url(https://mevouappcdn.s3.amazonaws.com/assets/img/Logo_Completo_Only_M_Negro_Circle.svg);
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-right: 1px solid #000;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 0rem 2rem rgba(0,0,0,0.5) !important;
+    }
+
+</style>
+
+<% include ../layouts/not-logged/header-close.ejs %>
+    
+<div class="row justify-content-center">
+    <div class="col-md-9 col-lg-12 col-xl-10">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-flex">
+                        <div class="flex-grow-1 bg-password-image"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center mt-5">
+                                <div class="error mx-auto" data-text="<%= codeError %>">
+                                    <p class="m-0"><%= codeError %></p>
+                                </div>
+                                <p class="text-dark mb-5 lead"><%= textError %></p>
+                                <p class="text-black-50 mb-0">Parece que encontraste un error en la matrix ...</p><a href="/">← Regresa al Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<% include ../layouts/not-logged/footer-open.ejs %>
+
+<!-- Espacios para agregar Scripts, Modals,... -->
+
+<% include ../layouts/not-logged/footer-close.ejs %>

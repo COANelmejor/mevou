@@ -1,15 +1,100 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %>></title>
-</head>
-<body>
-  <h1><%= title %></h1>
-    <input type="hidden" id="email" value="<%= email %>">
-    <input type="password" id="password">
-    <input type="password" id="repassword">
-    <button id="enviar_password">Submit</button>
-</body>
-</html>
+<% include ../layouts/not-logged/header-open.ejs %>
+
+<!-- Espacios para Agregar CSS's y Scripts -->
+<style>
+    body.bg-gradient-primary {
+        background-image: url(https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-lukas-349609.jpg) !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+    }
+
+    .flex-grow-1.bg-password-image {
+        background-image: url(https://mevouappcdn.s3.amazonaws.com/assets/img/logo_black_favicon.png);
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-right: 1px solid #000;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 0rem 2rem rgba(0, 0, 0, 0.5) !important;
+    }
+</style>
+
+
+<% include ../layouts/not-logged/header-close.ejs %>
+
+<div class="row justify-content-center">
+    <div class="col-md-9 col-lg-12 col-xl-10">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-flex">
+                        <div class="flex-grow-1 bg-password-image"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-2">Recupera tu contraseña</h4>
+                                <p class="mb-4">Ingresa tu nueva contraseña en los siguientes campos</p>
+                            </div>
+                            <form class="user">
+                                <input class="form-control" type="hidden" value="">
+                                <div class="form-group">
+                                    <input id="password" class="form-control form-control-user" type="password" name="password" placeholder="Ingresa tu nueva contraseña" autocomplete="off">
+                                </div>
+                                <div class="form-group">
+                                    <input id="repassword" class="form-control form-control-user" type="password" name="repassword" placeholder="Repite la contraseña" autocomplete="off">
+                                </div>
+                                <button id="recover-pass" class="btn btn-primary btn-block text-white btn-user" type="button">Restablecer contraseña</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../layouts/not-logged/footer-open.ejs %>
+
+<!-- Espacios para agregar Scripts, Modals,... -->
+<script>
+    $('#recover-pass').click(function () {
+        const pass = $('#password').val();
+        const repass = $('#repassword').val();
+
+        let searchParams = new URLSearchParams(window.location.search)
+        searchParams.has('email')
+        let email = searchParams.get('email')
+        console.log(email)
+        
+        const data = JSON.stringify({
+            "password": pass,
+            "repassword": repass,
+            "email": email
+        });
+        if(pass == repass){
+            $.ajax({
+                method: "POST",
+                url: "/api/v1/users/recover-password-change",
+                contentType: 'application/json',
+                dataType: 'json',
+                data,
+                success: function () {
+                    setTimeout(function () {
+                        location.href = `/login`
+                    }, 1000);
+                },
+                error: function (a, b, c) {
+                    console.log(a, b, c);
+                    alert("Inténtalo de nuevo.")
+                }
+            })
+        }else{
+            alert("Las contraseña no coinciden. Inténtalo de nuevo.")
+        }
+    });
+</script>
+
+<% include ../layouts/not-logged/footer-close.ejs %>
