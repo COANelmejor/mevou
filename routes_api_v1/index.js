@@ -4,4 +4,5 @@ module.exports = function (app) {
     app.use('/api/v1/users', require('./users'));
     app.use('/api/v1/menus', require('./menus'));
     app.use('/api/v1/categorias', require('./categorias'));
+    app.use('/api/v1/platillos', require('./platillos'));
 }

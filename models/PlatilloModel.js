@@ -3,8 +3,9 @@ const Schema = mongoose.Schema;
 
 const UserModel = require('./UserModel')
 const MenuModel = require('./MenuModel')
+const CategoriaModel = require('./CategoriaModel')
 
-const CategoriaSchema = new Schema({
+const PlatilloSchema = new Schema({
   propietario: {
     type: Schema.Types.ObjectId,
     required: true,
@@ -53,38 +54,78 @@ const CategoriaSchema = new Schema({
       maxDepth: 1
     },
   },
-  /** Nombre del Menú */
+  Categoria: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'categoria',
+    validate: {
+      isAsync: true,
+      validator: function (v, cb) {
+        CategoriaModel.findById(v, 'nombre apellido email', function (err, Categoria) {
+          if (err) {
+            cb(err, false)
+          } else if (Categoria) {
+            cb(true)
+          } else {
+            cb(null, false)
+          }
+
+        })
+      },
+      message: 'Categoria no es válida o no existe.'
+    },
+    autopopulate: {
+      maxDepth: 1
+    },
+  },
+  /** Nombre del Platillo */
   nombre: {
     type: String,
     required: [true, 'Valor necesario: nombre']
   },
-  /** Imágenes del Menu */
+  descripcion: {
+    type: String,
+    required: false
+  },
+  nota: {
+    type: String,
+    required: false
+  },
+  /** Imágenes del Platillo */
   images: [{
     type: Schema.Types.Mixed,
     required: false
   }],
+  tags: [{
+    type: String,
+    require: false
+  }],
+  precios: [{
+    type: Schema.Types.Mixed,
+    required: false
+  }]
 }, {
   strict: true
 })
 
-CategoriaSchema.post('save', function (doc) {
-  MenuModel.findByIdAndUpdate(doc.Menu, {
+PlatilloSchema.post('save', function (doc) {
+  CategoriaModel.findByIdAndUpdate(doc.Categoria, {
     $addToSet: {
       Categorias: doc._id
     }
   }, {
     new: true
-  }, function (err, MenuActualizado) {
+  }, function (err, CategoriaActualizado) {
     if (err) {
-      console.log('Error al Agregar la Categoria al menu.', err)
+      console.log('Error al Agregar la Platillo a la Categoría.', err)
     } else {
-      console.log(`'Categoria ${doc._id} agregado con éxito al Menu ${MenuActualizado._id}`)
+      console.log(`'Categoría ${doc._id} agregado con éxito al Menu ${CategoriaActualizado._id}`)
     }
   })
 })
 
-CategoriaSchema.plugin(require('mongoose-autopopulate'))
+PlatilloSchema.plugin(require('mongoose-autopopulate'))
 
-const CategoriaModel = mongoose.model('categoria', CategoriaSchema)
+const PlatillaModel = mongoose.model('platillo', PlatilloSchema)
 
-module.exports = CategoriaModel
+module.exports = PlatillaModel
