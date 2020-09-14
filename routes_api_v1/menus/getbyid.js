@@ -1,16 +1,16 @@
-const itemListModel = require("../../models/itemListModel");
+const MenuModel = require("../../models/MenuModel");
 
 module.exports = function (req, res) {
-
   const projection = req.query.projection || null
-
-  itemListModel.findById(req.params.id, projection, function (err, dataitemLists) {
+  const filter = {
+    _id : req.params.id,
+    propietario: req.user._id
+  }
+  MenuModel.findOne(filter, projection, function (err, dataMenus) {
     if (err) {
       res.status(500).send(err);
-    } else if (dataitemLists == null) {
-      res.status(404).send({})
     } else {
-      res.status(200).send(dataitemLists);
+      res.status(dataMenus == null ? 404 : 200).send(dataMenus)
     }
   })
 }

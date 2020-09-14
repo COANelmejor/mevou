@@ -1,4 +1,4 @@
-const itemListModel = require("../../models/itemListModel");
+const MenuModel = require("../../models/MenuModel");
 
 module.exports = function (req, res) {
 
@@ -7,13 +7,13 @@ module.exports = function (req, res) {
   const filter = req.query.filter || {};
   const projection = req.query.projection || null
 
-  itemListModel.find(filter, projection, { limit, skip }, function (err, dataitemLists) {
+  filter.propietario = req.user._id
+  
+  MenuModel.find(filter, projection, { limit, skip }, function (err, dataMenus) {
     if (err) {
       res.status(500).send(err);
-    } else if (dataitemLists == null) {
-      res.status(404).send({})
     } else {
-      res.status(200).send(dataitemLists);
-    }
+      res.status(dataMenus.length == 0 ? 404 : 200).send(dataMenus)
+    } 
   })
 }

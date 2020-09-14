@@ -15,7 +15,9 @@ const MenuSchema = new Schema({
           if (err) {
             cb(err, false)
           } else {
-            if (!(usuario.menus.length >= usuario.max_menus)) {
+            /*if (usuario.Menus == undefined) {
+              cb(true)
+            } else */ if (!(usuario.Menus.length >= usuario.max_menus)) {
               cb(true)
             } else {
               cb(null, false)
@@ -96,6 +98,8 @@ MenuSchema.post('save', function (doc) {
     }
   })
 })
+
+MenuSchema.plugin(require('mongoose-autopopulate'))
 
 const MenuModel = mongoose.model('menu', MenuSchema)
 

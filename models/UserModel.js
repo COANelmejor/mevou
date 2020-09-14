@@ -105,7 +105,8 @@ const UserSchema = new Schema({
     ref: 'menu',
     autopopulate: {
       maxDepth: 1
-    }
+    },
+    default: Array([])
   }]
 }, {
   strict: true
