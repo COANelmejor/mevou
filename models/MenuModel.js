@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
 const UserModel = require('./UserModel')
 const validateShortName = require('../lib/validateShortName')
 
@@ -27,6 +28,14 @@ const MenuSchema = new Schema({
       },
       message: 'Usuario no es válido, o llegó a su límite de menus por crear.'
     },
+    autopopulate: {
+      maxDepth: 1
+    }
+  },
+  Categorias: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'categoria',
     autopopulate: {
       maxDepth: 1
     }
