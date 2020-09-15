@@ -1,0 +1,106 @@
+<% include ../layouts/dashboard/header-open.ejs %>
+
+<!-- Espacios para Agregar CSS's y Scripts -->
+
+<% include ../layouts/dashboard/header-close.ejs %>
+
+<div class="row">
+    <div class="col-12 col-md-4">
+        <form>
+            <div class="form-group"><label>Nombre de categoría</label><input class="form-control" type="text" placeholder="Mariscos"></div>
+            <div class="form-group"><label>Imagen de categoría</label><input type="file" class="w-100"></div>
+            <div class="form-group"><button class="btn btn-secondary btn-block" type="button">Guardar Cambios</button></div>
+        </form>
+    </div>
+    <div class="col-12 col-md-8 platillos-cat">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Platillos</h2>
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-12"><a class="btn btn-add-cat" role="button" href="#"><i class="fas fa-plus-circle"></i></a></div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 add-plate">
+                <form>
+                    <div class="form-row">
+                        <div class="col-12 col-md-6"><label>Nombre platillo</label><input class="form-control" type="text"></div>
+                        <div class="col-12 col-md-6"><label>Imagen platillo</label><input type="file" class="w-100"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-12"><label>Precio(s)</label><small class="form-text text-muted pt-0 pb-3">* Selecciona el precio que aparecerá al lado del nombre del platillo</small></div>
+                    </div>
+                    <div class="form-row justify-content-between">
+                        <div class="col-4 col-md-2 text-center pb-2"><input class="form-control" type="text"><input type="radio"></div>
+                        <div class="col-4 col-md-2 text-center pb-2"><input class="form-control" type="text"><input type="radio"></div>
+                        <div class="col-4 col-md-2 text-center pb-2"><input class="form-control" type="text"><input type="radio"></div>
+                        <div class="col-4 col-md-2 text-center pb-2"><input class="form-control" type="text"><input type="radio"></div>
+                        <div class="col-4 col-md-2 text-center pb-2"><input class="form-control" type="text"><input type="radio"></div>
+                    </div>
+                    <div class="form-row justify-content-between">
+                        <div class="col-12 text-center pb-2"><button class="btn btn-secondary btn-block" type="button">Guardar Cambios</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 platillo-agregado mb-3">
+                <div class="plate-ctn">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h5>Nombre de platillo largo</h5>
+                        </div>
+                        <div class="col-4"><button class="btn btn-secondary btn-block" type="button">Editar</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 platillo-agregado mb-3">
+                <div class="plate-ctn">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h5>Nombre de platillo largo</h5>
+                        </div>
+                        <div class="col-4"><button class="btn btn-secondary btn-block" type="button">Editar</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 platillo-agregado mb-3">
+                <div class="plate-ctn">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h5>Nombre de platillo largo</h5>
+                        </div>
+                        <div class="col-4"><button class="btn btn-secondary btn-block" type="button">Editar</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 platillo-agregado mb-3">
+                <div class="plate-ctn">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h5>Nombre de platillo largo</h5>
+                        </div>
+                        <div class="col-4"><button class="btn btn-secondary btn-block" type="button">Editar</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 platillo-agregado mb-3">
+                <div class="plate-ctn">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h5>Nombre de platillo largo</h5>
+                        </div>
+                        <div class="col-4"><button class="btn btn-secondary btn-block" type="button">Editar</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../layouts/dashboard/footer-open.ejs %>
+
+<!-- Espacios para agregar Scripts, Modals,... -->
+
+<% include ../layouts/dashboard/footer-close.ejs %>

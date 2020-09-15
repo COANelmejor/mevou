@@ -1,0 +1,233 @@
+<% include ../layouts/dashboard/header-open.ejs %>
+
+<!-- Espacios para Agregar CSS's y Scripts -->
+
+<% include ../layouts/dashboard/header-close.ejs %>
+
+<div class="row d-flex">
+    <div class="col-12 col-md-3 text-center cats-column mb-3 mb-md-0">
+        <div class="row">
+            <div class="col-12">
+                <h3>Categorías</h3>
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-12"><a class="btn btn-add-cat" role="button" href="categoria-platillos.html"><i class="fas fa-plus-circle"></i></a></div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-12">
+                <div class="card cat-creado"><img class="card-img w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-christel-jensen-628776.jpg">
+                    <div class="card-img-overlay">
+                        <h4>Mariscos</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-12">
+                <div class="card cat-creado"><img class="card-img w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-sebastian-coman-photography-3659862.jpg">
+                    <div class="card-img-overlay">
+                        <h4>Carnes</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-12">
+                <div class="card cat-creado"><img class="card-img w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-christel-jensen-628776.jpg">
+                    <div class="card-img-overlay">
+                        <h4>Mariscos</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-12">
+                <div class="card cat-creado"><img class="card-img w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-sebastian-coman-photography-3659862.jpg">
+                    <div class="card-img-overlay">
+                        <h4>Carnes</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-12">
+                <div class="card cat-creado"><img class="card-img w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-christel-jensen-628776.jpg">
+                    <div class="card-img-overlay">
+                        <h4>Mariscos</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-12">
+                <div class="card cat-creado"><img class="card-img w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-sebastian-coman-photography-3659862.jpg">
+                    <div class="card-img-overlay">
+                        <h4>Carnes</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4 text-center params-menu-column mb-3 mb-md-0">
+        <div class="row pt-3 pt-md-0">
+            <div class="col-12">
+                <h3>Personalizar Menú</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form>
+                    <div class="form-group text-left mb-0"><label><strong>Máximo de platillos</strong>: 50&nbsp;<i class="fas fa-info-circle" data-toggle="tooltip" data-bs-tooltip="" title="Máximo de platillos que puedes agregar a este menú"></i></label></div>
+                    <div class="form-group text-left mb-0"><label><strong>Fecha de renovación</strong>: 30/10/2020&nbsp;<i class="fas fa-info-circle" data-toggle="tooltip" data-bs-tooltip="" title="Fecha en la que se renovará este menú"></i></label></div>
+                    <div class="form-group text-left"><label>Nombre del menú</label><input class="form-control" type="text" placeholder="Restaurante El Anzuelo"></div>
+                    <div class="form-group text-left"><label>Logo</label><input type="file" class="w-100" accept="image/*"></div>
+                    <div class="form-group text-left"><label>Descripción del menú</label><textarea class="form-control" rows="5" placeholder="Escribe la descripción de tu menú aquí..."></textarea></div>
+                    <div class="form-group text-left"><label>Imagen Principal</label><input type="file" class="w-100"></div>
+                    <div class="form-group text-left"><label>Enlace Personalizado<i class="fas fa-info-circle" data-toggle="tooltip" data-bs-tooltip="" title="Personaliza el enlace de este menú para compartir fácilmente"></i></label><input class="form-control" type="text"
+                            placeholder="Restaurante-El.Anzuelo"><small class="form-text text-muted">mevouaap.com/m/<strong>Restaurante-El.Anzuelo</strong></small></div>
+                    <div class="form-group text-center mb-0"><label>Colores del menú</label></div>
+                    <div class="colors-params mb-2">
+                        <div class="form-row text-left align-items-center">
+                            <div class="col-8"><label class="col-form-label">Fondo principal</label></div>
+                            <div class="col-4 text-center"><input type="color"></div>
+                        </div>
+                        <div class="form-row text-left align-items-center">
+                            <div class="col-8"><label class="col-form-label">Letra(Fondo)</label></div>
+                            <div class="col-4 text-center"><input type="color"></div>
+                        </div>
+                        <div class="form-row text-left align-items-center">
+                            <div class="col-8"><label class="col-form-label">Fondo: nombre del platillo</label></div>
+                            <div class="col-4 text-center"><input type="color"></div>
+                        </div>
+                        <div class="form-row text-left align-items-center">
+                            <div class="col-8"><label class="col-form-label">Letra nombre del platillo</label></div>
+                            <div class="col-4 text-center"><input type="color"></div>
+                        </div>
+                        <div class="form-row text-left align-items-center">
+                            <div class="col-8"><label class="col-form-label">Fondo de descripción</label></div>
+                            <div class="col-4 text-center"><input type="color"></div>
+                        </div>
+                        <div class="form-row text-left align-items-center">
+                            <div class="col-8"><label class="col-form-label">Letra de descripción</label></div>
+                            <div class="col-4 text-center"><input type="color"></div>
+                        </div>
+                    </div>
+                    <div class="form-group text-center mb-0"><button class="btn btn-secondary btn-block" type="button">Guardar Cambios</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-5 menu-dummy pb-3 mb-3 mb-md-0">
+        <div class="row justify-content-center logo py-3">
+            <div class="col-12 text-center">
+                <h3>Vista Previa</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center logo py-3">
+            <div class="col-6 col-md-3"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assets/img/Logo_Completo_Negro.svg"></div>
+        </div>
+        <div class="row descripcion">
+            <div class="col-12 text-center">
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing, elit magnis risus dictum eget. Mi cras felis magnis vitae fermentum libero ligula nostra.</p>
+            </div>
+        </div>
+        <div class="row img-principal">
+            <div class="col-12"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-rene-asmussen-2504980.jpg"></div>
+        </div>
+        <div class="row platillos">
+            <div class="col-12">
+                <div role="tablist" id="accordion-dummy">
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-dummy .item-1" href="#accordion-dummy .item-1">
+                                    <p>Nombre de platillo de restaurante nombre largo<span>Q50</span></p>
+                                </a>
+                            </h5>
+                        </div>
+                        <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-dummy">
+                            <div class="card-body">
+                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-dummy .item-2" href="#accordion-dummy .item-2">
+                                    <p>Nombre de platillo de restaurante con multiples precios<span>Q50</span></p>
+                                </a>
+                            </h5>
+                        </div>
+                        <div class="collapse item-2" role="tabpanel" data-parent="#accordion-dummy">
+                            <div class="card-body">
+                                <p class="card-text">Descripción del platillo.&nbsp;Lorem ipsum dolor sit amet consectetur adipiscing, elit magnis risus dictum eget. Mi cras felis magnis vitae fermentum libero ligula nostra.</p>
+                                <div class="row no-gutters prices pb-3">
+                                    <div class="col text-center">
+                                        <h5><strong>Q25</strong></h5>
+                                        <p>1/2 libra</p>
+                                    </div>
+                                    <div class="col text-center">
+                                        <h5><strong>Q50</strong></h5>
+                                        <p>1 libra</p>
+                                    </div>
+                                    <div class="col text-center">
+                                        <h5><strong>Q50</strong></h5>
+                                        <p>2 Libras</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-dummy .item-3" href="#accordion-dummy .item-3">
+                                    <p>Nombre corto de platillo de restaurante con imágenes y precios múltiples<span>Q50</span></p>
+                                </a>
+                            </h5>
+                        </div>
+                        <div class="collapse item-3" role="tabpanel" data-parent="#accordion-dummy">
+                            <div class="card-body">
+                                <div class="row no-gutters img-platillo">
+                                    <div class="col px-0"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-christel-jensen-628776.jpg"></div>
+                                </div>
+                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                <div class="row no-gutters prices pb-3">
+                                    <div class="col text-center">
+                                        <h5><strong>Q25</strong></h5>
+                                        <p>14 Ozn.</p>
+                                    </div>
+                                    <div class="col text-center">
+                                        <h5><strong>Q25</strong></h5>
+                                        <p>14 Ozn.</p>
+                                    </div>
+                                    <div class="col text-center">
+                                        <h5><strong>Q50</strong></h5>
+                                        <p>16 Ozn.</p>
+                                    </div>
+                                    <div class="col text-center">
+                                        <h5><strong>Q50</strong></h5>
+                                        <p>16 Ozn.</p>
+                                    </div>
+                                    <div class="col text-center">
+                                        <h5><strong>Q50</strong></h5>
+                                        <p>24 Ozn.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../layouts/dashboard/footer-open.ejs %>
+
+<!-- Espacios para agregar Scripts, Modals,... -->
+
+<% include ../layouts/dashboard/footer-close.ejs %>
