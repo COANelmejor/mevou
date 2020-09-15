@@ -1,5 +1,5 @@
 module.exports = function (req, res) {
-    res.render('menu', {
+    res.render('menus', {
         title: 'Menu - Μενού',
     });
 }
