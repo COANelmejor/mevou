@@ -77,8 +77,7 @@ const MenuSchema = new Schema({
     unique: true,
     validate: {
       validator: function (v) {
-        return validateShortName
-      (v)
+        return validateShortName(v)
       },
       message: 'El valor shortname debe incluir solo números, letras minúsculas o punto.'
     }
