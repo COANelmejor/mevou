@@ -57,7 +57,7 @@ const MenuSchema = new Schema({
     default: null
   },
   /** Imagen del Menu */
-  image: {
+  imagen: {
     type: Schema.Types.Mixed,
     required: false,
     default: null
