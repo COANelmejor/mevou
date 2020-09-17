@@ -26,9 +26,9 @@ const PlatilloSchema = new Schema({
       },
       message: 'Usuario no es válido o no existe.'
     },
-    autopopulate: {
-      maxDepth: 1
-    }
+    // autopopulate: {
+    //   maxDepth: 1
+    // }
   },
   Menu: {
     type: Schema.Types.ObjectId,
@@ -50,9 +50,9 @@ const PlatilloSchema = new Schema({
       },
       message: 'Usuario no es válido o no existe.'
     },
-    autopopulate: {
-      maxDepth: 1
-    },
+    // autopopulate: {
+    //   maxDepth: 1
+    // },
   },
   Categoria: {
     type: Schema.Types.ObjectId,
@@ -74,9 +74,9 @@ const PlatilloSchema = new Schema({
       },
       message: 'Categoria no es válida o no existe.'
     },
-    autopopulate: {
-      maxDepth: 1
-    },
+    // autopopulate: {
+    //   maxDepth: 1
+    // },
   },
   /** Nombre del Platillo */
   nombre: {
