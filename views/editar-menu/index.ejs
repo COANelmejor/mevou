@@ -72,56 +72,106 @@
     <div class="col-12 col-md-4 text-center params-menu-column mb-3 mb-md-0">
         <div class="row pt-3 pt-md-0">
             <div class="col-12">
+                <h3>Información del Menú</h3>
+            </div>
+        </div>
+        <div class="row pt-3 pt-md-0">
+            <div class="col-12 text-center">
+                <div class="form-group mb-0"><label><strong>Cantidad de platillos:</strong>
+                    <span
+                        id="cant_platillos">0</span>&nbsp;<i
+                        class="fas fa-info-circle" data-toggle="tooltip"
+                        data-placement="right" data-bs-tooltip="a"
+                        title="Total de Platillos agregados al Menú."></i></label>
+                </div>
+                <div class="form-group mb-0"><label><strong>Cantidad de Categorías:</strong>
+                    <span
+                        id="cant_categorias">0</span>&nbsp;<i
+                        class="fas fa-info-circle" data-toggle="tooltip"
+                        data-placement="right" data-bs-tooltip="b"
+                        title="Total de Categorías agregados al Menú."></i></label>
+                </div>
+                <div class="form-group mb-0"><label><strong>Visualizaciones Totales:</strong>
+                    <span
+                        id="cant_visualizaciones">0</span>&nbsp;<i
+                        class="fas fa-info-circle" data-toggle="tooltip"
+                        data-placement="right" data-bs-tooltip="c"
+                        title="Total de Visualizaciones del Menú desde que este se creó."></i></label>
+                </div>
+
+            </div>
+        </div>
+        <hr>
+        <div class="row pt-3 pt-md-0">
+            <div class="col-12">
                 <h3>Personalizar Menú</h3>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <form>
-                    <div class="form-group text-left mb-0"><label><strong>Máximo de platillos</strong>: 50&nbsp;<i class="fas fa-info-circle" data-toggle="tooltip" data-bs-tooltip="" title="Máximo de platillos que puedes agregar a este menú"></i></label></div>
-                    <div class="form-group text-left mb-0"><label><strong>Fecha de renovación</strong>: 30/10/2020&nbsp;<i class="fas fa-info-circle" data-toggle="tooltip" data-bs-tooltip="" title="Fecha en la que se renovará este menú"></i></label></div>
-                    <div class="form-group text-left"><label>Nombre del menú</label><input class="form-control" type="text" placeholder="Restaurante El Anzuelo"></div>
-                    <div class="form-group text-left"><label>Logo</label><input type="file" class="w-100" accept="image/*"></div>
-                    <div class="form-group text-left"><label>Descripción del menú</label><textarea class="form-control" rows="5" placeholder="Escribe la descripción de tu menú aquí..."></textarea></div>
-                    <div class="form-group text-left"><label>Imagen Principal</label><input type="file" class="w-100"></div>
-                    <div class="form-group text-left"><label>Enlace Personalizado<i class="fas fa-info-circle" data-toggle="tooltip" data-bs-tooltip="" title="Personaliza el enlace de este menú para compartir fácilmente"></i></label><input class="form-control" type="text"
-                            placeholder="Restaurante-El.Anzuelo"><small class="form-text text-muted">mevouaap.com/m/<strong>Restaurante-El.Anzuelo</strong></small></div>
-                    <div class="form-group text-center mb-0"><label>Colores del menú</label></div>
+                    <div class="form-group text-left">
+                        <label>Nombre del menú</label>
+                        <input id="menu_nombre" class="form-control" type="text" placeholder="Restaurante El Anzuelo">
+                    </div>
+                    <div class="form-group text-left">
+                        <label>Logo</label>
+                        <input id="menu_logo" type="file" class="w-100" accept="image/*">
+                    </div>
+                    <div class="form-group text-left">
+                        <label>Descripción del menú</label>
+                        <textarea id="menu_descripcion" class="form-control" rows="5" placeholder="Escribe la descripción de tu menú aquí..."></textarea>
+                    </div>
+                    <div class="form-group text-left">
+                        <label>Imagen Principal</label>
+                        <input id="menu_imagen" type="file" class="w-100" accept="image/*">
+                    </div>
+                    <div class="form-group text-left">
+                        <label>Enlace Personalizado<i class="fas fa-info-circle" data-toggle="tooltip" data-bs-tooltip=""
+                            title="Personaliza el enlace de este menú para compartir fácilmente. Se pueden usar letras, números, guión (-) y punto (.), y debe ser ÚNICO"></i></label>
+                        <input id="menu_shortname" class="form-control"
+                            type="text" pattern="[0-9a-z.-]+$"
+                            placeholder="Restaurante-El.Anzuelo">
+                        <small class="form-text text-muted">mevouapp.com/m/<strong id="menu_shortname_def">Restaurante-El.Anzuelo</strong></small>
+                        </div>
+                    <div class="form-group text-center mb-0">
+                        <label>Colores del menú</label>
+                    </div>
                     <div class="colors-params mb-2">
                         <div class="form-row text-left align-items-center">
-                            <div class="col-8"><label class="col-form-label">Fondo principal</label></div>
-                            <div class="col-4 text-center"><input type="color"></div>
+                            <div class="col-8"><label class="col-form-label">Fondo Principal</label></div>
+                            <div class="col-4 text-center"><input id="menu_color_menu_fondo" type="color" value="#FFFFFF"></div>
                         </div>
                         <div class="form-row text-left align-items-center">
-                            <div class="col-8"><label class="col-form-label">Letra(Fondo)</label></div>
-                            <div class="col-4 text-center"><input type="color"></div>
+                            <div class="col-8"><label class="col-form-label">Letra de Descripción de Menú</label></div>
+                            <div class="col-4 text-center"><input id="menu_color_menu_letra" type="color" value="#000000"></div>
                         </div>
                         <div class="form-row text-left align-items-center">
-                            <div class="col-8"><label class="col-form-label">Fondo: nombre del platillo</label></div>
-                            <div class="col-4 text-center"><input type="color"></div>
+                            <div class="col-8"><label class="col-form-label">Letra de Nombre del Platillo</label></div>
+                            <div class="col-4 text-center"><input id="menu_color_plato_nombre_letra" type="color" value="#FFFFFF"></div>
                         </div>
                         <div class="form-row text-left align-items-center">
-                            <div class="col-8"><label class="col-form-label">Letra nombre del platillo</label></div>
-                            <div class="col-4 text-center"><input type="color"></div>
+                            <div class="col-8"><label class="col-form-label">Fondo de Nombre del Platillo</label></div>
+                            <div class="col-4 text-center"><input id="menu_color_plato_nombre_fondo" type="color" value="#000000"></div>
                         </div>
                         <div class="form-row text-left align-items-center">
-                            <div class="col-8"><label class="col-form-label">Fondo de descripción</label></div>
-                            <div class="col-4 text-center"><input type="color"></div>
+                            <div class="col-8"><label class="col-form-label">Letra de Descripción de Platillo</label></div>
+                            <div class="col-4 text-center"><input id="menu_color_plato_desc_letra" type="color" value="#000000"></div>
                         </div>
                         <div class="form-row text-left align-items-center">
-                            <div class="col-8"><label class="col-form-label">Letra de descripción</label></div>
-                            <div class="col-4 text-center"><input type="color"></div>
+                            <div class="col-8"><label class="col-form-label">Fondo de Descripción del Platillo</label></div>
+                            <div class="col-4 text-center"><input id="menu_color_plato_desc_fondo" type="color" value="#FFFFFF"></div>
                         </div>
                     </div>
-                    <div class="form-group text-center mb-0"><button class="btn btn-secondary btn-block" type="button">Guardar Cambios</button></div>
+                    <div class="form-group text-center mb-0"><button class="btn btn-secondary btn-block" id="guardar_menu" type="button">Guardar Cambios</button></div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="col-12 col-md-5 menu-dummy pb-3 mb-3 mb-md-0">
+    <div class="col-12 col-md-5 menu-dummy menu_color_menu_fondo pb-3 mb-3 mb-md-0">
         <div class="row justify-content-center logo py-3">
             <div class="col-12 text-center">
-                <h3>Vista Previa</h3>
+                <h3 class="menu_color_menu_letra">Vista Previa</h3>
             </div>
         </div>
         <div class="row justify-content-center logo py-3">
@@ -129,7 +179,9 @@
         </div>
         <div class="row descripcion">
             <div class="col-12 text-center">
-                <p>Lorem ipsum dolor sit amet consectetur adipiscing, elit magnis risus dictum eget. Mi cras felis magnis vitae fermentum libero ligula nostra.</p>
+                <p class="menu_color_menu_letra">Lorem ipsum dolor sit amet
+                    consectetur adipiscing, elit magnis risus dictum eget. Mi
+                    cras felis magnis vitae fermentum libero ligula nostra.</p>
             </div>
         </div>
         <div class="row img-principal">
@@ -227,6 +279,135 @@
 </div>
 
 <% include ../layouts/dashboard/footer-open.ejs %>
+
+<script>
+    const idMenu =  new URLSearchParams(window.location.search).get('id');
+    var MenuAjax = Object({})
+    $.ajax({
+        method: 'GET',
+        url: `/api/v1/menus/${idMenu}`,
+        success: function(menu) {
+            console.log(menu)
+            const size = new TextEncoder().encode(JSON.stringify(menu)).length
+            const kiloBytes = size / 1024;
+            const megaBytes = kiloBytes / 1024;
+            console.log(`${size}B`)
+            console.log(`${kiloBytes.toFixed(4)}KB`)
+            console.log(`${megaBytes.toFixed(4)}MB`)
+            MenuAjax = menu
+            $('#menu_nombre').val(menu.nombre)
+            $('#menu_descripcion').html(menu.descripcion)
+            // $('#menu_logo').val(menu.logo)
+            // $('#menu_imagen').val(menu.imagen)
+            $('#menu_shortname').val(menu.shortname)
+            $('#menu_color_menu_fondo').val(menu.color_menu_fondo)
+            $('#menu_color_menu_letra').val(menu.color_menu_letra)
+            $('#menu_color_plato_nombre_letra').val(menu.color_plato_nombre_letra)
+            $('#menu_color_plato_nombre_fondo').val(menu.color_plato_nombre_fondo)
+            $('#menu_color_plato_desc_letra').val(menu.color_plato_desc_letra)
+            $('#menu_color_plato_desc_fondo').val(menu.color_plato_desc_fondo)
+
+            $('.menu_color_menu_fondo').attr('style', `background-color: ${menu.color_menu_fondo}`)
+            $('.menu_color_menu_letra').attr('style', `color: ${menu.color_menu_letra}`)
+
+            $('#menu_shortname_def').html(menu.shortname)
+        },
+        error: function(a, b, c) {
+            alert(`Hubo un error al crear tu Menú\nIntentalo de nuevo\n${JSON.stringify(a, null, 2)}\n${JSON.stringify(b, null, 2)}\n${JSON.stringify(c, null, 2)}`)
+        }
+    })
+
+    $('#menu_nombre').keyup( function (e) {
+        const menu_nombre = $(this).val();
+        MenuAjax.nombre = menu_nombre
+    });
+    $('#menu_nombre').change( function (e) {
+        const menu_nombre = $(this).val();
+        MenuAjax.nombre = menu_nombre
+    });
+
+    $('#menu_descripcion').keyup( function (e) {
+        const menu_descripcion = $(this).val();
+        MenuAjax.descripcion = menu_descripcion
+    });
+    $('#menu_descripcion').change( function (e) {
+        const menu_descripcion = $(this).val();
+        MenuAjax.descripcion = menu_descripcion
+    });
+
+    $('#menu_logo').change( function (e) {
+        const menu_logo = $(this).val();
+        MenuAjax.logo = menu_logo
+    });
+
+    $('#menu_imagen').change( function (e) {
+        const menu_imagen = $(this).val();
+        MenuAjax.imagen = menu_imagen
+    });
+
+    $('#menu_shortname').keyup( function (e) {
+        const menu_shortname = $(this).val();
+        MenuAjax.shortname = menu_shortname
+        $('#menu_shortname_def').html(menu_shortname)
+
+    });
+    $('#menu_shortname').change( function (e) {
+        const menu_shortname = $(this).val();
+        MenuAjax.shortname = menu_shortname
+        $('#menu_shortname_def').html(menu_shortname)
+
+    });
+
+    $('#menu_color_menu_fondo').change( function (e) {
+        const menu_color_menu_fondo = $(this).val();
+        MenuAjax.color_menu_fondo = menu_color_menu_fondo
+        $('.menu_color_menu_fondo').attr('style', `background-color: ${menu_color_menu_fondo}`)
+    });
+    
+    $('#menu_color_menu_letra').change( function (e) {
+        const menu_color_menu_letra = $(this).val();
+        console.log(menu_color_menu_letra)
+        MenuAjax.color_menu_letra = menu_color_menu_letra
+        $('.menu_color_menu_letra').attr('style', `color: ${menu_color_menu_letra}`)
+    });
+
+    $('#menu_color_plato_nombre_letra').change( function (e) {
+        const menu_color_plato_nombre_letra = $(this).val();
+        MenuAjax.color_plato_nombre_letra = menu_color_plato_nombre_letra
+    });
+
+    $('#menu_color_plato_nombre_fondo').change( function (e) {
+        const menu_color_plato_nombre_fondo = $(this).val();
+        MenuAjax.color_plato_nombre_fondo = menu_color_plato_nombre_fondo
+    });
+
+    $('#menu_color_plato_desc_letra').change( function (e) {
+        const menu_color_plato_desc_letra = $(this).val();
+        MenuAjax.color_plato_desc_letra = menu_color_plato_desc_letra
+    });
+
+    $('#menu_color_plato_desc_fondo').change( function (e) {
+        const menu_color_plato_desc_fondo = $(this).val();
+        MenuAjax.color_plato_desc_fondo = menu_color_plato_desc_fondo
+    });
+
+    $('#guardar_menu').click(function (e) {
+        $.ajax({
+        method: 'PATCH',
+        url: `/api/v1/menus/${idMenu}`,
+        contentType: 'application/json',
+        data: JSON.stringify(MenuAjax),
+        success: function(menu) {
+            console.log(menu)
+            alert(`Menú actualizado con Éxito`)
+        },
+        error: function(a, b, c) {
+            alert(`Hubo un error al crear tu Menú\nIntentalo de nuevo\n${JSON.stringify(a, null, 2)}\n${JSON.stringify(b, null, 2)}\n${JSON.stringify(c, null, 2)}`)
+        }
+    })
+    })
+
+</script>
 
 <!-- Espacios para agregar Scripts, Modals,... -->
 
