@@ -32,14 +32,14 @@ const MenuSchema = new Schema({
       maxDepth: 1
     }
   },
-  Categorias: {
+  Categorias: [{
     type: Schema.Types.ObjectId,
-    required: true,
+    required: false,
     ref: 'categoria',
     autopopulate: {
-      maxDepth: 1
+      maxDepth: 2
     }
-  },
+  }],
   /** Nombre del Menú */
   nombre: {
     type: String,
@@ -53,17 +53,14 @@ const MenuSchema = new Schema({
   /** Logo dl Menú */
   logo: {
     type: Schema.Types.Mixed,
-    required: false
+    required: false,
+    default: null
   },
-  /** Imágenes del Menu */
-  images: [{
+  /** Imagen del Menu */
+  image: {
     type: Schema.Types.Mixed,
-    required: false
-  }],
-  max_platos: {
-    type: Number,
-    required: true,
-    default: 10
+    required: false,
+    default: null
   },
   /** Datos de la URL corta
    * Este dato se usará para la creación del la URL corta. La URL quedaría de esta forma.:
@@ -81,7 +78,38 @@ const MenuSchema = new Schema({
       },
       message: 'El valor shortname debe incluir solo números, letras minúsculas o punto.'
     }
-  }
+  },
+  /** Color de Fondo del menú */
+  color_menu_fondo: {
+    type: String,
+    required: false,
+    default: '#FFFFFF'
+  },
+  color_menu_letra: {
+    type: String,
+    required: false,
+    default: '#000000'
+  },
+  color_plato_nombre_letra: {
+    type: String,
+    required: false,
+    default: '#FFFFFF'
+  },
+  color_plato_nombre_fondo: {
+    type: String,
+    required: false,
+    default: '#000000'
+  },
+  color_plato_desc_letra: {
+    type: String,
+    required: false,
+    default: '#000000'
+  },
+  color_plato_desc_fondo: {
+    type: String,
+    required: false,
+    default: '#FFFFFF'
+  },
 }, {
   strict: true
 })

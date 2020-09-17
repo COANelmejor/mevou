@@ -1,27 +1,101 @@
 <% include ../layouts/dashboard/header-open.ejs %>
 
 <!-- Espacios para Agregar CSS's y Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/moment@2/min/moment-with-locales.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ejs@3/ejs.min.js"></script>
+<script>
+    moment.locale('es');
+</script>
 
 <% include ../layouts/dashboard/header-close.ejs %>
 
+<div class="row" id="menus_ajax">
 
-<div class="row">
-    <div class="col-12 col-md-4 pb">
-        <div class="card menu-creado"><img class="card-img w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-rene-asmussen-2504980.jpg">
-            <div class="card-img-overlay">
-                <h4>Menú Delivery</h4>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-4 pb">
-        <a class="btn btn-add-menu" role="button" href="/crear-menu">
-            <i class="fas fa-plus-circle"></i>
-        </a>
-    </div>
 </div>
 
 <% include ../layouts/dashboard/footer-open.ejs %>
+<script>
+/* Datos relacionado con la renderización de la vista.*/
+const defaultMenu = 'https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-rene-asmussen-2504980.jpg'
+// Card de Menu
+const cardMenu = `
+<div class="col-12 col-md-4 pb-3" data-aos="zoom-in">
+    <div class="card menu-creado" data-id-menu="<%%= id %>"><img class="card-img w-100 d-block" src="<%%= image %>">
+        <div class="card-img-overlay">
+            <h4><%%= nombre %></h4>
+        </div>
+    </div>
+</div>
+`
+// Card de Nuevo Menu
+const cardNewMenu = `
+<div class="col-12 col-md-4 pb-3" id="crear_menu" data-aos="zoom-in">
+    <div class="btn btn-add-menu" role="button" href="#">
+        <i class="fas fa-plus-circle" id="loading_crear"></i>
+    </div>
+</div>`
+$(document).ready(function(){
+    $.ajax({
+        method: 'GET',
+        url:'/api/v1/menus/?projection=-propietario&limit=1000000&skip=0',
+        success: function(menus) {
+            console.log('Menus Encotrados: ' + menus.length) 
+            for (let m = 0; m < menus.length; m++) {
+                const menu = menus[m];
+                const menuHtml = ejs.render(cardMenu, {
+                    id : menu._id,
+                    image : menu.image || defaultMenu,
+                    nombre : menu.nombre || 'Sin Nombre',
+                })
+                setTimeout(function(){
+                    $('#menus_ajax').append(menuHtml)
+                    if (m == menus.length - 1) {
+                        $('#menus_ajax').append(cardNewMenu)
+                        $('#crear_menu').click(function () {
+                            $('#loading_crear').attr('class', 'fas fa-spinner fa-pulse')
+                                console.log('Crear Menu Button')
+                                const nuevoMenu = {
+                                    nombre : moment().format('LLLL'),
+                                    descripcion : '---',
+                                    logo : null,
+                                    color_menu_fondo : '#FFFFFF',
+                                    color_menu_letra : '#000000',
+                                    color_plato_nombre_letra : '#FFFFFF',
+                                    color_plato_nombre_fondo : '#000000',
+                                    color_plato_desc_letra : '#000000',
+                                    color_plato_desc_fondo : '#FFFFFF',
+                                }
+                                $.ajax({
+                                    method: 'POST',
+                                    url:'/api/v1/menus/',
+                                    contentType: 'application/json',
+                                    data: JSON.stringify(nuevoMenu),
+                                    success: function(response) {
+                                        location.href = `/editar-menu?id=${response._id}`
+                                    },
+                                    error: function (a,b,c) {
+                                        $('#loading_crear').attr('class', 'fas fa-times')
+                                        alert(`Hubo un error al crear tu Menú\nIntentalo de nuevo\n${JSON.stringify(a, null, 2)}\n${JSON.stringify(b, null, 2)}\n${JSON.stringify(c, null, 2)}`)
+                                }
+                            })
+                        })
+                        $(".menu-creado").click(function (e) {
+                            const idMenu = $(this).attr('data-id-menu')
+                            location.href = `/editar-menu?id=${idMenu}`
+                        })
+                    }
+                }, (m * 50))
+            }
+        },
+        error: function (a,b,c) {
+            alert(`Hubo un error al consultar tus Menus\nIntentalo de nuevo\n${JSON.stringify(a, null, 2)}\n${JSON.stringify(b, null, 2)}\n${JSON.stringify(c, null, 2)}`)
+        }
+    })
+})
 
+
+
+</script>
 <!-- Espacios para agregar Scripts, Modals,... -->
 
 <% include ../layouts/dashboard/footer-close.ejs %>

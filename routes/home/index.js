@@ -5,7 +5,8 @@ var router = express.Router();
 router.get('/', function (req, res) {
   res.render('home', {
     title: 'Bienvenidos a Μενού',
-    user: req.user
+    h1: 'Inicio',
+    active: 'inicio'
   });
 });
 

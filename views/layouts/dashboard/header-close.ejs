@@ -4,7 +4,7 @@
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" id="menu-lateral">
             <div class="container-fluid d-flex flex-column p-0">
-                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="/dashboard">
                     <div class="sidebar-brand-icon">
                         <img class="img-fluid w-50" src="https://mevouappcdn.s3.amazonaws.com/assets/img/Logo_Completo_Only_M_Negro.svg">
                     </div>
@@ -12,19 +12,19 @@
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/dashboard">
+                        <a class="nav-link <%= active == 'inicio' ? 'active' : '' %>" href="/dashboard">
                             <i class="fas fa-tachometer-alt"></i>
                             <span>Inicio</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/menus">
+                        <a class="nav-link <%= active == 'menus' ? 'active' : '' %>" href="/menus">
                             <i class="fas fa-book-open"></i>
                             <span>Menús</span>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
+                        <a class="nav-link <%= active == 'agregarrapido' ? 'active' : '' %>" data-toggle="dropdown" aria-expanded="false" href="#">
                             <i class="fas fa-plus-circle"></i>
                             <span>Agregar Rápido</span>
                         </a>
@@ -170,7 +170,7 @@
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow">
                                     <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
-                                        <span class="d-none d-lg-inline mr-2 text-gray-600 small">Nombre Usuario</span>
+                                        <span class="d-none d-lg-inline mr-2 text-gray-600 small"><%= user.nombre %> <%= user.apellido %></span>
                                         <img class="border rounded-circle img-profile" src="https://mevouappcdn.s3.amazonaws.com/assets/img/avatars/avatar1.jpeg">
                                     </a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" id="params-settings">
@@ -191,3 +191,8 @@
                     </div>
                 </nav>
                 <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 text-left">
+                            <h1><i class="<%= h1icon %>"></i> <%= h1 %></h1>
+                        </div>
+                    </div>

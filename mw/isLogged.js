@@ -7,6 +7,9 @@ module.exports = function (req, res, next) {
   if (req.user == undefined) {
     res.redirect('/login')
   } else {
+    res.locals.user = req.user
+    res.locals.h1icon = 'fas fa-hand-point-right'
+    res.locals.active = 'inicio'
     next()
   }
 }

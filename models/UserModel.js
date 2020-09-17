@@ -90,10 +90,27 @@ const UserSchema = new Schema({
     type: Number,
     default: false
   },
-  /** Máximo de Menus
-    * Cantidad máxima permitda para crear menus.
-  */
-  max_menus: {
+  /** Máximo de Platos
+    * Cantidad máxima permitda para crear platos entre todos los menus
+    */
+  max_platos: {
+    type: Number,
+    required: true,
+    default: 1
+  },
+  /** Máximo de Imágenes
+   * Cantidad máxima permitda para crear platos entre todos los platillos.
+   * No se toma en cuenta las imagenes de los 
+   */
+  max_images: {
+    type: Number,
+    required: true,
+    default: 1
+  },
+  /** Máximo de Trasacciones
+   * Cantidad máxima de consulta de menus permitidas 
+   */
+  max_transacciones: {
     type: Number,
     required: true,
     default: 1

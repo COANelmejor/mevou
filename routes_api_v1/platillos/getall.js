@@ -13,7 +13,7 @@ module.exports = function (req, res) {
     if (err) {
       res.status(500).send(err);
     } else {
-      res.status(dataPlatillos.length == 0 ? 404 : 200).send(dataPlatillos)
+      res.status(200).send(dataPlatillos)
     } 
   })
 }
