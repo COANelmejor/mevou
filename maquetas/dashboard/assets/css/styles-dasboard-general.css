@@ -1,0 +1,164 @@
+/* General Styles */
+
+body, * {
+  font-family: 'Quicksand' !important;
+  color: #444444;
+}
+
+.fas, .fa, .fab, .far {
+  font-family: 'Font Awesome 5 Free' !important;
+}
+
+.bg-gradient-primary {
+  background-color: rgb(80,48,1);
+  background: linear-gradient(150deg, rgba(80,48,1,1) 0%, rgba(255,255,255,1) 50%, rgba(80,48,1,1) 100%);
+  background-size: cover;
+}
+
+a, button {
+  transition: all 0.35s!important;
+}
+
+a:hover, button:hover {
+  transition: all 0.35s;
+}
+
+a {
+  color: #000000!important;
+}
+
+a:hover, a:focus, a:active {
+  color: #444444!important;
+}
+
+p {
+  line-height: 1.2;
+}
+
+.vh-100 {
+  height: 100vh;
+}
+
+/* .btn's */
+
+.btn-primary {
+  color: #fff;
+  background-color: #503001;
+  border-color: #503001;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  color: #fff;
+  background-color: #7a4800!important;
+  border-color: #503001!important;
+}
+
+input {
+  border-color: #444444!important;
+}
+
+input::placeholder, label {
+  color: #444444!important;
+}
+
+/* End General Styles */
+
+/* Menú lateral dashboard */
+
+#menu-lateral {
+  border-right: 1px solid #ccc;
+}
+
+#menu-lateral * {
+  transition: all 0.35s;
+}
+
+#menu-lateral .sidebar-brand-icon img {
+  width: 30%!important;
+  object-fit: contain!important;
+}
+
+@media (min-width: 300px) and (max-width: 768px) {
+  #menu-lateral .sidebar-brand-icon img {
+    width: 60%!important;
+    object-fit: contain!important;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 768px) {
+  #menu-lateral .dropdown-menu.show {
+    position: absolute;
+    top: 0;
+    left: calc(100% - 1px);
+    width: 200px;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 768px) {
+  #menu-lateral .dropdown-menu .dropdown-item {
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+#menu-lateral .dropdown-menu.show {
+  border-radius: 0;
+}
+
+#menu-lateral.sidebar-dark .nav-item .nav-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+#menu-lateral.sidebar-dark .nav-item .nav-link span {
+  color: #2d2d2d!important;
+}
+
+#menu-lateral.sidebar-dark .nav-item .nav-link i {
+  color: rgb(0, 0, 0, 0.3);
+}
+
+#menu-lateral.sidebar-dark .nav-item .nav-link.active, #menu-lateral.sidebar-dark .nav-item .nav-link:hover, #menu-lateral.sidebar-dark .nav-item .nav-link:focus, #menu-lateral.sidebar-dark .nav-item .nav-link:active {
+  background-color: rgba(0,0,0,0.1);
+}
+
+#menu-lateral.sidebar-dark .nav-item .nav-link.active i, #menu-lateral.sidebar-dark .nav-item .nav-link:hover i, #menu-lateral.sidebar-dark .nav-item .nav-link:focus i, #menu-lateral.sidebar-dark .nav-item .nav-link:active i {
+  color: rgb(0,0,0);
+}
+
+#menu-lateral.sidebar-dark #sidebarToggle {
+  color: #ccc;
+}
+
+#menu-lateral.sidebar-dark #sidebarToggle {
+  background-color: rgb(143, 143, 143,0.2);
+}
+
+#menu-lateral.sidebar-dark #sidebarToggle:after {
+  color: rgb(0, 0, 0);
+}
+
+#params-settings .dropdown-item i {
+  color: rgba(0,0,0,0.4);
+}
+
+#params-settings * {
+  transition: all 0.35s;
+}
+
+#params-settings .dropdown-item {
+  color: rgba(0,0,0,0.5)!important;
+  font-weight: 500;
+  transition: all 0.35s;
+}
+
+#params-settings .dropdown-item.active, #params-settings .dropdown-item:hover, #params-settings .dropdown-item:focus, #params-settings .dropdown-item:active {
+  color: rgb(0,0,0)!important;
+  background-color: rgba(0,0,0,0.1);
+}
+
+#params-settings .dropdown-item.active i, #params-settings .dropdown-item:hover i, #params-settings .dropdown-item:focus i, #params-settings .dropdown-item:active i {
+  color: rgb(0,0,0);
+}
+
+/* End Menú lateral dashboard */
+

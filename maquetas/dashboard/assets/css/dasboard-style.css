@@ -1,0 +1,234 @@
+.bg-gradient-primary {
+  background: #fff!important;
+  /*background: linear-gradient(180deg, rgba(80,48,1,1) 0%, rgb(80 48 1 / 25%) 100%) !important;*/
+  background-size: cover;
+}
+
+.btn.btn-secondary {
+  background-color: #fff!important;
+  color: #000!important;
+  border: 1px solid #000!important;
+  border-radius: 25px!important;
+  transition: all 0.35s;
+}
+
+.btn.btn-secondary:hover, .btn.btn-secondary:active, .btn.btn-secondary:focus {
+  background-color: #eeeeee!important;
+  color: #000!important;
+  border: 1px solid #000!important;
+  border-radius: 25px!important;
+  transform: scale(0.95);
+  transition: all 0.35s;
+}
+
+.btn.btn-add-menu {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #444444;
+  transition: all 0.35s;
+}
+
+.btn.btn-add-menu:hover, .btn.btn-add-menu:active, .btn.btn-add-menu:focus {
+  transform: scale(0.9);
+  transition: all 0.35s;
+}
+
+.btn.btn-add-menu i {
+  font-size: 3.5em;
+  color: #444444;
+  transition: all 0.35s;
+}
+
+.btn.btn-add-menu:hover i, .btn.btn-add-menu:active i, .btn.btn-add-menu:focus i {
+  font-size: 2.85em;
+  transition: all 0.35s;
+}
+
+/* Menús Creados */
+
+.card.menu-creado {
+  width: 100%;
+  height: 300px;
+  transition: all 0.35s;
+}
+
+.card.menu-creado:hover, .card.menu-creado:active, .card.menu-creado:focus {
+  transform: scale(0.9);
+  transition: all 0.35s;
+}
+
+.card.menu-creado > img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.card.menu-creado .card-img-overlay {
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card.menu-creado .card-img-overlay h4 {
+  color: #fff;
+}
+
+/* Crear/Modificar Menús */
+
+.cats-column {
+  height: 70vh;
+  display: block;
+  overflow-y: scroll;
+}
+
+.menu-dummy {
+  border: 2px solid #999999;
+  border-radius: 3px;
+  background-color: #000;
+}
+
+.menu-dummy .platillos #accordion-dummy {
+}
+
+.menu-dummy .platillos #accordion-dummy .card-header {
+  padding: 0;
+  background-color: #000000;
+}
+
+.menu-dummy .platillos #accordion-dummy .card-header h5 a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  background-color: #000;
+}
+
+.menu-dummy .platillos #accordion-dummy .card-header h5 a p {
+  margin: 0;
+  overflow-wrap: break-word;
+  text-align: left!important;
+  color: #fff;
+}
+
+.menu-dummy .platillos #accordion-dummy .card-header h5 a p span {
+  float: right;
+  text-align: right;
+  color: #fff;
+}
+
+.menu-dummy .platillos #accordion-dummy .card-body {
+  background-color: #fff;
+  padding: 0 0 1em;
+}
+
+.menu-dummy .platillos #accordion-dummy .card-body .card-text {
+  padding: 0.6rem 0.8rem;
+  margin: 0;
+}
+
+.menu-dummy .platillos #accordion-dummy .card-body * {
+  color: #000;
+}
+
+.menu-dummy .platillos #accordion-dummy .card-body .prices p {
+  margin: 0;
+}
+
+.btn.btn-add-cat {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #444444;
+  transition: all 0.35s;
+}
+
+.btn.btn-add-cat i {
+  font-size: 1.3em;
+  color: #444444;
+  transition: all 0.35s;
+}
+
+.btn.btn-add-cat:hover, .btn.btn-add-cat:active, .btn.btn-add-cat:focus {
+  transform: scale(0.9);
+  transition: all 0.35s;
+}
+
+.btn.btn-add-cat:hover i, .btn.btn-add-cat:active i, .btn.btn-add-cat:focus i {
+  font-size: 1em;
+  transition: all 0.35s;
+}
+
+.card.cat-creado:hover, .card.cat-creado:active, .card.cat-creado:focus {
+  transform: scale(0.9);
+  transition: all 0.35s;
+}
+
+.card.cat-creado {
+  width: 100%;
+  height: 120px;
+  transition: all 0.35s;
+}
+
+.card.cat-creado > img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.card.cat-creado .card-img-overlay h4 {
+  color: #fff;
+}
+
+.card.cat-creado .card-img-overlay {
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.params-menu-column label i {
+  font-size: 0.8em;
+  vertical-align: top;
+}
+
+.params-menu-column .colors-params {
+  border: 1px solid #444;
+  border-radius: 3px;
+  padding: 0.5em 0.8em;
+}
+
+/* Crear/Modificar categorías/add platillos */
+
+.add-plate {
+  border: 1px solid #444;
+  padding: 1em;
+}
+
+.platillos-cat {
+  height: 80vh;
+  overflow-y: scroll;
+  display: block;
+}
+
+.platillo-agregado .plate-ctn {
+  border: 1px solid #444;
+  border-radius: 3px;
+  padding: 1em;
+}
+
+/* Perfil del Usuario */
+
+.profile-image-ctn img {
+  object-fit: cover;
+}
+
+.facturas-emitidas .table tr td {
+  vertical-align: middle;
+}
+
