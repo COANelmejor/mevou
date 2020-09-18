@@ -91,11 +91,11 @@ const PlatilloSchema = new Schema({
     type: String,
     required: false
   },
-  /** Imágenes del Platillo */
-  images: [{
+  /** Imagen del Platillo */
+  imagen: {
     type: Schema.Types.Mixed,
     required: false
-  }],
+  },
   tags: [{
     type: String,
     require: false

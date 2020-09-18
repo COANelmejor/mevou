@@ -58,11 +58,11 @@ const CategoriaSchema = new Schema({
     type: String,
     required: [true, 'Valor necesario: nombre']
   },
-  /** Imágenes del Menu */
-  images: [{
+  /** Imagen del Menu */
+  imagen: {
     type: Schema.Types.Mixed,
     required: false
-  }],
+  },
 }, {
   strict: true
 })
