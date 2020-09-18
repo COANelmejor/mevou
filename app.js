@@ -14,11 +14,12 @@ const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session);
+const MongoURL = require('./.secrets/mongdbUrl')
 
 var mongoose = require('mongoose');
 var UserModel = require('./models/UserModel');
 
-mongoose.connect('mongodb+srv://testmongo:01123581321@sandboxtestinganddevelop-vocxz.mongodb.net/mevou?retryWrites=true&w=majority', {
+mongoose.connect(MongoURL, {
   useNewUrlParser: true
 });
 mongoose.Promise = global.Promise;
