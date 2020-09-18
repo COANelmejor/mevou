@@ -146,14 +146,16 @@
                             <div class="col-8"><label class="col-form-label">Letra de Descripción de Menú</label></div>
                             <div class="col-4 text-center"><input id="menu_color_menu_letra" type="color" value="#000000"></div>
                         </div>
-                        <div class="form-row text-left align-items-center">
-                            <div class="col-8"><label class="col-form-label">Letra de Nombre del Platillo</label></div>
-                            <div class="col-4 text-center"><input id="menu_color_plato_nombre_letra" type="color" value="#FFFFFF"></div>
-                        </div>
+                        <hr>
                         <div class="form-row text-left align-items-center">
                             <div class="col-8"><label class="col-form-label">Fondo de Nombre del Platillo</label></div>
                             <div class="col-4 text-center"><input id="menu_color_plato_nombre_fondo" type="color" value="#000000"></div>
                         </div>
+                        <div class="form-row text-left align-items-center">
+                            <div class="col-8"><label class="col-form-label">Letra de Nombre del Platillo</label></div>
+                            <div class="col-4 text-center"><input id="menu_color_plato_nombre_letra" type="color" value="#FFFFFF"></div>
+                        </div>
+                        <hr>
                         <div class="form-row text-left align-items-center">
                             <div class="col-8"><label class="col-form-label">Letra de Descripción de Platillo</label></div>
                             <div class="col-4 text-center"><input id="menu_color_plato_desc_letra" type="color" value="#000000"></div>
@@ -175,7 +177,9 @@
             </div>
         </div>
         <div class="row justify-content-center logo py-3">
-            <div class="col-6 col-md-3"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assets/img/Logo_Completo_Negro.svg"></div>
+            <div class="col-6 col-md-3">
+                <img id="menu_logo_img" class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assets/img/Logo_Completo_Negro.svg">
+            </div>
         </div>
         <div class="row descripcion">
             <div class="col-12 text-center">
@@ -185,88 +189,90 @@
             </div>
         </div>
         <div class="row img-principal">
-            <div class="col-12"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-rene-asmussen-2504980.jpg"></div>
+            <div class="col-12">
+                <img id="menu_imagen_img" class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-rene-asmussen-2504980.jpg">
+            </div>
         </div>
         <div class="row platillos">
             <div class="col-12">
                 <div role="tablist" id="accordion-dummy">
                     <div class="card">
-                        <div class="card-header" role="tab">
+                        <div class="card-header menu_color_plato_nombre_fondo menu_color_plato_nombre_fondo" role="tab">
                             <h5 class="mb-0">
-                                <a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-dummy .item-1" href="#accordion-dummy .item-1">
-                                    <p>Nombre de platillo de restaurante nombre largo<span>Q50</span></p>
+                                <a class="menu_color_plato_nombre_fondo" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-dummy .item-1" href="#accordion-dummy .item-1">
+                                    <p class="menu_color_plato_nombre_letra">Nombre de platillo de restaurante nombre largo<span class="menu_color_plato_nombre_letra" style="font-weight: bold;">Q50</span></p>
                                 </a>
                             </h5>
                         </div>
                         <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-dummy">
-                            <div class="card-body">
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                            <div class="card-body menu_color_plato_desc_fondo">
+                                <p class="card-text menu_color_plato_desc_letra">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                <p class="card-text menu_color_plato_desc_letra">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
                             </div>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header" role="tab">
+                        <div class="card-header menu_color_plato_nombre_fondo" role="tab">
                             <h5 class="mb-0">
-                                <a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-dummy .item-2" href="#accordion-dummy .item-2">
-                                    <p>Nombre de platillo de restaurante con multiples precios<span>Q50</span></p>
+                                <a class="menu_color_plato_nombre_fondo" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-dummy .item-2" href="#accordion-dummy .item-2">
+                                    <p class="menu_color_plato_nombre_letra">Nombre de platillo de restaurante con multiples precios<span class="menu_color_plato_nombre_letra" style="font-weight: bold;">Q50</span></p>
                                 </a>
                             </h5>
                         </div>
                         <div class="collapse item-2" role="tabpanel" data-parent="#accordion-dummy">
-                            <div class="card-body">
-                                <p class="card-text">Descripción del platillo.&nbsp;Lorem ipsum dolor sit amet consectetur adipiscing, elit magnis risus dictum eget. Mi cras felis magnis vitae fermentum libero ligula nostra.</p>
+                            <div class="card-body menu_color_plato_desc_fondo">
+                                <p class="card-text menu_color_plato_desc_letra">Descripción del platillo.&nbsp;Lorem ipsum dolor sit amet consectetur adipiscing, elit magnis risus dictum eget. Mi cras felis magnis vitae fermentum libero ligula nostra.</p>
                                 <div class="row no-gutters prices pb-3">
                                     <div class="col text-center">
-                                        <h5><strong>Q25</strong></h5>
-                                        <p>1/2 libra</p>
+                                        <h5><strong class="menu_color_plato_desc_letra">Q25</strong></h5>
+                                        <p class="menu_color_plato_desc_letra">1/2 libra</p>
                                     </div>
                                     <div class="col text-center">
-                                        <h5><strong>Q50</strong></h5>
-                                        <p>1 libra</p>
+                                        <h5><strong class="menu_color_plato_desc_letra">Q50</strong></h5>
+                                        <p class="menu_color_plato_desc_letra">1 libra</p>
                                     </div>
                                     <div class="col text-center">
-                                        <h5><strong>Q50</strong></h5>
-                                        <p>2 Libras</p>
+                                        <h5><strong class="menu_color_plato_desc_letra">Q50</strong></h5>
+                                        <p class="menu_color_plato_desc_letra">2 Libras</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header" role="tab">
+                        <div class="card-header menu_color_plato_nombre_fondo" role="tab">
                             <h5 class="mb-0">
-                                <a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-dummy .item-3" href="#accordion-dummy .item-3">
-                                    <p>Nombre corto de platillo de restaurante con imágenes y precios múltiples<span>Q50</span></p>
+                                <a class="menu_color_plato_nombre_fondo" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-dummy .item-3" href="#accordion-dummy .item-3">
+                                    <p class="menu_color_plato_nombre_letra">Nombre corto de platillo de restaurante con imágenes y precios múltiples<span class="menu_color_plato_nombre_letra" style="font-weight: bold;">Q50</span></p>
                                 </a>
                             </h5>
                         </div>
                         <div class="collapse item-3" role="tabpanel" data-parent="#accordion-dummy">
-                            <div class="card-body">
+                            <div class="card-body menu_color_plato_desc_fondo">
                                 <div class="row no-gutters img-platillo">
                                     <div class="col px-0"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assets/img/pexels-christel-jensen-628776.jpg"></div>
                                 </div>
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                <p class="card-text menu_color_plato_desc_letra">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
                                 <div class="row no-gutters prices pb-3">
                                     <div class="col text-center">
-                                        <h5><strong>Q25</strong></h5>
-                                        <p>14 Ozn.</p>
+                                        <h5><strong class="menu_color_plato_desc_letra">Q25</strong></h5>
+                                        <p class="menu_color_plato_desc_letra">14 Ozn.</p>
                                     </div>
                                     <div class="col text-center">
-                                        <h5><strong>Q25</strong></h5>
-                                        <p>14 Ozn.</p>
+                                        <h5><strong class="menu_color_plato_desc_letra">Q25</strong></h5>
+                                        <p class="menu_color_plato_desc_letra">14 Ozn.</p>
                                     </div>
                                     <div class="col text-center">
-                                        <h5><strong>Q50</strong></h5>
-                                        <p>16 Ozn.</p>
+                                        <h5><strong class="menu_color_plato_desc_letra">Q50</strong></h5>
+                                        <p class="menu_color_plato_desc_letra">16 Ozn.</p>
                                     </div>
                                     <div class="col text-center">
-                                        <h5><strong>Q50</strong></h5>
-                                        <p>16 Ozn.</p>
+                                        <h5><strong class="menu_color_plato_desc_letra">Q50</strong></h5>
+                                        <p class="menu_color_plato_desc_letra">16 Ozn.</p>
                                     </div>
                                     <div class="col text-center">
-                                        <h5><strong>Q50</strong></h5>
-                                        <p>24 Ozn.</p>
+                                        <h5><strong class="menu_color_plato_desc_letra">Q50</strong></h5>
+                                        <p class="menu_color_plato_desc_letra">24 Ozn.</p>
                                     </div>
                                 </div>
                             </div>
@@ -281,6 +287,7 @@
 <% include ../layouts/dashboard/footer-open.ejs %>
 
 <script>
+    const idPropietario = "<%= user._id %>";
     const idMenu =  new URLSearchParams(window.location.search).get('id');
     var MenuAjax = Object({})
     $.ajax({
@@ -297,8 +304,13 @@
             MenuAjax = menu
             $('#menu_nombre').val(menu.nombre)
             $('#menu_descripcion').html(menu.descripcion)
-            // $('#menu_logo').val(menu.logo)
-            // $('#menu_imagen').val(menu.imagen)
+            if (menu.logo != null) {
+                $('#menu_logo_img').attr('src', menu.logo.location)
+            }
+            if (menu.imagen != null) {
+                $('#menu_imagen_img').attr('src', menu.imagen.location)
+            }
+
             $('#menu_shortname').val(menu.shortname)
             $('#menu_color_menu_fondo').val(menu.color_menu_fondo)
             $('#menu_color_menu_letra').val(menu.color_menu_letra)
@@ -307,13 +319,53 @@
             $('#menu_color_plato_desc_letra').val(menu.color_plato_desc_letra)
             $('#menu_color_plato_desc_fondo').val(menu.color_plato_desc_fondo)
 
-            $('.menu_color_menu_fondo').attr('style', `background-color: ${menu.color_menu_fondo}`)
-            $('.menu_color_menu_letra').attr('style', `color: ${menu.color_menu_letra}`)
+            $('.menu_color_menu_fondo').css('background-color', `${menu.color_menu_fondo}`)
+            $('.menu_color_menu_letra').css('color', `${menu.color_menu_letra}`)
+            $('.menu_color_plato_nombre_letra').css('color', `${menu.color_plato_nombre_letra}`)
+            $('.menu_color_plato_nombre_fondo').css('background-color', `${menu.color_plato_nombre_fondo}`)
+            $('.menu_color_plato_desc_letra').css('color', `${menu.color_plato_desc_letra}`)
+            $('.menu_color_plato_desc_fondo').css('background-color', `${menu.color_plato_desc_fondo}`)
 
             $('#menu_shortname_def').html(menu.shortname)
+            
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "2000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            toastr["success"]('<b style="color:white">Menú Cargado con Éxito</b>')
         },
         error: function(a, b, c) {
-            alert(`Hubo un error al crear tu Menú\nIntentalo de nuevo\n${JSON.stringify(a, null, 2)}\n${JSON.stringify(b, null, 2)}\n${JSON.stringify(c, null, 2)}`)
+            toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "10000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+            }
+            toastr["error"](`<span style="color:white">Hubo un error al crear tu Menú<br>Intentalo de nuevo<br>${JSON.stringify(a, null, 2)}<br>${JSON.stringify(b, null, 2)}<br>${JSON.stringify(c, null, 2)}`)
         }
     })
 
@@ -335,76 +387,238 @@
         MenuAjax.descripcion = menu_descripcion
     });
 
-    $('#menu_logo').change( function (e) {
-        const menu_logo = $(this).val();
-        MenuAjax.logo = menu_logo
-    });
-
-    $('#menu_imagen').change( function (e) {
-        const menu_imagen = $(this).val();
-        MenuAjax.imagen = menu_imagen
-    });
 
     $('#menu_shortname').keyup( function (e) {
         const menu_shortname = $(this).val();
         MenuAjax.shortname = menu_shortname
         $('#menu_shortname_def').html(menu_shortname)
-
     });
     $('#menu_shortname').change( function (e) {
         const menu_shortname = $(this).val();
         MenuAjax.shortname = menu_shortname
         $('#menu_shortname_def').html(menu_shortname)
-
     });
 
     $('#menu_color_menu_fondo').change( function (e) {
         const menu_color_menu_fondo = $(this).val();
         MenuAjax.color_menu_fondo = menu_color_menu_fondo
-        $('.menu_color_menu_fondo').attr('style', `background-color: ${menu_color_menu_fondo}`)
+        $('.menu_color_menu_fondo').css('background-color', `${menu_color_menu_fondo}`)
     });
     
     $('#menu_color_menu_letra').change( function (e) {
         const menu_color_menu_letra = $(this).val();
         console.log(menu_color_menu_letra)
         MenuAjax.color_menu_letra = menu_color_menu_letra
-        $('.menu_color_menu_letra').attr('style', `color: ${menu_color_menu_letra}`)
+        $('.menu_color_menu_letra').css('color', `${menu_color_menu_letra}`)
     });
-
+    
     $('#menu_color_plato_nombre_letra').change( function (e) {
         const menu_color_plato_nombre_letra = $(this).val();
-        MenuAjax.color_plato_nombre_letra = menu_color_plato_nombre_letra
+        MenuAjax.menu_color_plato_nombre_letra = menu_color_plato_nombre_letra
+        $('.menu_color_plato_nombre_letra').css('color', `${menu_color_plato_nombre_letra}`)
     });
-
+    
     $('#menu_color_plato_nombre_fondo').change( function (e) {
         const menu_color_plato_nombre_fondo = $(this).val();
         MenuAjax.color_plato_nombre_fondo = menu_color_plato_nombre_fondo
+        $('.menu_color_plato_nombre_fondo').css('background-color', `${menu_color_plato_nombre_fondo}`)
     });
-
+    
     $('#menu_color_plato_desc_letra').change( function (e) {
         const menu_color_plato_desc_letra = $(this).val();
         MenuAjax.color_plato_desc_letra = menu_color_plato_desc_letra
+        $('.menu_color_plato_desc_letra').css('color', `${menu_color_plato_desc_letra}`)
     });
-
+    
     $('#menu_color_plato_desc_fondo').change( function (e) {
         const menu_color_plato_desc_fondo = $(this).val();
         MenuAjax.color_plato_desc_fondo = menu_color_plato_desc_fondo
+        $('.menu_color_plato_desc_fondo').css('background-color', `${menu_color_plato_desc_fondo}`)
     });
+
+    $('#menu_logo').change(function(){
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr["info"]("Subiendo imagen del Logo.")
+        var formData = new FormData();
+        formData.append('archivo', document.getElementById('menu_logo').files[0]);
+        const urlEnvio = `/api/v1/archivos?documento=menu&parametro=logo&id=${idMenu}`
+        $.ajax({
+            url: urlEnvio,
+            type: 'POST',
+            data: formData,
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,  // tell jQuery not to set contentType
+            enctype: 'multipart/form-data',
+            success: function (data) {
+                MenuAjax.logo = data
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                $('#menu_logo_img').attr('src', data.location)
+                toastr["success"]("Logo subido con éxito.<br>No olvides guardar los cambios.")
+                
+            },
+            error: function (a, b, c){
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr["error"]("Hubo un problema al subir la imagen.<br>Vuelve a intentarlo.")
+                console.error(a, b, c)
+            }
+        });
+    })
+    
+    $('#menu_imagen').change(function(){
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr["info"]("Subiendo imagen del Logo.")
+        var formData = new FormData();
+        formData.append('archivo', document.getElementById('menu_imagen').files[0]);
+        const urlEnvio = `/api/v1/archivos?documento=menu&parametro=imagen&id=${idMenu}`
+        $.ajax({
+            url: urlEnvio,
+            type: 'POST',
+            data: formData,
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,  // tell jQuery not to set contentType
+            enctype: 'multipart/form-data',
+            success: function (data) {
+                MenuAjax.imagen = data
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                $('#menu_imagen_img').attr('src', data.location)
+                toastr["success"]("Imagen subida con éxito.<br>No olvides guardar los cambios.")
+            },
+            error: function (a, b, c){
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr["error"]("Hubo un problema al subir la imagen.<br>Vuelve a intentarlo.")
+                console.error(a, b, c)
+            }
+        });
+    })
 
     $('#guardar_menu').click(function (e) {
         $.ajax({
-        method: 'PATCH',
-        url: `/api/v1/menus/${idMenu}`,
-        contentType: 'application/json',
-        data: JSON.stringify(MenuAjax),
-        success: function(menu) {
-            console.log(menu)
-            alert(`Menú actualizado con Éxito`)
-        },
-        error: function(a, b, c) {
-            alert(`Hubo un error al crear tu Menú\nIntentalo de nuevo\n${JSON.stringify(a, null, 2)}\n${JSON.stringify(b, null, 2)}\n${JSON.stringify(c, null, 2)}`)
-        }
-    })
+            method: 'PATCH',
+            url: `/api/v1/menus/${idMenu}`,
+            contentType: 'application/json',
+            data: JSON.stringify(MenuAjax),
+            success: function(menu) {
+                console.log(menu)
+                
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr["success"]("Menú actualizado con éxito.")
+            },
+            error: function(a, b, c) {
+                alert(`Hubo un error al crear tu Menú\nIntentalo de nuevo\n${JSON.stringify(a, null, 2)}\n${JSON.stringify(b, null, 2)}\n${JSON.stringify(c, null, 2)}`)
+            }
+        })
     })
 
 </script>
