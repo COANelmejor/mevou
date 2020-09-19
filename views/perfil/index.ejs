@@ -1,0 +1,221 @@
+<% include ../layouts/dashboard/header-open.ejs %>
+
+<!-- Espacios para Agregar CSS's y Scripts -->
+
+<% include ../layouts/dashboard/header-close.ejs %>
+
+<h3 class="text-dark mb-4">Perfil</h3>
+<div class="row mb-3">
+    <div class="col-lg-4">
+        <div class="card mb-3">
+            <div class="card-body text-center shadow profile-image-ctn"><img class="rounded-circle mb-3 mt-4"
+                    src="https://mevouappcdn.s3.amazonaws.com/assets/img/dogs/image2.jpeg" width="160" height="160">
+                <div class="mb-3"><button class="btn btn-dark btn-sm" type="button">Cambiar
+                        Imagen</button></div>
+            </div>
+        </div>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="text-primary font-weight-bold m-0">Estados</h6>
+            </div>
+            <div class="card-body">
+                <h4 class="small font-weight-bold">Imágenes usadas<span class="float-right">7/10</span></h4>
+                <div class="progress progress-sm mb-3">
+                    <div class="progress-bar bg-primary" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 70%;"><span class="sr-only">70%</span>
+                    </div>
+                </div>
+                <h4 class="small font-weight-bold">Platillos usados<span class="float-right">91/100</span></h4>
+                <div class="progress progress-sm mb-3">
+                    <div class="progress-bar bg-success" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 91%;"><span class="sr-only">91%</span>
+                    </div>
+                </div>
+                <h4 class="small font-weight-bold">Transferencia usada<span class="float-right">60%</span></h4>
+                <div class="progress progress-sm mb-3">
+                    <div class="progress-bar bg-info" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 60%;"><span class="sr-only">60%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow mb-3">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 font-weight-bold">Datos de Facturación</p>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group"><label for="city"><strong>Nombre</strong><br></label><input
+                                    class="form-control" type="text" placeholder="Nombre" name="nameFact"></div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group"><label for="country"><strong>NIT</strong></label><input
+                                    class="form-control" type="text" placeholder="Ej.12345678" name="nitFact"></div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label for="address"><strong>Dirección</strong></label><input
+                            class="form-control" type="text" placeholder="Dirección" name="address">
+                    </div>
+                    <div class="form-group"><button class="btn btn-dark btn-sm" type="submit">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="row mb-3 d-none">
+            <div class="col">
+                <div class="card text-white bg-primary shadow">
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <div class="col">
+                                <p class="m-0">Peformance</p>
+                                <p class="m-0"><strong>65.2%</strong></p>
+                            </div>
+                            <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                        </div>
+                        <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5%
+                            since last month</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-white bg-success shadow">
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <div class="col">
+                                <p class="m-0">Peformance</p>
+                                <p class="m-0"><strong>65.2%</strong></p>
+                            </div>
+                            <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                        </div>
+                        <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5%
+                            since last month</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card shadow mb-3">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 font-weight-bold">Ajustes de Usuario</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group"><label
+                                            for="first_name"><strong>Nombre</strong><br></label><input
+                                            class="form-control" type="text" placeholder="Nombre" name="first_name">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group"><label
+                                            for="last_name"><strong>Apellido</strong></label><input class="form-control"
+                                            type="text" placeholder="Apellido" name="last_name"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group"><label
+                                            for="username"><strong>Teléfono</strong></label><input class="form-control"
+                                            type="tel" placeholder="Ej. 55555555"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group"><label for="email"><strong>Correo
+                                                Electrónico</strong></label><input class="form-control" type="email"
+                                            placeholder="example@example.com" name="email"></div>
+                                </div>
+                            </div>
+                            <div class="form-group"><button class="btn btn-dark btn-sm" type="submit">Guardar
+                                    Cambios</button></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 font-weight-bold">Cambio de Contraseña</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group"><label for="address"><strong>Contraseña
+                                        Actual</strong></label><input class="form-control" type="text"
+                                    placeholder="Escribe tu contraseña actual" name="address"></div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group"><label for="city"><strong>Nueva
+                                                Contraseña</strong><br></label><input class="form-control" type="text"
+                                            placeholder="Nueva contraseña" name="nameFact"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group"><label for="country"><strong>Repetir
+                                                contraseña</strong><br></label><input class="form-control" type="text"
+                                            placeholder="Repetir contraseña" name="nitFact"></div>
+                                </div>
+                            </div>
+                            <div class="form-group"><button class="btn btn-dark btn-sm" type="submit">Guardar
+                                    cambios</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card shadow mb-5">
+    <div class="card-header py-3">
+        <p class="text-primary m-0 font-weight-bold">Facturas</p>
+    </div>
+    <div class="card-body facturas-emitidas">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive table-borderless">
+                    <table class="table table-striped table-bordered table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th>Fecha de Facturación</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Factura del 10/09/2020</td>
+                                <td><a class="btn btn-secondary" role="button" target="_blank"><i
+                                            class="far fa-eye"></i>&nbsp;Ver Factura</a></td>
+                            </tr>
+                            <tr>
+                                <td>Factura del 10/09/2020</td>
+                                <td><a class="btn btn-secondary" role="button" target="_blank"><i
+                                            class="far fa-eye"></i>&nbsp;Ver Factura</a></td>
+                            </tr>
+                            <tr>
+                                <td>Factura del 10/09/2020</td>
+                                <td><a class="btn btn-secondary" role="button" target="_blank"><i
+                                            class="far fa-eye"></i>&nbsp;Ver Factura</a></td>
+                            </tr>
+                            <tr>
+                                <td>Factura del 10/09/2020</td>
+                                <td><a class="btn btn-secondary" role="button" target="_blank"><i
+                                            class="far fa-eye"></i>&nbsp;Ver Factura</a></td>
+                            </tr>
+                            <tr>
+                                <td>Factura del 10/09/2020</td>
+                                <td><a class="btn btn-secondary" role="button" target="_blank"><i
+                                            class="far fa-eye"></i>&nbsp;Ver Factura</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../layouts/dashboard/footer-open.ejs %>
+
+<!-- Espacios para agregar Scripts, Modals,... -->
+
+<% include ../layouts/dashboard/footer-close.ejs %>
