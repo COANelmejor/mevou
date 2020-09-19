@@ -318,6 +318,10 @@
                     }))
                 }
             }
+            $('.cat-creado').click(function(){
+                const cart_id = $(this).attr('categoria-id')
+                location.href = `/categorias-add-platillos?categoria=${cart_id}`
+            })
             
             toastr.options = {
                 "closeButton": true,
@@ -693,7 +697,6 @@
             },
         })
     })
-
 </script>
 
 <!-- Espacios para agregar Scripts, Modals,... -->
