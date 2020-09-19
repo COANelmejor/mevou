@@ -634,7 +634,65 @@
         })
     })
 
-    $('#crear_categoria')
+    $('#crear_categoria').click(function(){
+        const Categoria = {
+            Menu: idMenu,
+            nombre: `Categoria ${ new Date().getTime() }` ,
+            imagen: null
+        }
+        $.ajax({
+            method: 'POST',
+            url: `/api/v1/categorias`,
+            contentType: 'application/json',
+            data: JSON.stringify(Categoria),
+            success: function(r) {
+                console.log(r)
+
+                toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+                }
+                toastr["success"]("Categoría creada con éxito.<br>Redireccionando...")
+                setTimeout(function(){
+                    location.href = `/categorias-add-platillos?categoria=${r._id}`
+                }, 1500)
+            } ,
+            error: function(a,b,c){
+                console.log(a,b,c)
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "10000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr["error"]('Hubo un error al agregar la categoría.<br>Vuelve a Intentarlo.')
+            },
+        })
+    })
 
 </script>
 
