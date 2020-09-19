@@ -232,3 +232,42 @@
   vertical-align: middle;
 }
 
+/* Mi suctripción / Pago */
+
+.addons > i {
+  font-size: 1.5em;
+}
+
+.custom-control-input:checked ~ .custom-control-label.check-elegant:before {
+  border-color: #000000;
+  background-color: #2d2d2d;
+}
+
+.total-price-checkout h5 {
+  margin-bottom: 0;
+}
+
+.add-addons .extra-cants i.fa-minus {
+  color: #d90000;
+  transition: all 0.35s;
+}
+
+.add-addons .extra-cants i.fa-plus {
+  color: #00a200;
+  transition: all 0.35s;
+}
+
+.add-addons .extra-cants i.fa-minus:hover, .add-addons .extra-cants i.fa-plus:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.35s;
+}
+
+.add-addons .extra-cants p {
+  margin: 0;
+}
+
+.add-addons small {
+  line-height: 0.8!important;
+}
+
