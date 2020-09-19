@@ -670,9 +670,8 @@
                 "hideMethod": "fadeOut"
                 }
                 toastr["success"]("Categoría creada con éxito.<br>Redireccionando...")
-                setTimeout(function(){
-                    location.href = `/categorias-add-platillos?categoria=${r._id}`
-                }, 1500)
+                location.href = `/categorias-add-platillos?categoria=${r._id}`
+
             } ,
             error: function(a,b,c){
                 console.log(a,b,c)
