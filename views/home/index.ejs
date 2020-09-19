@@ -17,14 +17,15 @@
                       <div class="col text-center pt-4 pb-5" data-aos="fade" data-aos-duration="650" data-aos-offset="0" data-aos-delay="500" data-aos-once="true">
                           <h4 id="outputMessage">Escanea el código del menú</h4>
                       </div>
-                  </div>
-                  <div hidden><b>Data:</b> <span id="outputData"></span></div>
-              </div>
-          </div>
-
-      </div>
-  </div>
+                    </div>
+                    <div hidden><b>Data:</b> <span id="outputData"></span></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 </section>
+
 
 <section id="somos">
   <div class="container py-5">
@@ -336,7 +337,7 @@
     });
   
     function tick() {
-      loadingMessage.innerText = "⌛ Loading video..."
+      loadingMessage.innerText = "⌛ Cargando video..."
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         loadingMessage.hidden = true;
         canvasElement.hidden = false;
@@ -361,7 +362,15 @@
 
           if (sendValidation != true && code.data.length > 0) {
             sendValidation = true;
-            location.href = code.data;
+            setTimeout(function(){
+                 window.onbeforeunload = function() {
+                    window.location.href = document.referrer;
+                 }
+                location.href = code.data
+                setTimeout(function(){
+                    sendValidation = false;
+                }, 1000)
+            },500)
           }
   
         } else {
