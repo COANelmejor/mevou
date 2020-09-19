@@ -47,7 +47,36 @@ $(document).ready(function(){
             console.log('Menus Encotrados: ' + menus.length) 
             if(menus.length == 0) {
                 $('#menus_ajax').append(cardNewMenu)
-            }
+                $('#crear_menu').click(function () {
+                $('#loading_crear').attr('class', 'fas fa-spinner fa-pulse')
+                    console.log('Crear Menu Button')
+                    const nuevoMenu = {
+                        nombre : moment().format('LLLL'),
+                        descripcion : '---',
+                        logo : null,
+                        imagen: null,
+                        color_menu_fondo : '#FFFFFF',
+                        color_menu_letra : '#000000',
+                        color_plato_nombre_letra : '#FFFFFF',
+                        color_plato_nombre_fondo : '#000000',
+                        color_plato_desc_letra : '#000000',
+                        color_plato_desc_fondo : '#FFFFFF',
+                    }
+                    $.ajax({
+                        method: 'POST',
+                        url:'/api/v1/menus/',
+                        contentType: 'application/json',
+                        data: JSON.stringify(nuevoMenu),
+                        success: function(response) {
+                            location.href = `/editar-menu?id=${response._id}`
+                        },
+                        error: function (a,b,c) {
+                            $('#loading_crear').attr('class', 'fas fa-times')
+                            alert(`Hubo un error al crear tu Menú\nIntentalo de nuevo\n${JSON.stringify(a, null, 2)}\n${JSON.stringify(b, null, 2)}\n${JSON.stringify(c, null, 2)}`)
+                    }
+                })
+            })
+        }
             for (let m = 0; m < menus.length; m++) {
                 const menu = menus[m];
                 let imagen = menu.imagen
