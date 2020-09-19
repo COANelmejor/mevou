@@ -6,6 +6,11 @@
 <script>
     moment.locale('es');
 </script>
+<style>
+    .menu-creado {
+        cursor: pointer;
+    }
+</style>
 
 <% include ../layouts/dashboard/header-close.ejs %>
 
@@ -40,11 +45,18 @@ $(document).ready(function(){
         url:'/api/v1/menus/?projection=-propietario&limit=1000000&skip=0',
         success: function(menus) {
             console.log('Menus Encotrados: ' + menus.length) 
+            if(menus.length == 0) {
+                $('#menus_ajax').append(cardNewMenu)
+            }
             for (let m = 0; m < menus.length; m++) {
                 const menu = menus[m];
+                let imagen = menu.imagen
+                if (imagen) {
+                    imagen = imagen.location
+                }
                 const menuHtml = ejs.render(cardMenu, {
                     id : menu._id,
-                    image : menu.image || defaultMenu,
+                    image : imagen || defaultMenu,
                     nombre : menu.nombre || 'Sin Nombre',
                 })
                 setTimeout(function(){

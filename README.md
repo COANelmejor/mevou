@@ -203,4 +203,7 @@ serverless deploy --aws-profile XXXXXXXXXXX --verbose
 db.users.createIndex({"email": 1 })
 db.users.createIndex({"email": 1, "rpv": 1,prpc: 1, "rpmt": 1 })
 db.users.createIndex({"email": 1, "rpv": 1,prpc: 1, "rpmt": -1 })
+
+db.menus.createIndex({"shortname": 1 })
+db.menus.createIndex({"shortname": 1, propietario: 1 })
 ```

@@ -37,7 +37,15 @@ const MenuSchema = new Schema({
     required: false,
     ref: 'categoria',
     autopopulate: {
-      maxDepth: 2
+      maxDepth: 1
+    }
+  }],
+  Platillos: [{
+    type: Schema.Types.ObjectId,
+    required: false,
+    ref: 'platillo',
+    autopopulate: {
+      maxDepth: 1
     }
   }],
   /** Nombre del Menú */
