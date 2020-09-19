@@ -109,17 +109,17 @@ const PlatilloSchema = new Schema({
 })
 
 PlatilloSchema.post('save', function (doc) {
-  CategoriaModel.findByIdAndUpdate(doc.Categoria, {
+  MenuModel.findByIdAndUpdate(doc.Menu, {
     $addToSet: {
-      Categorias: doc._id
+      Platillos: doc._id
     }
   }, {
     new: true
-  }, function (err, CategoriaActualizado) {
+  }, function (err, MenuActualizado) {
     if (err) {
-      console.log('Error al Agregar la Platillo a la Categoría.', err)
+      console.log('Error al Agregar la Platillo al Menu.', err)
     } else {
-      console.log(`'Categoría ${doc._id} agregado con éxito al Menu ${CategoriaActualizado._id}`)
+      console.log(`'Platillo ${doc._id} agregado con éxito al Menú ${MenuActualizado._id}`)
     }
   })
 })
