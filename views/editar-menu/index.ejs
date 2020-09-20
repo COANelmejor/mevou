@@ -285,7 +285,7 @@
     </div>`
     $.ajax({
         method: 'GET',
-        url: `/api/v1/menus/${idMenu}`,
+        url: `/api/v1/menus/${idMenu}?projection=-propietario`,
         success: function(menu) {
             console.log(menu)
             const size = new TextEncoder().encode(JSON.stringify(menu)).length
@@ -508,8 +508,7 @@
         const file = document.getElementById('menu_logo').files[0]
         imageConversion.compressAccurately(file, {
             width: "200",
-            size: "32",
-            type: "image/png"
+            size: "32"
         }).then(res => {
             console.log('Convertido');
             //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
@@ -598,8 +597,7 @@
         const file = document.getElementById('menu_imagen').files[0]
         imageConversion.compressAccurately(file, {
             height: "600",
-            size: "56",
-            type: "image/jpeg"
+            size: "56"
         }).then(res => {
             console.log('Convertido');
             //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
