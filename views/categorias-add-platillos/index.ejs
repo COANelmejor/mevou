@@ -1,16 +1,18 @@
 <% include ../layouts/dashboard/header-open.ejs %>
 
 <!-- Espacios para Agregar CSS's y Scripts -->
+<script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
 
 <% include ../layouts/dashboard/header-close.ejs %>
 
 <div class="row">
     <div class="col-12 col-md-4">
         <form>
-            <div class="form-group"><label>Nombre de categoría</label><input class="form-control" type="text" placeholder="Mariscos"></div>
-            <div class="form-group"><label>Imagen de categoría</label><input type="file" class="w-100"></div>
-            <div class="form-group"><button class="btn btn-secondary btn-block" type="button">Guardar Cambios</button></div>
+            <div class="form-group"><label>Nombre de categoría</label><input id="categoria_nombre" class="form-control" type="text" placeholder="Mariscos"></div>
+            <div class="form-group"><label>Imagen de categoría</label><input id="categoria_imagen" type="file" class="w-100"></div>
+            <div class="form-group"><button id="guardar_categoria" class="btn btn-secondary btn-block" type="button">Guardar Cambios</button></div>
         </form>
+        <img id="categoria_imagen_img" src="" class="w-100 d-block" alt="Logo Categoría">
     </div>
     <div class="col-12 col-md-8 platillos-cat">
         <div class="row">
@@ -100,6 +102,265 @@
 </div>
 
 <% include ../layouts/dashboard/footer-open.ejs %>
+
+<script>
+    const idCategoria = new URLSearchParams(window.location.search).get('categoria');
+    var CategoriaAjax = Object({})
+    var PlatillosAjax = Array([])
+
+    // Conseguir Datos de Categoría
+    $.ajax({
+        method: 'GET',
+        url: `/api/v1/categorias/${idCategoria}?projection=-propietario -Menu -_id -__v`,
+        success: function(categoria) {
+            console.log(categoria)
+            CategoriaAjax = categoria
+            
+            $('#categoria_nombre').val(categoria.nombre)
+            if (categoria.imagen) {
+                $('#categoria_imagen_img').attr('src', categoria.imagen.location)
+            }
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            toastr["success"]("Categoria obtenida con éxito.")
+        },
+        error: function(a, b, c) {
+            console.log(a)
+            var Errores = 'Hubo un error al conseguir la información';
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "10000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            toastr["error"](Errores)
+        }
+    })
+
+    // Datos de los Platillos
+    $.ajax({
+        method: 'GET',
+        url: `/api/v1/platillos?filter[Categoria]=${idCategoria}&projection=-propietario -Menu -_id -Categoria -__v`,
+        success: function(platillos) {
+            console.log(platillos)
+            PlatillosAjax = platillos
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            toastr["success"]("Platillos obtenidos con éxito.")
+        },
+        error: function(a, b, c) {
+            console.log(a,b,c)
+            var Errores = 'Hubo un error al conseguir la información';
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "10000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            toastr["error"](Errores)
+        }
+    })
+
+    $('#categoria_nombre').keyup(function(e){
+        CategoriaAjax.nombre = $(this).val()
+    })
+    $('#categoria_nombre').change(function(e){
+        CategoriaAjax.nombre = $(this).val()
+    })
+
+    $('#categoria_imagen').change(function(){
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr["info"]("Convirtiendo imagen de Categoría.")
+        const file = document.getElementById('categoria_imagen').files[0]
+        imageConversion.compressAccurately(file, {
+            height: "600",
+            size: "56",
+            type: "image/jpeg"
+        }).then(res => {
+            toastr["info"]("Subiendo imagen de Categoría.")
+            var formData = new FormData();
+            formData.append('archivo', res);
+            const urlEnvio = `/api/v1/archivos?documento=categoria&parametro=imagen&id=${idCategoria}`
+            $.ajax({
+                url: urlEnvio,
+                type: 'POST',
+                data: formData,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,  // tell jQuery not to set contentType
+                enctype: 'multipart/form-data',
+                success: function (data) {
+                    CategoriaAjax.imagen = data
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    $('#categoria_imagen_img').attr('src', data.location)
+                    toastr["success"]("Imagen subida con éxito.<br>No olvides guardar los cambios.")
+                },
+                error: function (a, b, c){
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    toastr["error"]("Hubo un problema al subir la imagen.<br>Vuelve a intentarlo.")
+                    console.error(a, b, c)
+                }
+            });
+        })
+    })
+
+    $('#guardar_categoria').click(function (e) {
+        $.ajax({
+            method: 'PATCH',
+            url: `/api/v1/categorias/${idCategoria}`,
+            contentType: 'application/json',
+            data: JSON.stringify(CategoriaAjax),
+            success: function(categoria) {
+                console.log(categoria)
+                
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": function(){
+                        location.reload()
+                    },
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "15000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr["success"](`Categoría actualizada con éxito.<br><b style="color:white;font-size:1.125em"">Haz click aquí para recargar y ver los cambios.</b>`)
+            },
+            error: function(a, b, c) {
+                console.log(a)
+                var Errores = 'Hubo un error al guardar los cambios.<br>'
+                if (a.responseJSON.codeName == 'DuplicateKey') {
+                    Errores += `La URL Personalizada ya existe.<br><b style="color:white">TUS CAMBIOS NO SE HAN GUARDADO.</b>.`
+                }
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "10000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr["error"](Errores)
+            }
+        })
+    })
+</script>
 
 <!-- Espacios para agregar Scripts, Modals,... -->
 
