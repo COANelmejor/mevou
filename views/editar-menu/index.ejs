@@ -2,6 +2,7 @@
 
 <!-- Espacios para Agregar CSS's y Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/ejs@3/ejs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
 
 <style>
     .cat-creado:hover {
@@ -449,62 +450,76 @@
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         }
-        toastr["info"]("Subiendo imagen del Logo.")
-        var formData = new FormData();
-        formData.append('archivo', document.getElementById('menu_logo').files[0]);
-        const urlEnvio = `/api/v1/archivos?documento=menu&parametro=logo&id=${idMenu}`
-        $.ajax({
-            url: urlEnvio,
-            type: 'POST',
-            data: formData,
-            processData: false,  // tell jQuery not to process the data
-            contentType: false,  // tell jQuery not to set contentType
-            enctype: 'multipart/form-data',
-            success: function (data) {
-                MenuAjax.logo = data
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": true,
-                    "progressBar": false,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
+        toastr["info"]("Convirtiendo imagen del Logo.")
+        const file = document.getElementById('menu_logo').files[0]
+        imageConversion.compressAccurately(file, {
+            width: "200",
+            size: "32",
+            type: "image/png"
+        }).then(res => {
+            console.log('Convertido');
+            //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
+            console.log(res);
+            toastr["info"]("Subiendo imagen del Logo.")
+            var formData = new FormData();
+            console.log(res)
+            formData.append('archivo', res);
+            const urlEnvio = `/api/v1/archivos?documento=menu&parametro=logo&id=${idMenu}`
+            $.ajax({
+                url: urlEnvio,
+                type: 'POST',
+                data: formData,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,  // tell jQuery not to set contentType
+                enctype: 'multipart/form-data',
+                success: function (data) {
+                    MenuAjax.logo = data
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    $('#menu_logo_img').attr('src', '')
+                    setTimeout(function(){
+                        $('#menu_logo_img').attr('src', data.location)
+                    }, 250)
+                    toastr["success"]("Imagen subida con éxito.<br>No olvides guardar los cambios.")
+                },
+                error: function (a, b, c){
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    toastr["error"]("Hubo un problema al subir la imagen.<br>Vuelve a intentarlo.")
+                    console.error(a, b, c)
                 }
-                $('#menu_logo_img').attr('src', data.location)
-                toastr["success"]("Logo subido con éxito.<br>No olvides guardar los cambios.")
-                
-            },
-            error: function (a, b, c){
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": true,
-                    "progressBar": false,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-                toastr["error"]("Hubo un problema al subir la imagen.<br>Vuelve a intentarlo.")
-                console.error(a, b, c)
-            }
-        });
+            });
+        })
     })
     
     $('#menu_imagen').change(function(){
@@ -525,61 +540,76 @@
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         }
-        toastr["info"]("Subiendo imagen del Logo.")
-        var formData = new FormData();
-        formData.append('archivo', document.getElementById('menu_imagen').files[0]);
-        const urlEnvio = `/api/v1/archivos?documento=menu&parametro=imagen&id=${idMenu}`
-        $.ajax({
-            url: urlEnvio,
-            type: 'POST',
-            data: formData,
-            processData: false,  // tell jQuery not to process the data
-            contentType: false,  // tell jQuery not to set contentType
-            enctype: 'multipart/form-data',
-            success: function (data) {
-                MenuAjax.imagen = data
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": true,
-                    "progressBar": false,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
+        toastr["info"]("Convirtiendo imagen del Logo.")
+        const file = document.getElementById('menu_imagen').files[0]
+        imageConversion.compressAccurately(file, {
+            height: "600",
+            size: "56",
+            type: "image/jpeg"
+        }).then(res => {
+            console.log('Convertido');
+            //The res in the promise is a compressed Blob type (which can be treated as a File type) file;
+            console.log(res);
+            toastr["info"]("Subiendo imagen del Logo.")
+            var formData = new FormData();
+            console.log(res)
+            formData.append('archivo', res);
+            const urlEnvio = `/api/v1/archivos?documento=menu&parametro=imagen&id=${idMenu}`
+            $.ajax({
+                url: urlEnvio,
+                type: 'POST',
+                data: formData,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,  // tell jQuery not to set contentType
+                enctype: 'multipart/form-data',
+                success: function (data) {
+                    MenuAjax.imagen = data
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    $('#menu_imagen_img').attr('src', '')
+                    setTimeout(function(){
+                        $('#menu_imagen_img').attr('src', data.location)
+                    }, 250)
+                    toastr["success"]("Imagen subida con éxito.<br>No olvides guardar los cambios.")
+                },
+                error: function (a, b, c){
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    toastr["error"]("Hubo un problema al subir la imagen.<br>Vuelve a intentarlo.")
+                    console.error(a, b, c)
                 }
-                $('#menu_imagen_img').attr('src', data.location)
-                toastr["success"]("Imagen subida con éxito.<br>No olvides guardar los cambios.")
-            },
-            error: function (a, b, c){
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": true,
-                    "progressBar": false,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-                toastr["error"]("Hubo un problema al subir la imagen.<br>Vuelve a intentarlo.")
-                console.error(a, b, c)
-            }
-        });
+            });
+        })
     })
 
     $('#guardar_menu').click(function (e) {
@@ -598,17 +628,19 @@
                     "progressBar": false,
                     "positionClass": "toast-top-right",
                     "preventDuplicates": false,
-                    "onclick": null,
+                    "onclick": function(){
+                        location.reload()
+                    },
                     "showDuration": "300",
                     "hideDuration": "1000",
-                    "timeOut": "5000",
+                    "timeOut": "15000",
                     "extendedTimeOut": "1000",
                     "showEasing": "swing",
                     "hideEasing": "linear",
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 }
-                toastr["success"]("Menú actualizado con éxito.")
+                toastr["success"](`Menú actualizado con éxito.<br><b style="color:white;font-size:1.125em"">Haz click aquí para recargar y ver los cambios.</b>`)
             },
             error: function(a, b, c) {
                 console.log(a)
