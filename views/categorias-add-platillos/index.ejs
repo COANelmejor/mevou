@@ -19,79 +19,370 @@
             </div>
         </div>
         <div class="row pb-2">
-            <div class="col-12"><a class="btn btn-add-cat" role="button" href="#"><i class="fas fa-plus-circle"></i></a></div>
+            <div class="col-12"><a class="btn btn-add-cat" role="button" href="crear-menu.html"><i
+                        class="fas fa-plus-circle"></i></a></div>
         </div>
         <div class="row mb-3">
             <div class="col-12 add-plate">
                 <form>
                     <div class="form-row">
-                        <div class="col-12 col-md-6"><label>Nombre platillo</label><input class="form-control" type="text"></div>
-                        <div class="col-12 col-md-6"><label>Imagen platillo</label><input type="file" class="w-100"></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-12"><label>Precio(s)</label><small class="form-text text-muted pt-0 pb-3">* Selecciona el precio que aparecerá al lado del nombre del platillo</small></div>
+                        <div class="col-12 col-md-5">
+                            <div class="form-group"><label>Nombre platillo</label><input
+                                    class="form-control" type="text"></div>
+                            <div class="form-group"><label>Imagen platillo</label><input type="file"
+                                    class="w-100"></div>
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <div class="form-row">
+                                <div class="col-12"><label>Precio(s)</label><small
+                                        class="form-text text-muted pt-0 pb-3">* Selecciona el
+                                        precio que aparecerá al lado del nombre del platillo</small>
+                                </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                                <div class="col-6 pb-2">
+                                    <div class="form-group"><label>Texto del precio</label><input
+                                            class="form-control mb-2" type="text"></div>
+                                </div>
+                                <div class="col-4 pb-2">
+                                    <div class="form-group"><label>Precio</label><input
+                                            class="form-control" type="number"></div>
+                                </div>
+                                <div class="col-2 text-center pb-2">
+                                    <div class="form-group"><label class="d-block"><i
+                                                class="fas fa-check-circle"></i></label><input
+                                            type="radio" name="choise" checked=""></div>
+                                </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                                <div class="col-6 pb-2">
+                                    <div class="form-group"><input class="form-control mb-2"
+                                            type="text"></div>
+                                </div>
+                                <div class="col-4 pb-2">
+                                    <div class="form-group"><input class="form-control"
+                                            type="number"></div>
+                                </div>
+                                <div class="col-2 text-center pb-2">
+                                    <div class="form-group"><input type="radio" name="choise"></div>
+                                </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                                <div class="col-6 pb-2">
+                                    <div class="form-group"><input class="form-control mb-2"
+                                            type="text"></div>
+                                </div>
+                                <div class="col-4 pb-2">
+                                    <div class="form-group"><input class="form-control"
+                                            type="number"></div>
+                                </div>
+                                <div class="col-2 text-center pb-2">
+                                    <div class="form-group"><input type="radio" name="choise"></div>
+                                </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                                <div class="col-6 pb-2">
+                                    <div class="form-group"><input class="form-control mb-2"
+                                            type="text"></div>
+                                </div>
+                                <div class="col-4 pb-2">
+                                    <div class="form-group"><input class="form-control"
+                                            type="number"></div>
+                                </div>
+                                <div class="col-2 text-center pb-2">
+                                    <div class="form-group"><input type="radio" name="choise"></div>
+                                </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                                <div class="col-6 pb-2">
+                                    <div class="form-group"><input class="form-control mb-2"
+                                            type="text"></div>
+                                </div>
+                                <div class="col-4 pb-2">
+                                    <div class="form-group"><input class="form-control"
+                                            type="number"></div>
+                                </div>
+                                <div class="col-2 text-center pb-2">
+                                    <div class="form-group"><input type="radio" name="choise"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-row justify-content-between">
-                        <div class="col-4 col-md-2 text-center pb-2"><input class="form-control" type="text"><input type="radio"></div>
-                        <div class="col-4 col-md-2 text-center pb-2"><input class="form-control" type="text"><input type="radio"></div>
-                        <div class="col-4 col-md-2 text-center pb-2"><input class="form-control" type="text"><input type="radio"></div>
-                        <div class="col-4 col-md-2 text-center pb-2"><input class="form-control" type="text"><input type="radio"></div>
-                        <div class="col-4 col-md-2 text-center pb-2"><input class="form-control" type="text"><input type="radio"></div>
-                    </div>
-                    <div class="form-row justify-content-between">
-                        <div class="col-12 text-center pb-2"><button class="btn btn-secondary btn-block" type="button">Guardar Cambios</button></div>
+                        <div class="col-12 text-center pb-2"><button
+                                class="btn btn-secondary btn-block" type="button">Guardar
+                                Cambios</button></div>
                     </div>
                 </form>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-12 col-md-6 platillo-agregado mb-3">
-                <div class="plate-ctn">
-                    <div class="row align-items-center">
-                        <div class="col-8">
-                            <h5>Nombre de platillo largo</h5>
+            <div class="col-12 platillo-agregado mb-3">
+                <div role="tablist" id="accordion-1">
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true"
+                                    aria-controls="accordion-1 .item-1"
+                                    href="#accordion-1 .item-1">Nombre del&nbsp; platillo Muy pero
+                                    muy largo<i class="fas fa-edit"></i></a></h5>
                         </div>
-                        <div class="col-4"><button class="btn btn-secondary btn-block" type="button">Editar</button></div>
+                        <div class="collapse show item-1" role="tabpanel"
+                            data-parent="#accordion-1">
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-12 add-plate">
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col-12 col-md-5">
+                                                    <div class="form-group"><label>Nombre
+                                                            platillo</label><input
+                                                            class="form-control" type="text"></div>
+                                                    <div class="form-group"><label>Imagen
+                                                            platillo</label><input type="file"
+                                                            class="w-100"></div>
+                                                </div>
+                                                <div class="col-12 col-md-7">
+                                                    <div class="form-row">
+                                                        <div class="col-12">
+                                                            <label>Precio(s)</label><small
+                                                                class="form-text text-muted pt-0 pb-3">*
+                                                                Selecciona el precio que aparecerá
+                                                                al lado del nombre del
+                                                                platillo</small></div>
+                                                    </div>
+                                                    <div class="form-row align-items-center">
+                                                        <div class="col-6 pb-2">
+                                                            <div class="form-group"><label>Texto del
+                                                                    precio</label><input
+                                                                    class="form-control mb-2"
+                                                                    type="text"></div>
+                                                        </div>
+                                                        <div class="col-4 pb-2">
+                                                            <div class="form-group">
+                                                                <label>Precio</label><input
+                                                                    class="form-control"
+                                                                    type="number"></div>
+                                                        </div>
+                                                        <div class="col-2 text-center pb-2">
+                                                            <div class="form-group"><label
+                                                                    class="d-block"><i
+                                                                        class="fas fa-check-circle"></i></label><input
+                                                                    type="radio" name="choise"
+                                                                    checked=""></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row align-items-center">
+                                                        <div class="col-6 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control mb-2"
+                                                                    type="text"></div>
+                                                        </div>
+                                                        <div class="col-4 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control"
+                                                                    type="number"></div>
+                                                        </div>
+                                                        <div class="col-2 text-center pb-2">
+                                                            <div class="form-group"><input
+                                                                    type="radio" name="choise">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row align-items-center">
+                                                        <div class="col-6 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control mb-2"
+                                                                    type="text"></div>
+                                                        </div>
+                                                        <div class="col-4 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control"
+                                                                    type="number"></div>
+                                                        </div>
+                                                        <div class="col-2 text-center pb-2">
+                                                            <div class="form-group"><input
+                                                                    type="radio" name="choise">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row align-items-center">
+                                                        <div class="col-6 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control mb-2"
+                                                                    type="text"></div>
+                                                        </div>
+                                                        <div class="col-4 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control"
+                                                                    type="number"></div>
+                                                        </div>
+                                                        <div class="col-2 text-center pb-2">
+                                                            <div class="form-group"><input
+                                                                    type="radio" name="choise">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row align-items-center">
+                                                        <div class="col-6 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control mb-2"
+                                                                    type="text"></div>
+                                                        </div>
+                                                        <div class="col-4 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control"
+                                                                    type="number"></div>
+                                                        </div>
+                                                        <div class="col-2 text-center pb-2">
+                                                            <div class="form-group"><input
+                                                                    type="radio" name="choise">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row justify-content-between">
+                                                <div class="col-12 text-center pb-2"><button
+                                                        class="btn btn-secondary btn-block"
+                                                        type="button">Guardar Cambios</button></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 platillo-agregado mb-3">
-                <div class="plate-ctn">
-                    <div class="row align-items-center">
-                        <div class="col-8">
-                            <h5>Nombre de platillo largo</h5>
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false"
+                                    aria-controls="accordion-1 .item-2"
+                                    href="#accordion-1 .item-2">Nombre del&nbsp; platillo Muy pero
+                                    muy largo<i class="fas fa-edit"></i></a></h5>
                         </div>
-                        <div class="col-4"><button class="btn btn-secondary btn-block" type="button">Editar</button></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 platillo-agregado mb-3">
-                <div class="plate-ctn">
-                    <div class="row align-items-center">
-                        <div class="col-8">
-                            <h5>Nombre de platillo largo</h5>
+                        <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-12 add-plate">
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col-12 col-md-5">
+                                                    <div class="form-group"><label>Nombre
+                                                            platillo</label><input
+                                                            class="form-control" type="text"></div>
+                                                    <div class="form-group"><label>Imagen
+                                                            platillo</label><input type="file"
+                                                            class="w-100"></div>
+                                                </div>
+                                                <div class="col-12 col-md-7">
+                                                    <div class="form-row">
+                                                        <div class="col-12">
+                                                            <label>Precio(s)</label><small
+                                                                class="form-text text-muted pt-0 pb-3">*
+                                                                Selecciona el precio que aparecerá
+                                                                al lado del nombre del
+                                                                platillo</small></div>
+                                                    </div>
+                                                    <div class="form-row align-items-center">
+                                                        <div class="col-6 pb-2">
+                                                            <div class="form-group"><label>Texto del
+                                                                    precio</label><input
+                                                                    class="form-control mb-2"
+                                                                    type="text"></div>
+                                                        </div>
+                                                        <div class="col-4 pb-2">
+                                                            <div class="form-group">
+                                                                <label>Precio</label><input
+                                                                    class="form-control"
+                                                                    type="number"></div>
+                                                        </div>
+                                                        <div class="col-2 text-center pb-2">
+                                                            <div class="form-group"><label
+                                                                    class="d-block"><i
+                                                                        class="fas fa-check-circle"></i></label><input
+                                                                    type="radio" name="choise"
+                                                                    checked=""></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row align-items-center">
+                                                        <div class="col-6 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control mb-2"
+                                                                    type="text"></div>
+                                                        </div>
+                                                        <div class="col-4 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control"
+                                                                    type="number"></div>
+                                                        </div>
+                                                        <div class="col-2 text-center pb-2">
+                                                            <div class="form-group"><input
+                                                                    type="radio" name="choise">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row align-items-center">
+                                                        <div class="col-6 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control mb-2"
+                                                                    type="text"></div>
+                                                        </div>
+                                                        <div class="col-4 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control"
+                                                                    type="number"></div>
+                                                        </div>
+                                                        <div class="col-2 text-center pb-2">
+                                                            <div class="form-group"><input
+                                                                    type="radio" name="choise">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row align-items-center">
+                                                        <div class="col-6 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control mb-2"
+                                                                    type="text"></div>
+                                                        </div>
+                                                        <div class="col-4 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control"
+                                                                    type="number"></div>
+                                                        </div>
+                                                        <div class="col-2 text-center pb-2">
+                                                            <div class="form-group"><input
+                                                                    type="radio" name="choise">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row align-items-center">
+                                                        <div class="col-6 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control mb-2"
+                                                                    type="text"></div>
+                                                        </div>
+                                                        <div class="col-4 pb-2">
+                                                            <div class="form-group"><input
+                                                                    class="form-control"
+                                                                    type="number"></div>
+                                                        </div>
+                                                        <div class="col-2 text-center pb-2">
+                                                            <div class="form-group"><input
+                                                                    type="radio" name="choise">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row justify-content-between">
+                                                <div class="col-12 text-center pb-2"><button
+                                                        class="btn btn-secondary btn-block"
+                                                        type="button">Guardar Cambios</button></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-4"><button class="btn btn-secondary btn-block" type="button">Editar</button></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 platillo-agregado mb-3">
-                <div class="plate-ctn">
-                    <div class="row align-items-center">
-                        <div class="col-8">
-                            <h5>Nombre de platillo largo</h5>
-                        </div>
-                        <div class="col-4"><button class="btn btn-secondary btn-block" type="button">Editar</button></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 platillo-agregado mb-3">
-                <div class="plate-ctn">
-                    <div class="row align-items-center">
-                        <div class="col-8">
-                            <h5>Nombre de platillo largo</h5>
-                        </div>
-                        <div class="col-4"><button class="btn btn-secondary btn-block" type="button">Editar</button></div>
                     </div>
                 </div>
             </div>
