@@ -329,7 +329,7 @@
                 if (Categoria.imagen) {
                     $('#listado_categorias').append(ejs.render(CatWithImg, {
                         nombre: Categoria.nombre,
-                        imagen: imagen.location,
+                        imagen: Categoria.imagen.location,
                         id: Categoria._id
                     }))
                 } else {
