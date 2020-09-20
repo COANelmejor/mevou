@@ -4,11 +4,6 @@
 
 <% include ../layouts/dashboard/header-close.ejs %>
 
-<div class="row pb-3">
-    <div class="col-12 text-left">
-        <h2>Bienvenido nuevamente!</h2>
-    </div>
-</div>
 <div class="row align-items-center">
     <div class="col-12 col-md-4 mb-4" data-aos="fade-right" data-aos-offset="0" data-aos-delay="150"
         data-aos-once="true">
@@ -88,6 +83,66 @@
         <div class="card-body">
             <div class="chart-area">
                 <canvas data-bs-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:true,&quot;reverse&quot;:false},&quot;title&quot;:{},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;beginAtZero&quot;:false,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;beginAtZero&quot;:false,&quot;padding&quot;:20}}]}}}"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center py-3">
+    <div class="col-12 col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="text-primary m-0 font-weight-bold">Mi plan actual</h6>
+            </div>
+            <div class="card-body pt-4 pb-5">
+                <div class="row justify-content-center pb-2">
+                    <div class="col-12 text-center">
+                        <h3>Light</h3>
+                    </div>
+                </div>
+                <div class="row justify-content-center pb-4">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 col-md-4 text-center">
+                                <div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="light" checked name="plan" /><label class="custom-control-label" for="light">Light</label></div>
+                            </div>
+                            <div class="col-12 col-md-4 text-center">
+                                <div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="basic" name="plan" /><label class="custom-control-label" for="basic">Básico</label></div>
+                            </div>
+                            <div class="col-12 col-md-4 text-center">
+                                <div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="custom" name="plan" /><label class="custom-control-label" for="custom">Profesional</label></div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center py-2">
+                            <div class="col-12 col-md-4 text-center">
+                                <div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="mensual" checked name="time" /><label class="custom-control-label" for="mensual">Mensual</label></div>
+                            </div>
+                            <div class="col-12 col-md-4 text-center">
+                                <div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="anual" name="time" /><label class="custom-control-label" for="anual">Anual</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12"><small>*Puedes cambiar de plan. Toma en cuenta que no podrás regresar a un plan menor</small></div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <ul class="list-group text-center">
+                            <li class="list-group-item"><span>Hasta 100 platillos</span></li>
+                            <li class="list-group-item"><span>12000 visualizaciones / mes*</span></li>
+                            <li class="list-group-item"><span>10 imágenes</span></li>
+                            <li class="list-group-item"><span>Categorización de platillos</span></li>
+                            <li class="list-group-item"><span>Menú rersonalizado</span></li>
+                            <li class="list-group-item"><span>Enlace personalizado</span></li>
+                        </ul><small>* El número transacciones mensuales  no son acumulable.s</small></div>
+                </div>
+                <div class="row justify-content-center pt-4">
+                    <div class="col-12 text-center">
+                        <h3>Q30 <small>/ mes</small></h3>
+                    </div>
+                </div>
+                <div class="row justify-content-center pt-4">
+                    <div class="col-6 text-center"><button class="btn btn-secondary btn-block" type="button">Elegir Plan</button></div>
+                </div>
             </div>
         </div>
     </div>
