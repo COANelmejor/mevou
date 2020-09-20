@@ -9,19 +9,17 @@
 
 <div class="row">
     <div class="col-12 col-md-4">
-        <form>
-            <div class="form-group">
-                <label>Nombre de categoría</label>
-                <input id="categoria_nombre" class="form-control" type="text" placeholder="Mariscos">
-            </div>
-            <div class="form-group">
-                <label>Imagen de categoría</label>
-                <input id="categoria_imagen" type="file" accept="image/*" class="w-100">
-            </div>
+        <div class="form-group">
+            <label>Nombre de categoría</label>
+            <input id="categoria_nombre" class="form-control" type="text" placeholder="Mariscos">
+        </div>
+        <div class="form-group">
+            <label>Imagen de categoría</label>
+            <input id="categoria_imagen" type="file" accept="image/*" class="w-100">
+        </div>
             <div class="form-group">
                 <button id="guardar_categoria" class="btn btn-secondary btn-block" type="button">Guardar Cambios</button>
-            </div>
-        </form>
+        </div>
         <img id="categoria_imagen_img" src="https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png" class="w-100 d-block" alt="Logo Categoría">
     </div>
     <div class="col-12 col-md-8 platillos-cat">
@@ -260,7 +258,7 @@ var PlatilloCard = `
     // Datos de los Platillos
     $.ajax({
         method: 'GET',
-        url: `/api/v1/platillos?filter[Categoria]=${idCategoria}&projection=-propietario -Menu -_id -Categoria -__v`,
+        url: `/api/v1/platillos?filter[Categoria]=${idCategoria}&projection=-propietario -Menu -Categoria -__v`,
         success: function(platillos) {
             console.log(platillos)
             PlatillosAjax = platillos
@@ -317,6 +315,7 @@ var PlatilloCard = `
 
     $('#categoria_nombre').keyup(function(e){
         CategoriaAjax.nombre = $(this).val()
+        console.log(e.key)
     })
     $('#categoria_nombre').change(function(e){
         CategoriaAjax.nombre = $(this).val()
