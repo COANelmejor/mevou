@@ -7,18 +7,35 @@
     .cat-creado:hover {
         cursor: pointer;
     }
+    .ctn-qrcode{
+        border: 1px solid #444;
+        border-radius: 5px;
+        padding: 1em;
+    }
 </style>
 <% include ../layouts/dashboard/header-close.ejs %>
 
 <div class="row d-flex">
-    <div class="col-12 col-md-3 text-center cats-column mb-3 mb-md-0" id="listado_categorias">
+    <div class="col-12 col-md-3">
         <div class="row">
-            <div class="col-12">
-                <h3>Categorías</h3>
+            <div class="col-12 text-center cats-column mb-3 mb-md-0" id="listado_categorias">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>Categorías</h3>
+                    </div>
+                </div>
+                <div class="row pb-2">
+                    <div class="col-12">
+                        <a class="btn btn-add-cat" role="button" href="#" id="crear_categoria"><i class="fas fa-plus-circle"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row pb-2">
-            <div class="col-12"><a class="btn btn-add-cat" role="button" href="#" id="crear_categoria"><i class="fas fa-plus-circle"></i></a></div>
+        <div class="row">
+            <h4 class="my-3">Código QR</h4>
+            <div class="col-12 ctn-qrcode">
+                <div id="qrcode"></div>
+            </div>
         </div>
     </div>
     <div class="col-12 col-md-4 text-center params-menu-column mb-3 mb-md-0">
@@ -237,6 +254,7 @@
 </div>
 
 <% include ../layouts/dashboard/footer-open.ejs %>
+<script src="https://cdn.jsdelivr.net/npm/davidshimjs-qrcodejs@0.0.2/qrcode.min.js"></script>
 
 <script>
     const idPropietario = "<%= user._id %>";
@@ -299,6 +317,7 @@
             $('.menu_color_plato_desc_letra').css('color', `${menu.color_plato_desc_letra}`)
             $('.menu_color_plato_desc_fondo').css('background-color', `${menu.color_plato_desc_fondo}`)
 
+            
             $('#menu_shortname_def').html(menu.shortname)
             const Categorias = menu.Categorias
             $('#cant_categorias').html(Categorias.length)
@@ -387,11 +406,45 @@
         const menu_shortname = $(this).val();
         MenuAjax.shortname = menu_shortname
         $('#menu_shortname_def').html(menu_shortname)
+        
+
+        // new QRCode(document.getElementById("qrcode"), menu_shortname);
+        // var qrcode = new QRCode("qrcode", {
+        //     text: menu_shortname,
+        //     width: 200,
+        //     height: 200,
+        //     colorDark : "#000000",
+        //     colorLight : "#ffffff",
+        //     correctLevel : QRCode.CorrectLevel.H
+        // });
+        // qrcode.clear(); // clear the code.
+        // qrcode.makeCode(menu_shortname); // make another code.
     });
     $('#menu_shortname').change( function (e) {
         const menu_shortname = $(this).val();
         MenuAjax.shortname = menu_shortname
         $('#menu_shortname_def').html(menu_shortname)
+
+        var qrcode = new QRCode("qrcode");
+
+        function makeCode () {
+            var shortname = document.getElementById("menu_shortname");
+
+            if (!shortname.value) {
+                alert("Input a text");
+                shortname.focus();
+                return;
+            }
+                qrcode.makeCode("https://mevouapp.com/m/" + shortname.value);
+            }
+            makeCode();
+            $("#menu_shortname").on("blur", function () {
+                makeCode();
+            }).on("keydown", function (e) {
+            if (e.keyCode == 13) {
+                makeCode();
+            }
+        });
     });
 
     $('#menu_color_menu_fondo').change( function (e) {
