@@ -2,17 +2,27 @@
 
 <!-- Espacios para Agregar CSS's y Scripts -->
 <script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ejs@3/ejs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2/min/moment-with-locales.min.js"></script>
 
 <% include ../layouts/dashboard/header-close.ejs %>
 
 <div class="row">
     <div class="col-12 col-md-4">
         <form>
-            <div class="form-group"><label>Nombre de categoría</label><input id="categoria_nombre" class="form-control" type="text" placeholder="Mariscos"></div>
-            <div class="form-group"><label>Imagen de categoría</label><input id="categoria_imagen" type="file" class="w-100"></div>
-            <div class="form-group"><button id="guardar_categoria" class="btn btn-secondary btn-block" type="button">Guardar Cambios</button></div>
+            <div class="form-group">
+                <label>Nombre de categoría</label>
+                <input id="categoria_nombre" class="form-control" type="text" placeholder="Mariscos">
+            </div>
+            <div class="form-group">
+                <label>Imagen de categoría</label>
+                <input id="categoria_imagen" type="file" accept="image/*" class="w-100">
+            </div>
+            <div class="form-group">
+                <button id="guardar_categoria" class="btn btn-secondary btn-block" type="button">Guardar Cambios</button>
+            </div>
         </form>
-        <img id="categoria_imagen_img" src="" class="w-100 d-block" alt="Logo Categoría">
+        <img id="categoria_imagen_img" src="https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png" class="w-100 d-block" alt="Logo Categoría">
     </div>
     <div class="col-12 col-md-8 platillos-cat">
         <div class="row">
@@ -21,371 +31,17 @@
             </div>
         </div>
         <div class="row pb-2">
-            <div class="col-12"><a class="btn btn-add-cat" role="button" href="crear-menu.html"><i
-                        class="fas fa-plus-circle"></i></a></div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-12 add-plate">
-                <form>
-                    <div class="form-row">
-                        <div class="col-12 col-md-5">
-                            <div class="form-group"><label>Nombre platillo</label><input
-                                    class="form-control" type="text"></div>
-                            <div class="form-group"><label>Imagen platillo</label><input type="file"
-                                    class="w-100"></div>
-                        </div>
-                        <div class="col-12 col-md-7">
-                            <div class="form-row">
-                                <div class="col-12"><label>Precio(s)</label><small
-                                        class="form-text text-muted pt-0 pb-3">* Selecciona el
-                                        precio que aparecerá al lado del nombre del platillo</small>
-                                </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <div class="col-6 pb-2">
-                                    <div class="form-group"><label>Texto del precio</label><input
-                                            class="form-control mb-2" type="text"></div>
-                                </div>
-                                <div class="col-4 pb-2">
-                                    <div class="form-group"><label>Precio</label><input
-                                            class="form-control" type="number"></div>
-                                </div>
-                                <div class="col-2 text-center pb-2">
-                                    <div class="form-group"><label class="d-block"><i
-                                                class="fas fa-check-circle"></i></label><input
-                                            type="radio" name="choise" checked=""></div>
-                                </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <div class="col-6 pb-2">
-                                    <div class="form-group"><input class="form-control mb-2"
-                                            type="text"></div>
-                                </div>
-                                <div class="col-4 pb-2">
-                                    <div class="form-group"><input class="form-control"
-                                            type="number"></div>
-                                </div>
-                                <div class="col-2 text-center pb-2">
-                                    <div class="form-group"><input type="radio" name="choise"></div>
-                                </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <div class="col-6 pb-2">
-                                    <div class="form-group"><input class="form-control mb-2"
-                                            type="text"></div>
-                                </div>
-                                <div class="col-4 pb-2">
-                                    <div class="form-group"><input class="form-control"
-                                            type="number"></div>
-                                </div>
-                                <div class="col-2 text-center pb-2">
-                                    <div class="form-group"><input type="radio" name="choise"></div>
-                                </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <div class="col-6 pb-2">
-                                    <div class="form-group"><input class="form-control mb-2"
-                                            type="text"></div>
-                                </div>
-                                <div class="col-4 pb-2">
-                                    <div class="form-group"><input class="form-control"
-                                            type="number"></div>
-                                </div>
-                                <div class="col-2 text-center pb-2">
-                                    <div class="form-group"><input type="radio" name="choise"></div>
-                                </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <div class="col-6 pb-2">
-                                    <div class="form-group"><input class="form-control mb-2"
-                                            type="text"></div>
-                                </div>
-                                <div class="col-4 pb-2">
-                                    <div class="form-group"><input class="form-control"
-                                            type="number"></div>
-                                </div>
-                                <div class="col-2 text-center pb-2">
-                                    <div class="form-group"><input type="radio" name="choise"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row justify-content-between">
-                        <div class="col-12 text-center pb-2"><button
-                                class="btn btn-secondary btn-block" type="button">Guardar
-                                Cambios</button></div>
-                    </div>
-                </form>
+            <div class="col-12">
+                <a id="crear_platillo" class="btn btn-add-cat" role="button" href="#">
+                    <i id="crear_platillo_i" class="fas fa-plus-circle"></i>
+                </a>
             </div>
         </div>
+
         <div class="row justify-content-center">
             <div class="col-12 platillo-agregado mb-3">
-                <div role="tablist" id="accordion-1">
-                    <div class="card">
-                        <div class="card-header" role="tab">
-                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true"
-                                    aria-controls="accordion-1 .item-1"
-                                    href="#accordion-1 .item-1">Nombre del&nbsp; platillo Muy pero
-                                    muy largo<i class="fas fa-edit"></i></a></h5>
-                        </div>
-                        <div class="collapse show item-1" role="tabpanel"
-                            data-parent="#accordion-1">
-                            <div class="card-body">
-                                <div class="row mb-3">
-                                    <div class="col-12 add-plate">
-                                        <form>
-                                            <div class="form-row">
-                                                <div class="col-12 col-md-5">
-                                                    <div class="form-group"><label>Nombre
-                                                            platillo</label><input
-                                                            class="form-control" type="text"></div>
-                                                    <div class="form-group"><label>Imagen
-                                                            platillo</label><input type="file"
-                                                            class="w-100"></div>
-                                                </div>
-                                                <div class="col-12 col-md-7">
-                                                    <div class="form-row">
-                                                        <div class="col-12">
-                                                            <label>Precio(s)</label><small
-                                                                class="form-text text-muted pt-0 pb-3">*
-                                                                Selecciona el precio que aparecerá
-                                                                al lado del nombre del
-                                                                platillo</small></div>
-                                                    </div>
-                                                    <div class="form-row align-items-center">
-                                                        <div class="col-6 pb-2">
-                                                            <div class="form-group"><label>Texto del
-                                                                    precio</label><input
-                                                                    class="form-control mb-2"
-                                                                    type="text"></div>
-                                                        </div>
-                                                        <div class="col-4 pb-2">
-                                                            <div class="form-group">
-                                                                <label>Precio</label><input
-                                                                    class="form-control"
-                                                                    type="number"></div>
-                                                        </div>
-                                                        <div class="col-2 text-center pb-2">
-                                                            <div class="form-group"><label
-                                                                    class="d-block"><i
-                                                                        class="fas fa-check-circle"></i></label><input
-                                                                    type="radio" name="choise"
-                                                                    checked=""></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row align-items-center">
-                                                        <div class="col-6 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control mb-2"
-                                                                    type="text"></div>
-                                                        </div>
-                                                        <div class="col-4 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control"
-                                                                    type="number"></div>
-                                                        </div>
-                                                        <div class="col-2 text-center pb-2">
-                                                            <div class="form-group"><input
-                                                                    type="radio" name="choise">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row align-items-center">
-                                                        <div class="col-6 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control mb-2"
-                                                                    type="text"></div>
-                                                        </div>
-                                                        <div class="col-4 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control"
-                                                                    type="number"></div>
-                                                        </div>
-                                                        <div class="col-2 text-center pb-2">
-                                                            <div class="form-group"><input
-                                                                    type="radio" name="choise">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row align-items-center">
-                                                        <div class="col-6 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control mb-2"
-                                                                    type="text"></div>
-                                                        </div>
-                                                        <div class="col-4 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control"
-                                                                    type="number"></div>
-                                                        </div>
-                                                        <div class="col-2 text-center pb-2">
-                                                            <div class="form-group"><input
-                                                                    type="radio" name="choise">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row align-items-center">
-                                                        <div class="col-6 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control mb-2"
-                                                                    type="text"></div>
-                                                        </div>
-                                                        <div class="col-4 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control"
-                                                                    type="number"></div>
-                                                        </div>
-                                                        <div class="col-2 text-center pb-2">
-                                                            <div class="form-group"><input
-                                                                    type="radio" name="choise">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row justify-content-between">
-                                                <div class="col-12 text-center pb-2"><button
-                                                        class="btn btn-secondary btn-block"
-                                                        type="button">Guardar Cambios</button></div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" role="tab">
-                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false"
-                                    aria-controls="accordion-1 .item-2"
-                                    href="#accordion-1 .item-2">Nombre del&nbsp; platillo Muy pero
-                                    muy largo<i class="fas fa-edit"></i></a></h5>
-                        </div>
-                        <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
-                            <div class="card-body">
-                                <div class="row mb-3">
-                                    <div class="col-12 add-plate">
-                                        <form>
-                                            <div class="form-row">
-                                                <div class="col-12 col-md-5">
-                                                    <div class="form-group"><label>Nombre
-                                                            platillo</label><input
-                                                            class="form-control" type="text"></div>
-                                                    <div class="form-group"><label>Imagen
-                                                            platillo</label><input type="file"
-                                                            class="w-100"></div>
-                                                </div>
-                                                <div class="col-12 col-md-7">
-                                                    <div class="form-row">
-                                                        <div class="col-12">
-                                                            <label>Precio(s)</label><small
-                                                                class="form-text text-muted pt-0 pb-3">*
-                                                                Selecciona el precio que aparecerá
-                                                                al lado del nombre del
-                                                                platillo</small></div>
-                                                    </div>
-                                                    <div class="form-row align-items-center">
-                                                        <div class="col-6 pb-2">
-                                                            <div class="form-group"><label>Texto del
-                                                                    precio</label><input
-                                                                    class="form-control mb-2"
-                                                                    type="text"></div>
-                                                        </div>
-                                                        <div class="col-4 pb-2">
-                                                            <div class="form-group">
-                                                                <label>Precio</label><input
-                                                                    class="form-control"
-                                                                    type="number"></div>
-                                                        </div>
-                                                        <div class="col-2 text-center pb-2">
-                                                            <div class="form-group"><label
-                                                                    class="d-block"><i
-                                                                        class="fas fa-check-circle"></i></label><input
-                                                                    type="radio" name="choise"
-                                                                    checked=""></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row align-items-center">
-                                                        <div class="col-6 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control mb-2"
-                                                                    type="text"></div>
-                                                        </div>
-                                                        <div class="col-4 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control"
-                                                                    type="number"></div>
-                                                        </div>
-                                                        <div class="col-2 text-center pb-2">
-                                                            <div class="form-group"><input
-                                                                    type="radio" name="choise">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row align-items-center">
-                                                        <div class="col-6 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control mb-2"
-                                                                    type="text"></div>
-                                                        </div>
-                                                        <div class="col-4 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control"
-                                                                    type="number"></div>
-                                                        </div>
-                                                        <div class="col-2 text-center pb-2">
-                                                            <div class="form-group"><input
-                                                                    type="radio" name="choise">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row align-items-center">
-                                                        <div class="col-6 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control mb-2"
-                                                                    type="text"></div>
-                                                        </div>
-                                                        <div class="col-4 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control"
-                                                                    type="number"></div>
-                                                        </div>
-                                                        <div class="col-2 text-center pb-2">
-                                                            <div class="form-group"><input
-                                                                    type="radio" name="choise">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row align-items-center">
-                                                        <div class="col-6 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control mb-2"
-                                                                    type="text"></div>
-                                                        </div>
-                                                        <div class="col-4 pb-2">
-                                                            <div class="form-group"><input
-                                                                    class="form-control"
-                                                                    type="number"></div>
-                                                        </div>
-                                                        <div class="col-2 text-center pb-2">
-                                                            <div class="form-group"><input
-                                                                    type="radio" name="choise">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row justify-content-between">
-                                                <div class="col-12 text-center pb-2"><button
-                                                        class="btn btn-secondary btn-block"
-                                                        type="button">Guardar Cambios</button></div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div role="tablist" id="accordion_platillos">
+
                 </div>
             </div>
         </div>
@@ -398,11 +54,158 @@
     const idCategoria = new URLSearchParams(window.location.search).get('categoria');
     var CategoriaAjax = Object({})
     var PlatillosAjax = Array([])
+// 
+/** Datos del PlatilloCard
+ * id
+ * Nombre
+ * imagen https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png
+*/
+var PlatilloCard = `
+<div class="card">
+    <div class="card-header" id="heading<%%= id %>" role="tab">
+        <h5 class="mb-0">
+            <a class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse_<%%= id %>" aria-expanded="true" aria-controls="collapse_<%%= id %>">
+                <%%= nombre %> <i class="fas fa-edit"></i>
+            </a>
+        </h5>
+    </div>
+    <div id="collapse_<%%= id %>" class="collapse" aria-labelledby="heading<%%= id %>" data-parent="#accordion_platillos">
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-12 add-plate">
+                    <form>
+                        <div class="form-row">
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <label>Nombre del platillo</label>
+                                    <input class="form-control" value="<%%= nombre %>" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label>Imagen platillo</label>
+                                    <input type="file" class="w-100" id="platillo_imagen_<%%= id %>">
+                                </div>
+                                <img src="<%%= imagen %>" class="w-100" alt="">
+                            </div>
+                            <div class="col-12 col-md-7">
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <label>Precio(s)</label>
+                                        <small class="form-text text-muted pt-0 pb-3">
+                                            * Selecciona el precio que aparecerá al lado del nombre del platillo
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-row align-items-center">
+                                    <div class="col-6 pb-2">
+                                        <div class="form-group">
+                                            <label>Texto del precio</label>
+                                            <input class="form-control mb-2" id="precio_nombre_1_<%%= id %>" type="text">
+                                        </div>
+                                    </div>
+                                     <div class="col-4 pb-2">
+                                        <div class="form-group">
+                                            <label>Precio</label>
+                                            <input class="form-control" id="precio_valor_1_<%%= id %>" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-center pb-2">
+                                        <div class="form-group">
+                                            <label class="d-block">
+                                                <i class="fas fa-check-circle"></i>
+                                            </label>
+                                            <input type="radio" value="0" name="precio_escogido_<%%= id %>" checked="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row align-items-center">
+                                    <div class="col-6 pb-2">
+                                        <div class="form-group">
+                                            <input class="form-control mb-2" id="precio_nombre_2_<%%= id %>" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-4 pb-2">
+                                        <div class="form-group">
+                                            <input class="form-control" id="precio_valor_2_<%%= id %>" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-center pb-2">
+                                        <div class="form-group">
+                                            <input type="radio" value="1" name="precio_escogido_<%%= id %>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row align-items-center">
+                                    <div class="col-6 pb-2">
+                                        <div class="form-group">
+                                            <input class="form-control mb-2" id="precio_nombre_3_<%%= id %>" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-4 pb-2">
+                                        <div class="form-group">
+                                            <input class="form-control" id="precio_valor_3_<%%= id %>" type="number">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-2 text-center pb-2">
+                                        <div class="form-group">
+                                            <input type="radio" value="2" name="precio_escogido_<%%= id %>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="form-row align-items-center">
+                                    <div class="col-6 pb-2">
+                                        <div class="form-group">
+                                            <input class="form-control mb-2" id="precio_nombre_4_<%%= id %>" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-4 pb-2">
+                                        <div class="form-group">
+                                            <input class="form-control" id="precio_valor_4_<%%= id %>" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-center pb-2">
+                                        <div class="form-group">
+                                            <input type="radio" value="3" name="precio_escogido_<%%= id %>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row align-items-center">
+                                    <div class="col-6 pb-2">
+                                        <div class="form-group">
+                                            <input class="form-control mb-2" id="precio_nombre_5_<%%= id %>" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-4 pb-2">
+                                        <div class="form-group">
+                                            <input class="form-control" id="precio_valor_5_<%%= id %>" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-center pb-2">
+                                        <div class="form-group">
+                                            <input type="radio" value="4" name="precio_escogido_<%%= id %>">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row justify-content-between">
+                            <div class="col-12 text-center pb-2">
+                                <button class="btn btn-secondary btn-block" type="button">Guardar Cambios</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+`
 
     // Conseguir Datos de Categoría
     $.ajax({
         method: 'GET',
-        url: `/api/v1/categorias/${idCategoria}?projection=-propietario -Menu -_id -__v`,
+        url: `/api/v1/categorias/${idCategoria}?projection=-propietario -__v`,
         success: function(categoria) {
             console.log(categoria)
             CategoriaAjax = categoria
@@ -461,6 +264,14 @@
         success: function(platillos) {
             console.log(platillos)
             PlatillosAjax = platillos
+            for (let p = 0; p < PlatillosAjax.length; p++) {
+                let platillo = PlatillosAjax[p];
+                if (platillo.imagen == null) {
+                    platillo.image = 'https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png'
+                }
+                platillo.id = platillo._id
+                $("#accordion_platillos").append(ejs.render(PlatilloCard, platillo))
+            }
             toastr.options = {
                 "closeButton": true,
                 "debug": false,
@@ -478,7 +289,7 @@
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
             }
-            toastr["success"]("Platillos obtenidos con éxito.")
+            toastr["success"]("Platillos cargados con éxito.")
         },
         error: function(a, b, c) {
             console.log(a,b,c)
@@ -533,8 +344,7 @@
         const file = document.getElementById('categoria_imagen').files[0]
         imageConversion.compressAccurately(file, {
             height: "600",
-            size: "56",
-            type: "image/jpeg"
+            size: "56"
         }).then(res => {
             toastr["info"]("Subiendo imagen de Categoría.")
             var formData = new FormData();
@@ -602,7 +412,6 @@
             data: JSON.stringify(CategoriaAjax),
             success: function(categoria) {
                 console.log(categoria)
-                
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -647,6 +456,88 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 }
+                toastr["error"](Errores)
+            }
+        })
+    })
+
+    $('#crear_platillo').click(function(){
+        $('#crear_platillo_i').attr('class', 'fas fa-spinner fa-pulse')
+        const PlatilloToAjax = {
+            Menu: CategoriaAjax.Menu._id,
+            Categoria: CategoriaAjax._id,
+            nombre: `Platillo ${moment().unix()}`,
+            descripcion: 'Vestibulum lacus tincidunt dis dapibus purus donec est turpis commodo mi, varius etiam vel blandit per pellentesque fusce cubilia.',
+            imagen: null,
+            tags: [],
+            precios: [{
+                nombre: 'Personal',
+                valor: 50.00,
+                mostrar: true
+            }, {
+                nombre: 'Mediano',
+                valor: 75.00,
+                mostrar: false
+            }, {
+                nombre: 'Grande',
+                valor: 100.00,
+                mostrar: false
+            }, null, null]
+        }
+        console.log(PlatilloToAjax)
+        $.ajax({
+            method: 'POST',
+            url: `/api/v1/platillos`,
+            contentType: 'application/json',
+            data: JSON.stringify(PlatilloToAjax),
+            success: function(platillo) {
+                console.log(platillo)
+                if (platillo.imagen == null) {
+                    platillo.image = 'https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png'
+                }
+                platillo.id = platillo._id
+                $("#accordion_platillos").append(ejs.render(PlatilloCard, platillo))
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "15000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                $('#crear_platillo_i').attr('class', 'fas fa-plus-circle')
+                toastr["success"](`Platillo Creado con Éxito.<br>No te olvides de modificarlo.`)
+            },
+            error: function(a, b, c) {
+                console.log(a)
+                var Errores = 'Hubo un error al guardar los cambios.'
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "10000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                $('#crear_platillo_i').attr('class', 'fas fa-plus-circle')
                 toastr["error"](Errores)
             }
         })
