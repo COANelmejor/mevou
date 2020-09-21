@@ -52,206 +52,13 @@
     const idCategoria = new URLSearchParams(window.location.search).get('categoria');
     var CategoriaAjax = Object({})
     var PlatillosAjax = Array([])
+    function GuardarPlatillo(id) {
+        $(`#guardar_platillo_${id}`).click(function (e) {
+            const platilloId = $(this).attr('data-id-platillo')
+            console.log(platilloId)
+        })
+    }
 // 
-/** Datos del PlatilloCard
- * id
- * Nombre
- * imagen https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png
-*/
-var PlatilloCard = `
-<div class="card">
-    <div class="card-header" id="heading<%%= id %>" role="tab">
-        <h5 class="mb-0">
-            <a class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse_<%%= id %>" aria-expanded="true" aria-controls="collapse_<%%= id %>">
-                <%%= nombre %> <i class="fas fa-edit"></i>
-            </a>
-        </h5>
-    </div>
-    <div id="collapse_<%%= id %>" class="collapse" aria-labelledby="heading<%%= id %>" data-parent="#accordion_platillos">
-        <div class="card-body">
-            <div class="row mb-3">
-                <div class="col-12 add-plate">
-                    <div class="form-row">
-                        <div class="col-12 col-md-5">
-                            <div class="form-group">
-                                <label>Nombre del platillo</label>
-                                <input class="form-control" value="<%%= nombre %>" type="text">
-                            </div>
-                            <div class="form-group">
-                                <label>Imagen platillo</label>
-                                <input type="file" class="w-100" id="platillo_imagen_<%%= id %>">
-                            </div>
-                            <img src="<%%= imagen %>" class="w-100" alt="">
-                        </div>
-                        <div class="col-12 col-md-7">
-                            <div class="form-row">
-                                <div class="col-12">
-                                    <label>Precio(s)</label>
-                                    <small class="form-text text-muted pt-0 pb-3">
-                                        * Selecciona el precio que aparecerá al lado del nombre del platillo
-                                    </small>
-                                </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <!-- Precio 1 -->
-                                <%% var precio1 = Object({})
-                                if ( precios[0] ) {
-                                    precio1 = precios[0]
-                                } else {
-                                    precio1 = {
-                                        nombre: '',
-                                        valor:'',
-                                        mostrar: false
-                                    }
-                                } %>
-                                <div class="col-6 pb-2">
-                                    <div class="form-group">
-                                        <label>Texto del precio</label>
-                                        <input class="form-control mb-2" id="precio_nombre_1_<%%= id %>" value="<%%= precio1.nombre %>" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-4 pb-2">
-                                    <div class="form-group">
-                                        <label>Precio</label>
-                                        <input class="form-control" id="precio_valor_1_<%%= id %>" type="number" value="<%%= precio1.valor %>">
-                                    </div>
-                                </div>
-                                <div class="col-2 text-center pb-2">
-                                    <div class="form-group">
-                                        <label class="d-block">
-                                            <i class="fas fa-check-circle"></i>
-                                        </label>
-                                        <input type="radio" value="0" name="precio_escogido_<%%= id %>" <%%- precio1.mostrar == true ? 'checked' : '' %>>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <!-- Precio 2 -->
-                                <%% var precio2 = Object({})
-                                if ( precios[1] ) {
-                                    precio2 = precios[1]
-                                } else {
-                                    precio2 = {
-                                        nombre: '',
-                                        valor:'',
-                                        mostrar: false
-                                    }
-                                } %>
-                                <div class="col-6 pb-2">
-                                    <div class="form-group">
-                                        <input class="form-control mb-2" id="precio_nombre_2_<%%= id %>"  value="<%%= precio2.nombre %>" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-4 pb-2">
-                                    <div class="form-group">
-                                        <input class="form-control" id="precio_valor_2_<%%= id %>" value="<%%= precio2.valor %>" type="number">
-                                    </div>
-                                </div>
-                                <div class="col-2 text-center pb-2">
-                                    <div class="form-group">
-                                        <input type="radio" value="1" name="precio_escogido_<%%= id %>" <%%- precio2.mostrar == true ? 'checked' : '' %>>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <!-- Precio 3 -->
-                                <%% var precio3 = Object({})
-                                if ( precios[2] ) {
-                                    precio3 = precios[2]
-                                } else {
-                                    precio3 = {
-                                        nombre: '',
-                                        valor:'',
-                                        mostrar: false
-                                    }
-                                } %>
-                                <div class="col-6 pb-2">
-                                    <div class="form-group">
-                                        <input class="form-control mb-2" id="precio_nombre_3_<%%= id %>" value="<%%= precio3.nombre %>" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-4 pb-2">
-                                    <div class="form-group">
-                                        <input class="form-control" id="precio_valor_3_<%%= id %>" value="<%%= precio3.valor %>" type="number">
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-2 text-center pb-2">
-                                    <div class="form-group">
-                                        <input type="radio" value="2" name="precio_escogido_<%%= id %>" <%%- precio3.mostrar == true ? 'checked' : '' %>>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <!-- Precio 4 -->
-                                <%% var precio4 = Object({})
-                                if ( precios[3] ) {
-                                    precio4 = precios[3]
-                                } else {
-                                    precio4 = {
-                                        nombre: '',
-                                        valor:'',
-                                        mostrar: false
-                                    }
-                                } %>
-                                <div class="col-6 pb-2">
-                                    <div class="form-group">
-                                        <input class="form-control mb-2" id="precio_nombre_4_<%%= id %>" value="<%%= precio4.nombre %>" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-4 pb-2">
-                                    <div class="form-group">
-                                        <input class="form-control" id="precio_valor_4_<%%= id %>" type="number" value="<%%= precio4.valor %>">
-                                    </div>
-                                </div>
-                                <div class="col-2 text-center pb-2">
-                                    <div class="form-group">
-                                        <input type="radio" value="3" name="precio_escogido_<%%= id %>" <%%- precio4.mostrar == true ? 'checked' : '' %>>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row align-items-center">
-                                <!-- Precio 4 -->
-                                <%% var precio5 = Object({})
-                                if ( precios[4] ) {
-                                    precio5 = precios[4]
-                                } else {
-                                    precio5 = {
-                                        nombre: '',
-                                        valor:'',
-                                        mostrar: false
-                                    }
-                                } %>
-                                <div class="col-6 pb-2">
-                                    <div class="form-group">
-                                        <input class="form-control mb-2" id="precio_nombre_5_<%%= id %>" value="<%%= precio5.nombre %>" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-4 pb-2">
-                                    <div class="form-group">
-                                        <input class="form-control" id="precio_valor_5_<%%= id %>" type="number" value="<%%= precio5.valor %>">
-                                    </div>
-                                </div>
-                                <div class="col-2 text-center pb-2">
-                                    <div class="form-group">
-                                        <input type="radio" value="4" name="precio_escogido_<%%= id %>" <%%- precio5.mostrar == true ? 'checked' : '' %>>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row justify-content-between">
-                        <div class="col-12 text-center pb-2">
-                            <button class="btn btn-secondary btn-block guardar_platillo" data-id-platillo="<%%= id %>" type="button">Guardar Cambios</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-`
-
     // Conseguir Datos de Categoría
     $.ajax({
         method: 'GET',
@@ -321,6 +128,7 @@ var PlatilloCard = `
                 }
                 platillo.id = platillo._id
                 $("#accordion_platillos").append(ejs.render(PlatilloCard, platillo))
+                GuardarPlatillo(platillo.id)
             }
             toastr.options = {
                 "closeButton": true,
@@ -548,6 +356,7 @@ var PlatilloCard = `
                 }
                 platillo.id = platillo._id
                 $("#accordion_platillos").append(ejs.render(PlatilloCard, platillo))
+                GuardarPlatillo(platillo.id)
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -593,6 +402,205 @@ var PlatilloCard = `
             }
         })
     })
+
+/** Datos del PlatilloCard
+ * id
+ * Nombre
+ * imagen https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png
+*/
+var PlatilloCard = `
+<div class="card">
+    <div class="card-header" id="heading<%%= id %>" role="tab">
+        <h5 class="mb-0">
+            <a class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse_<%%= id %>" aria-expanded="true" aria-controls="collapse_<%%= id %>">
+                <%%= nombre %> <i class="fas fa-edit"></i>
+            </a>
+        </h5>
+    </div>
+    <div id="collapse_<%%= id %>" class="collapse" aria-labelledby="heading<%%= id %>" data-parent="#accordion_platillos">
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-12 add-plate">
+                    <div class="form-row">
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <label>Nombre del platillo</label>
+                                <input class="form-control" value="<%%= nombre %>" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>Imagen platillo</label>
+                                <input type="file" class="w-100" id="platillo_imagen_<%%= id %>">
+                            </div>
+                            <img src="<%%= imagen %>" class="w-100" alt="">
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <div class="form-row">
+                                <div class="col-12">
+                                    <label>Precio(s)</label>
+                                    <small class="form-text text-muted pt-0 pb-3">
+                                        * Selecciona el precio que aparecerá al lado del nombre del platillo
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                                <!-- Precio 1 -->
+                                <%% var precio1 = Object({})
+                                if ( precios[0] ) {
+                                    precio1 = precios[0]
+                                } else {
+                                    precio1 = {
+                                        nombre: '',
+                                        valor:'',
+                                        mostrar: false
+                                    }
+                                } %>
+                                <div class="col-6 pb-2">
+                                    <div class="form-group">
+                                        <label>Texto del precio</label>
+                                        <input class="form-control mb-2" id="precio_nombre_1_<%%= id %>" value="<%%= precio1.nombre %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-4 pb-2">
+                                    <div class="form-group">
+                                        <label>Precio</label>
+                                        <input class="form-control" id="precio_valor_1_<%%= id %>" type="number" value="<%%= precio1.valor %>">
+                                    </div>
+                                </div>
+                                <div class="col-2 text-center pb-2">
+                                    <div class="form-group">
+                                        <label class="d-block">
+                                            <i class="fas fa-check-circle"></i>
+                                        </label>
+                                        <input type="radio" value="0" name="precio_escogido_<%%= id %>" <%%- precio1.mostrar == true ? 'checked' : '' %>>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                                <!-- Precio 2 -->
+                                <%% var precio2 = Object({})
+                                if ( precios[1] ) {
+                                    precio2 = precios[1]
+                                } else {
+                                    precio2 = {
+                                        nombre: '',
+                                        valor:'',
+                                        mostrar: false
+                                    }
+                                } %>
+                                <div class="col-6 pb-2">
+                                    <div class="form-group">
+                                        <input class="form-control mb-2" id="precio_nombre_2_<%%= id %>"  value="<%%= precio2.nombre %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-4 pb-2">
+                                    <div class="form-group">
+                                        <input class="form-control" id="precio_valor_2_<%%= id %>" value="<%%= precio2.valor %>" type="number">
+                                    </div>
+                                </div>
+                                <div class="col-2 text-center pb-2">
+                                    <div class="form-group">
+                                        <input type="radio" value="1" name="precio_escogido_<%%= id %>" <%%- precio2.mostrar == true ? 'checked' : '' %>>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                                <!-- Precio 3 -->
+                                <%% var precio3 = Object({})
+                                if ( precios[2] ) {
+                                    precio3 = precios[2]
+                                } else {
+                                    precio3 = {
+                                        nombre: '',
+                                        valor:'',
+                                        mostrar: false
+                                    }
+                                } %>
+                                <div class="col-6 pb-2">
+                                    <div class="form-group">
+                                        <input class="form-control mb-2" id="precio_nombre_3_<%%= id %>" value="<%%= precio3.nombre %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-4 pb-2">
+                                    <div class="form-group">
+                                        <input class="form-control" id="precio_valor_3_<%%= id %>" value="<%%= precio3.valor %>" type="number">
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-2 text-center pb-2">
+                                    <div class="form-group">
+                                        <input type="radio" value="2" name="precio_escogido_<%%= id %>" <%%- precio3.mostrar == true ? 'checked' : '' %>>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                                <!-- Precio 4 -->
+                                <%% var precio4 = Object({})
+                                if ( precios[3] ) {
+                                    precio4 = precios[3]
+                                } else {
+                                    precio4 = {
+                                        nombre: '',
+                                        valor:'',
+                                        mostrar: false
+                                    }
+                                } %>
+                                <div class="col-6 pb-2">
+                                    <div class="form-group">
+                                        <input class="form-control mb-2" id="precio_nombre_4_<%%= id %>" value="<%%= precio4.nombre %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-4 pb-2">
+                                    <div class="form-group">
+                                        <input class="form-control" id="precio_valor_4_<%%= id %>" type="number" value="<%%= precio4.valor %>">
+                                    </div>
+                                </div>
+                                <div class="col-2 text-center pb-2">
+                                    <div class="form-group">
+                                        <input type="radio" value="3" name="precio_escogido_<%%= id %>" <%%- precio4.mostrar == true ? 'checked' : '' %>>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row align-items-center">
+                                <!-- Precio 4 -->
+                                <%% var precio5 = Object({})
+                                if ( precios[4] ) {
+                                    precio5 = precios[4]
+                                } else {
+                                    precio5 = {
+                                        nombre: '',
+                                        valor:'',
+                                        mostrar: false
+                                    }
+                                } %>
+                                <div class="col-6 pb-2">
+                                    <div class="form-group">
+                                        <input class="form-control mb-2" id="precio_nombre_5_<%%= id %>" value="<%%= precio5.nombre %>" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-4 pb-2">
+                                    <div class="form-group">
+                                        <input class="form-control" id="precio_valor_5_<%%= id %>" type="number" value="<%%= precio5.valor %>">
+                                    </div>
+                                </div>
+                                <div class="col-2 text-center pb-2">
+                                    <div class="form-group">
+                                        <input type="radio" value="4" name="precio_escogido_<%%= id %>" <%%- precio5.mostrar == true ? 'checked' : '' %>>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-between">
+                        <div class="col-12 text-center pb-2">
+                            <button class="btn btn-secondary btn-block guardar_platillo" id="guardar_platillo_<%%= id %>" data-id-platillo="<%%= id %>" type="button">Guardar Cambios</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+`
 </script>
 
 <!-- Espacios para agregar Scripts, Modals,... -->
