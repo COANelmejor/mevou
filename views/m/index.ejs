@@ -1,155 +1,1130 @@
-<% include ../layouts/dashboard/header-open.ejs %>
+<% include ../layouts/m/header-open.ejs %>
 
 <!-- Espacios para Agregar CSS's y Scripts -->
 
-<% include ../layouts/dashboard/header-close.ejs %>
+<% include ../layouts/m/header-close.ejs %>
 
-<div class="row align-items-center">
-    <div class="col-12 col-md-4 mb-4" data-aos="fade-right" data-aos-offset="0" data-aos-delay="150"
-        data-aos-once="true">
-        <div class="card shadow border-left-primary py-2">
-            <div class="card-body">
-                <div class="row align-items-center no-gutters">
-                    <div class="col mr-2">
-                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Imágenes
-                                Usadas</span></div>
-                        <div class="text-dark font-weight-bold h5 mb-0"><span>7/10 Imágenes</span></div>
-                    </div>
-                    <div class="col-auto"><i class="fas fa-images fa-2x text-gray-300"></i></div>
-                </div>
-            </div>
-        </div>
+<div class="col-12 col-md-6 restaurant-logo-description">
+    <div class="row logo-restaurante mx-1">
+        <div class="col text-center"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/logo_saul_restaurante.png"></div>
     </div>
-    <div class="col-12 col-md-4 mb-4" data-aos="fade-right" data-aos-offset="0" data-aos-delay="300"
-        data-aos-once="true">
-        <div class="card shadow border-left-success py-2">
-            <div class="card-body">
-                <div class="row align-items-center no-gutters">
-                    <div class="col mr-2">
-                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Platillos
-                                Usados</span></div>
-                        <div class="text-dark font-weight-bold h5 mb-0"><span>71/100 platillos</span></div>
-                    </div>
-                    <div class="col-auto"><i class="fas fa-mortar-pestle fa-2x text-gray-300"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-4 mb-4" data-aos="fade-right" data-aos-delay="450" data-aos-once="true">
-        <div class="card shadow border-left-warning py-2">
-            <div class="card-body">
-                <div class="row align-items-center no-gutters">
-                    <div class="col mr-2">
-                        <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Visualizaciones
-                                Totales</span></div>
-                        <div class="text-dark font-weight-bold h5 mb-0"><span>7,200/12,000</span></div>
-                    </div>
-                    <div class="col-auto"><i class="fas fa-eye fa-2x text-gray-300"></i></div>
-                </div>
-            </div>
+    <div class="row align-items-center descripcion-restaurante">
+        <div class="col-12">
+            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, per nibh venenatis magnis ligula non, vel pulvinar pellent.</p>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-12" data-aos="zoom-in" data-aos-once="true">
-        <div class="card shadow mb-4">
-            <div class="card-header d-md-flex justify-content-center justify-content-md-between align-items-md-center">
-                <h6 class="text-primary font-weight-bold m-0">Estadísticas de visualizaciones</h6>
-                <div class="dropleft no-arrow my-3 my-md-0">
-                    <button class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
-                        type="button">
-                        <i class="far fa-clock text-gray-400"></i>&nbsp;Mostrar por: Semana
-                    </button>
-                    <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in">
-                        <a class="dropdown-item" href="#">Día</a>
-                        <a class="dropdown-item" href="#">Semana</a>
-                        <a class="dropdown-item" href="#">Mes</a>
-                    </div>
-                </div>
-                <div class="dropleft d-flex d-md-block no-arrow">
-                    <button class="btn btn-dark btn-sm dropdown-toggle text-truncate text-break" data-toggle="dropdown"
-                        aria-expanded="false" type="button">
-                        <i class="fas fa-book-open text-gray-400"></i>&nbsp;Menú: Miércoles 16 de Septiembre de 2020
-                        21:09
-                    </button>
-                    <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in">
-                        <a class="dropdown-item" href="#">Miércoles 16 de Septiembre de 2020 21:09</a>
-                        <a class="dropdown-item" href="#">El Anzuelo Zona 10</a>
-                        <a class="dropdown-item" href="#">El Anzuelo Panajachel</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="chart-area">
-                <canvas data-bs-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:true,&quot;reverse&quot;:false},&quot;title&quot;:{},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;beginAtZero&quot;:false,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;beginAtZero&quot;:false,&quot;padding&quot;:20}}]}}}"></canvas>
-            </div>
-        </div>
+<div class="col-12 col-md-6">
+    <div class="row img-principal">
+        <div class="col-12 px-0"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/table-in-vintage-restaurant-6267.jpg"></div>
     </div>
-</div>
-
-<div class="row justify-content-center py-3">
-    <div class="col-12 col-md-6">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="text-primary m-0 font-weight-bold">Mi plan actual</h6>
-            </div>
-            <div class="card-body pt-4 pb-5">
-                <div class="row justify-content-center pb-2">
-                    <div class="col-12 text-center">
-                        <h3>Light</h3>
-                    </div>
-                </div>
-                <div class="row justify-content-center pb-4">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-12 col-md-4 text-center">
-                                <div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="light" checked name="plan" /><label class="custom-control-label" for="light">Light</label></div>
-                            </div>
-                            <div class="col-12 col-md-4 text-center">
-                                <div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="basic" name="plan" /><label class="custom-control-label" for="basic">Básico</label></div>
-                            </div>
-                            <div class="col-12 col-md-4 text-center">
-                                <div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="custom" name="plan" /><label class="custom-control-label" for="custom">Profesional</label></div>
+    <div class="row">
+        <div class="col-12 px-0"><div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane" id="tab-1">
+                    <div class="row no-gutters">
+                        <div class="col px-0">
+                            <div role="tablist" id="platillos-select" class="platillos-menu">
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="true" aria-controls="platillos-select .item-1" href="#platillos-select .item-1">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select" class="collapse show item-1">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-2">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-2" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-2" role="button"
+                                                                data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select .item-2" href="#platillos-select .item-2">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select" class="collapse item-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-13">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-13" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-13"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select .item-3" href="#platillos-select .item-3">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select" class="collapse item-3">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-12">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-12" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-12"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select .item-4" href="#platillos-select .item-4">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select" class="collapse item-4">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-10">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-10" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-10"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select .item-5" href="#platillos-select .item-5">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select" class="collapse item-5">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-9">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-9" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-9" role="button"
+                                                                data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select .item-6" href="#platillos-select .item-6">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select" class="collapse item-6">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-8">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-8" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-8" role="button"
+                                                                data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select .item-7" href="#platillos-select .item-7">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select" class="collapse item-7">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-7">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-7" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-7" role="button"
+                                                                data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select .item-8" href="#platillos-select .item-8">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select" class="collapse item-8">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-6">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-6" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-6" role="button"
+                                                                data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select .item-9" href="#platillos-select .item-9">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select" class="collapse item-9">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-4">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-4" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-4" role="button"
+                                                                data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card" id="menu-platillo-samosa-1">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select .item-10" href="#platillos-select .item-10">
+                                                <p>Detox<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select" class="collapse item-10">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Ideal para aquellos que se excedieron el día anterior. Pepino, zanahoria, apio, perejil, jogo de naranja y miel orgánica.</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-3">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-3" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-3" role="button"
+                                                                data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="row justify-content-center py-2">
-                            <div class="col-12 col-md-4 text-center">
-                                <div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="mensual" checked name="time" /><label class="custom-control-label" for="mensual">Mensual</label></div>
-                            </div>
-                            <div class="col-12 col-md-4 text-center">
-                                <div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="anual" name="time" /><label class="custom-control-label" for="anual">Anual</label></div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane active" id="tab-2">
+                    <div class="row no-gutters cat-name">
+                        <div class="col"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" />
+                            <div class="overlay-cat">
+                                <h3>Desayunos</h3>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12"><small>*Puedes cambiar de plan. Toma en cuenta que no podrás regresar a un plan menor</small></div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <ul class="list-group text-center">
-                            <li class="list-group-item"><span>Hasta 100 platillos</span></li>
-                            <li class="list-group-item"><span>12000 visualizaciones / mes*</span></li>
-                            <li class="list-group-item"><span>10 imágenes</span></li>
-                            <li class="list-group-item"><span>Categorización de platillos</span></li>
-                            <li class="list-group-item"><span>Menú rersonalizado</span></li>
-                            <li class="list-group-item"><span>Enlace personalizado</span></li>
-                        </ul><small>* El número transacciones mensuales  no son acumulable.s</small></div>
-                </div>
-                <div class="row justify-content-center pt-4">
-                    <div class="col-12 text-center">
-                        <h3>Q30 <small>/ mes</small></h3>
+                    <div class="row no-gutters">
+                        <div class="col px-0">
+                            <div role="tablist" id="platillos-select-1" class="platillos-menu">
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="true" aria-controls="platillos-select-1 .item-1" href="#platillos-select-1 .item-1">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse show item-1">
+                                        <div class="card-body">
+                                            <div class="row no-gutters img-platillo">
+                                                <div class="col px-0"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" /></div>
+                                            </div>
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo. Refrescante preparación a base d melón y mora con hierbabuena y cardamomoRefrescante preparación a base d melón y mora con hierbabuena
+                                                        y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters prices pb-3">
+                                                <div class="col text-center">
+                                                    <h5><strong>Q25</strong></h5>
+                                                    <p>14 Ozn.</p>
+                                                </div>
+                                                <div class="col text-center">
+                                                    <h5><strong>Q25</strong></h5>
+                                                    <p>14 Ozn.</p>
+                                                </div>
+                                                <div class="col text-center">
+                                                    <h5><strong>Q50</strong></h5>
+                                                    <p>16 Ozn.</p>
+                                                </div>
+                                                <div class="col text-center">
+                                                    <h5><strong>Q50</strong></h5>
+                                                    <p>16 Ozn.</p>
+                                                </div>
+                                                <div class="col text-center">
+                                                    <h5><strong>Q50</strong></h5>
+                                                    <p>24 Ozn.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-2" href="#platillos-select-1 .item-2">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-5">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-5" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-5" role="button"
+                                                                data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-3" href="#platillos-select-1 .item-3">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-3">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-22">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-22" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-22"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-4" href="#platillos-select-1 .item-4">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-4">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-21">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-21" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-21"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-5" href="#platillos-select-1 .item-5">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-5">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-20">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-20" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-20"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-6" href="#platillos-select-1 .item-6">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-6">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-19">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-19" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-19"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card" id="id-platillo-5">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0" href="#id-platillo-5">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-7" href="#platillos-select-1 .item-7" menu="id-platillo-5">
+                                                <p>Sobredosis C<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-7">
+                                        <div class="card-body">
+                                            <div class="row no-gutters img-platillo">
+                                                <div class="col px-0"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" /></div>
+                                            </div>
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Antigripal hecho a base de maracuyá, manzana, uvas, jugo de naranja y miel orgánica. Abundante en vitamina C.</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters prices pb-3">
+                                                <div class="col text-center">
+                                                    <h5><strong>Q25</strong></h5>
+                                                    <p>14 Ozn.</p>
+                                                </div>
+                                                <div class="col text-center">
+                                                    <h5><strong>Q25</strong></h5>
+                                                    <p>14 Ozn.</p>
+                                                </div>
+                                                <div class="col text-center">
+                                                    <h5><strong>Q50</strong></h5>
+                                                    <p>16 Ozn.</p>
+                                                </div>
+                                                <div class="col text-center">
+                                                    <h5><strong>Q50</strong></h5>
+                                                    <p>16 Ozn.</p>
+                                                </div>
+                                                <div class="col text-center">
+                                                    <h5><strong>Q50</strong></h5>
+                                                    <p>24 Ozn.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-8" href="#platillos-select-1 .item-8">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-8">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-18">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-18" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-18"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-9" href="#platillos-select-1 .item-9">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-9">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-17">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-17" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-17"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-10" href="#platillos-select-1 .item-10">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-10">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-16">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-16" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-16"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-11" href="#platillos-select-1 .item-11">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-11">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-31">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-31" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-31"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-12" href="#platillos-select-1 .item-12">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-12">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-30">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-30" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-30"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-13" href="#platillos-select-1 .item-13">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-13">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-29">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-29" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-29"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-14" href="#platillos-select-1 .item-14">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-14">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-28">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-28" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-28"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-15" href="#platillos-select-1 .item-15">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-15">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-27">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-27" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-27"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-16" href="#platillos-select-1 .item-16">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-16">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-26">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-26" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-26"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-17" href="#platillos-select-1 .item-17">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-17">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-25">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-25" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-25"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-18" href="#platillos-select-1 .item-18">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-18">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-24">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-24" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-24"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-19" href="#platillos-select-1 .item-19">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-19">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-23">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-23" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-23"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-20" href="#platillos-select-1 .item-20">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-20">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-15">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-15" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-15"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div role="tab" class="card-header">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-21" href="#platillos-select-1 .item-21">
+                                                <p>Hierba muy Buena<span class="price"> Q 29</span></p>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-21">
+                                        <div class="card-body">
+                                            <div class="row no-gutters descripcion-platillo p-4">
+                                                <div class="col-12">
+                                                    <p>Refrescante preparación a base d melón y mora con hierbabuena y cardamomo</p>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters images-platillo d-none">
+                                                <div class="col-12 px-0">
+                                                    <div data-ride="carousel" class="carousel slide carousel-images" id="carousel-id-14">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                            <div class="carousel-item"><img class="img-fluid w-100 d-block" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" alt="Slide Image" />
+                                                                <div class="overlay-platillo"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div><a href="#carousel-id-14" role="button" data-slide="prev" class="carousel-control-prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a href="#carousel-id-14"
+                                                                role="button" data-slide="next" class="carousel-control-next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row justify-content-center pt-4">
-                    <div class="col-6 text-center"><button class="btn btn-secondary btn-block" type="button">Elegir Plan</button></div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 </div>
 
-<% include ../layouts/dashboard/footer-open.ejs %>
+<% include ../layouts/m/footer-open.ejs %>
 
 <!-- Espacios para agregar Scripts, Modals,... -->
 
-<% include ../layouts/dashboard/footer-close.ejs %>
+<% include ../layouts/m/footer-close.ejs %>
