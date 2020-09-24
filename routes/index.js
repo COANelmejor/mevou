@@ -10,4 +10,5 @@ module.exports = function (app) {
     app.use('/menus', require('./menus'));
     app.use('/editar-menu', require('./editar-menu'));
     app.use('/categorias-add-platillos', require('./categorias-add-platillos'));
+    app.use('/m', require('./m'));
 }
