@@ -166,7 +166,7 @@
     <section id="platillos" class="content-platillo">
         <div class="container-fluid">
             <div class="row align-items-start restaurant-content">
-                
+
 
                 <div class="col-12 col-md-6 restaurant-logo-description">
                     <div class="row logo-restaurante mx-1">
@@ -180,6 +180,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-md-6">
                     <div class="row img-principal">
                         <div class="col-12 px-0">
@@ -188,72 +189,8 @@
                     </div>
                     <div class="row">
                         <div class="col-12 px-0"><div>
-                            <div class="tab-content">
-
-                                <div role="tabpanel" class="tab-pane active" id="tab-2">
-                                    <div class="row no-gutters cat-name">
-                                        <div class="col">
-
-                                            <img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" />
-                                            <div class="overlay-cat">
-                                                <h3>Desayunos</h3>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="row no-gutters">
-                                        <div class="col px-0">
-                                            <div role="tablist" id="platillos-select-1" class="platillos-menu">
-                                                
-                                                <div class="card" id="id-platillo-5">
-                                                    <div role="tab" class="card-header">
-                                                        <h5 class="mb-0" href="#id-platillo-5">
-                                                            <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-7" href="#platillos-select-1 .item-7" menu="id-platillo-5">
-                                                                <p>Sobredosis C<span class="price"> Q 29</span></p>
-                                                            </a>
-                                                        </h5>
-                                                    </div>
-                                                    <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-7">
-                                                        <div class="card-body">
-                                                            <div class="row no-gutters img-platillo">
-                                                                <div class="col px-0"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" /></div>
-                                                            </div>
-                                                            <div class="row no-gutters descripcion-platillo p-4">
-                                                                <div class="col-12">
-                                                                    <p>Antigripal hecho a base de maracuyá, manzana, uvas, jugo de naranja y miel orgánica. Abundante en vitamina C.</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row no-gutters prices pb-3">
-                                                                <div class="col text-center">
-                                                                    <h5><strong>Q25</strong></h5>
-                                                                    <p>14 Ozn.</p>
-                                                                </div>
-                                                                <div class="col text-center">
-                                                                    <h5><strong>Q25</strong></h5>
-                                                                    <p>14 Ozn.</p>
-                                                                </div>
-                                                                <div class="col text-center">
-                                                                    <h5><strong>Q50</strong></h5>
-                                                                    <p>16 Ozn.</p>
-                                                                </div>
-                                                                <div class="col text-center">
-                                                                    <h5><strong>Q50</strong></h5>
-                                                                    <p>16 Ozn.</p>
-                                                                </div>
-                                                                <div class="col text-center">
-                                                                    <h5><strong>Q50</strong></h5>
-                                                                    <p>24 Ozn.</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                            <div id="categorias" class="tab-content">
+                                <!-- Aqui van las categorías -->
                             </div>
                         </div>
                     </div>
@@ -308,7 +245,80 @@
         $('#menu-platillos .platillos-menu .card-body').css('background-color', menu.color_plato_desc_fondo != null ? menu.color_plato_desc_fondo : '#fff')
         $('#menu-platillos .platillos-menu .card-body .descripcion-platillo p, #menu-platillos .platillos-menu .card-body .prices h5, #menu-platillos .platillos-menu .card-body .prices p').css('color', menu.color_plato_desc_letra != null ? menu.color_plato_desc_letra : '#000')
 
+        // Info
+        // --> Categorías
+        menu.Categorias.id = menu.Categorias._id
+        $("#categorias").append(ejs.render(mevou_content, menu))
+        var mevou_cats = menu.Categorias
+        var mevou_content = `<div role="tabpanel" class="tab-pane active" id="<%%= id %>">
+                            <div class="row no-gutters cat-name">
+                                <div class="col">
+
+                                    <img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" />
+                                    <div class="overlay-cat">
+                                        <h3>Desayunos</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col px-0">
+                                    <div role="tablist" id="platillos-select-1" class="platillos-menu">
+                                        
+                                        <div class="card" id="id-platillo-5">
+                                            <div role="tab" class="card-header">
+                                                <h5 class="mb-0" href="#id-platillo-5">
+                                                    <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-7" href="#platillos-select-1 .item-7" menu="id-platillo-5">
+                                                        <p>Sobredosis C<span class="price"> Q 29</span></p>
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-7">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters img-platillo">
+                                                        <div class="col px-0"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" /></div>
+                                                    </div>
+                                                    <div class="row no-gutters descripcion-platillo p-4">
+                                                        <div class="col-12">
+                                                            <p>Antigripal hecho a base de maracuyá, manzana, uvas, jugo de naranja y miel orgánica. Abundante en vitamina C.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row no-gutters prices pb-3">
+                                                        <div class="col text-center">
+                                                            <h5><strong>Q25</strong></h5>
+                                                            <p>14 Ozn.</p>
+                                                        </div>
+                                                        <div class="col text-center">
+                                                            <h5><strong>Q25</strong></h5>
+                                                            <p>14 Ozn.</p>
+                                                        </div>
+                                                        <div class="col text-center">
+                                                            <h5><strong>Q50</strong></h5>
+                                                            <p>16 Ozn.</p>
+                                                        </div>
+                                                        <div class="col text-center">
+                                                            <h5><strong>Q50</strong></h5>
+                                                            <p>16 Ozn.</p>
+                                                        </div>
+                                                        <div class="col text-center">
+                                                            <h5><strong>Q50</strong></h5>
+                                                            <p>24 Ozn.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`
+
+        $('#categorias').html(mevou_content)
+        
+        console.log(mevou_cats)
     }
+
 </script>
 
 <% include ../layouts/m/footer-close.ejs %>
