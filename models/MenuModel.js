@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 const UserModel = require('./UserModel')
 const validateShortName = require('../lib/validateShortName')
 
+function toLower(v) {
+  return v.toLowerCase().split(' ').join('');
+}
+
 const MenuSchema = new Schema({
   propietario: {
     type: Schema.Types.ObjectId,
@@ -85,7 +89,8 @@ const MenuSchema = new Schema({
         return validateShortName(v)
       },
       message: 'El valor shortname debe incluir solo números, letras minúsculas o punto.'
-    }
+    },
+    set: toLower
   },
   /** Color de Fondo del menú */
   color_menu_fondo: {

@@ -49,11 +49,33 @@
 <% include ../layouts/dashboard/footer-open.ejs %>
 
 <script>
+    const user = <%- JSON.stringify(user) %>;
     const idCategoria = new URLSearchParams(window.location.search).get('categoria');
     var CategoriaAjax = Object({})
     var PlatillosAjax = Array([])
+    var ImagenPlatillos = Object({})
+    var NombresPlatillos = Object({})
+    var PreciosPlatillos = Object({})
     function GuardarPlatillo(id) {
         $(`#guardar_platillo_${id}`).click(function (e) {
+            const platilloId = $(this).attr('data-id-platillo')
+            console.log(platilloId)
+        })
+    }
+    function EditarNombre(id) {
+        $(`#platillo_imagen_${id}`).bind('change', function (e) {
+            const platilloId = $(this).attr('data-id-platillo')
+            console.log(platilloId)
+        })
+    }
+    function EditarImagen(id) {
+        $(`#platillo_imagen_${id}`).bind('change', function (e) {
+            const platilloId = $(this).attr('data-id-platillo')
+            console.log(platilloId)
+        })
+    }
+    function EditarPrecios(id) {
+        $(`#platillo_imagen_${id}`).bind('change', function (e) {
             const platilloId = $(this).attr('data-id-platillo')
             console.log(platilloId)
         })
@@ -123,12 +145,16 @@
             PlatillosAjax = platillos
             for (let p = 0; p < PlatillosAjax.length; p++) {
                 let platillo = PlatillosAjax[p];
+                ImagenPlatillos[String(platillo._id)] = platillo.imagen
+                NombresPlatillos[String(platillo._id)] = platillo.nombre
+                PreciosPlatillos[String(platillo._id)] = platillo.precios
                 if (platillo.imagen == null) {
                     platillo.imagen = 'https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png'
                 }
                 platillo.id = platillo._id
                 $("#accordion_platillos").append(ejs.render(PlatilloCard, platillo))
                 GuardarPlatillo(platillo.id)
+                EditarImagen(platillo.id)
             }
             toastr.options = {
                 "closeButton": true,
@@ -351,8 +377,11 @@
             data: JSON.stringify(PlatilloToAjax),
             success: function(platillo) {
                 console.log(platillo)
+                ImagenPlatillos[String(platillo._id)] = platillo.imagen
+                NombresPlatillos[String(platillo._id)] = platillo.nombre
+                PreciosPlatillos[String(platillo._id)] = platillo.precios
                 if (platillo.imagen == null) {
-                    platillo.image = 'https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png'
+                    platillo.imagen = 'https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png'
                 }
                 platillo.id = platillo._id
                 $("#accordion_platillos").append(ejs.render(PlatilloCard, platillo))
@@ -425,13 +454,13 @@ var PlatilloCard = `
                         <div class="col-12 col-md-5">
                             <div class="form-group">
                                 <label>Nombre del platillo</label>
-                                <input class="form-control" value="<%%= nombre %>" type="text">
+                                <input class="form-control" value="<%%= nombre %>" type="text" id="nombre_<%%= id %>">
                             </div>
                             <div class="form-group">
                                 <label>Imagen platillo</label>
-                                <input type="file" class="w-100" id="platillo_imagen_<%%= id %>">
+                                <input type="file" class="w-100" id="platillo_imagen_<%%= id %>" data-id-platillo="<%%= id %>">
                             </div>
-                            <img src="<%%= imagen %>" class="w-100" alt="">
+                            <img src="<%%= imagen %>" id="platillo_imagen_img_<%%= id %>"class="w-100" alt="">
                         </div>
                         <div class="col-12 col-md-7">
                             <div class="form-row">
