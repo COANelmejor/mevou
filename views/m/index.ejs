@@ -6,7 +6,9 @@
 
 <div class="col-12 col-md-6 restaurant-logo-description">
     <div class="row logo-restaurante mx-1">
-        <div class="col text-center"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/logo_saul_restaurante.png"></div>
+        <div class="col text-center">
+            <img id="mevou-logo" class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/logo_saul_restaurante.png">
+        </div>
     </div>
     <div class="row align-items-center descripcion-restaurante">
         <div class="col-12">
@@ -1126,5 +1128,21 @@
 <% include ../layouts/m/footer-open.ejs %>
 
 <!-- Espacios para agregar Scripts, Modals,... -->
+<script>
+    var mevou_url = `/api/v1/m/<%-shortname%>`
+    var mevou_data = Object({})
+
+    $.ajax({
+        method:'GET',
+        url:mevou_url,
+        success:function(res){
+            mevou_data = res
+        },
+        error:function(a,b,c){
+            console.log(a,b,c)
+            alert('No se ha encontrado la información de este menú.')
+        },
+    })
+</script>
 
 <% include ../layouts/m/footer-close.ejs %>

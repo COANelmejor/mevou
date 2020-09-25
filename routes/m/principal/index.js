@@ -1,4 +1,6 @@
 module.exports = function (req, res) {
     res.render('m', {
-        title: 'Μενού',});
+        title: 'Μενού',
+        shortname: req.params.shortname,
+    });
 }

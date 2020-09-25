@@ -4,6 +4,6 @@ const home = require('./principal');
 const isLogged = require('../../mw/isLogged');
 
 /* GET home page. */
-router.get('/', home);
+router.get('/:shortname', home);
 
 module.exports = router;
