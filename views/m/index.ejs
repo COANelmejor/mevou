@@ -2,23 +2,165 @@
 
 <!-- Espacios para Agregar CSS's y Scripts -->
 
+<style>
+    /* Menu */
+
+    body * {
+        font-family: 'Quicksand';
+    }
+
+    body,
+    #menu-platillos {
+        background-color: #ffffff;
+    }
+
+    #menu-platillos #platillos .descripcion-restaurante {
+        padding: 5%;
+        text-align: center;
+        font-family: 'Montserrat';
+        font-size: 0.85em;
+        color: #000;
+    }
+
+    #menu-platillos #platillos .descripcion-restaurante {
+        color: #000;
+    }
+
+    #menu-cats {
+        background-color: #fff;
+        transition: all 0.5s;
+    }
+
+    #menu-cats.follow {
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        transition: all 0.5s;
+    }
+
+    #menu-cats .nav-item .nav-link {
+        color: #000;
+        background-color: #fcfcfc;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        transition: all 0.35s;
+    }
+
+    #menu-cats .nav-item .nav-link.active,
+    #menu-cats .nav-item .nav-link:hover,
+    #menu-cats .nav-item .nav-link:focus,
+    #menu-cats .nav-item .nav-link:active {
+        color: #ffffff;
+        background-color: #000000;
+        border: 1px solid #000000;
+        border-radius: 0;
+        transition: all 0.35s;
+    }
+
+    @media (min-width: 1200px) {
+        .restaurant-content {
+            display: flex;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .restaurant-logo-description {
+            position: sticky;
+            top: 10rem;
+            z-index: 1;
+            height: 50vh;
+        }
+    }
+
+    /* #menu-platillos */
+
+    #menu-platillos #platillos .logo-restaurante {
+        padding: 5%;
+        border-bottom: 2px solid #cbcbcb;
+    }
+
+    #mevou-logo {
+        width: 100%;
+        height: 80px;
+        max-height: 250px;
+        object-fit: contain;
+    }
+
+    #menu-platillos .platillos-menu .card {
+        border-radius: 0;
+    }
+
+    #menu-platillos .platillos-menu .card-header {
+        padding: 0;
+        border-radius: 0;
+        background-color: #000000;
+    }
+
+    #menu-platillos .platillos-menu .card-header h5>a {
+        padding: 0.75rem 1.25rem !important;
+        display: block;
+        text-decoration: none;
+        text-align: justify;
+        overflow-wrap: break-word;
+    }
+
+    #menu-platillos .platillos-menu .card-header h5>a>p {
+        text-align: left !important;
+        color: #eeeeee;
+        text-align: left;
+        overflow-wrap: break-word;
+        margin-bottom: 0;
+        font-size: 0.95em;
+    }
+
+    #menu-platillos .platillos-menu .card-header h5>a>p>span {
+        color: #eeeeee;
+        text-align: right;
+        float: right;
+        line-height: 1.5;
+    }
+
+    #menu-platillos .platillos-menu .card-body {
+        padding: 0;
+        background-color: #ffffff;
+    }
+
+    #menu-platillos .platillos-menu .card-body .carousel-images .carousel-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    #menu-platillos .platillos-menu .card-body .descripcion-platillo p {
+        font-size: 0.9em;
+        line-height: 1.35;
+        margin: 0;
+    }
+
+    #menu-platillos .platillos-menu .card-body .descripcion-platillo * {
+        color: #000;
+    }
+</style>
+
 <% include ../layouts/m/header-close.ejs %>
 
 <div class="col-12 col-md-6 restaurant-logo-description">
     <div class="row logo-restaurante mx-1">
         <div class="col text-center">
-            <img id="mevou-logo" class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/logo_saul_restaurante.png">
+            <img id="mevou-logo" class="img-fluid" src="">
         </div>
     </div>
     <div class="row align-items-center descripcion-restaurante">
         <div class="col-12">
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, per nibh venenatis magnis ligula non, vel pulvinar pellent.</p>
+            <p id="mevou-description"></p>
         </div>
     </div>
 </div>
 <div class="col-12 col-md-6">
     <div class="row img-principal">
-        <div class="col-12 px-0"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/table-in-vintage-restaurant-6267.jpg"></div>
+        <div class="col-12 px-0">
+            <img id="mevou-img-principal" class="img-fluid" src="">
+        </div>
     </div>
     <div class="row">
         <div class="col-12 px-0"><div>
@@ -1131,18 +1273,44 @@
 <script>
     var mevou_url = `/api/v1/m/<%-shortname%>`
     var mevou_data = Object({})
+    const logo_default = 'https://mevouappcdn.s3.amazonaws.com/assetsHome/img/Logo_Completo_Negro.svg'
 
     $.ajax({
         method:'GET',
         url:mevou_url,
         success:function(res){
             mevou_data = res
+            
+            setMenu(res)
+
         },
         error:function(a,b,c){
             console.log(a,b,c)
             alert('No se ha encontrado la información de este menú.')
         },
     })
+    function setMenu(menu){
+        // Styles Colors
+        // --> All Menú
+        $('#mevou-logo').attr('src', menu.logo != null ? menu.logo.location : logo_default)
+        $('#mevou-description').html(menu.descripcion)
+        $('#mevou-img-principal').attr('src', menu.imagen != null ? menu.imagen.location : logo_default)
+        
+        $('#menu-platillos').css('background-color', menu.color_menu_fondo != null ? menu.color_menu_fondo : '#fff')
+        $('#menu-platillos #platillos .logo-restaurante').css('border-color', menu.color_menu_letra != null ? menu.color_menu_letra : '#cbcbcb')
+        $('#menu-platillos .descripcion-restaurante').css('color', menu.color_menu_letra != null ? menu.color_menu_letra : '#000')
+        
+        // --> Tabs
+        // --> --> Header
+        $('#menu-platillos .platillos-menu .card-header').css('background-color', menu.color_plato_nombre_fondo != null ? menu.color_plato_nombre_fondo : '#000')
+        $('#menu-platillos .platillos-menu .card-header p').css('color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
+        $('#menu-platillos .platillos-menu .card-header p span').css('color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
+        
+        // --> --> Body
+        $('#menu-platillos .platillos-menu .card-body').css('background-color', menu.color_plato_desc_fondo != null ? menu.color_plato_desc_fondo : '#fff')
+        $('#menu-platillos .platillos-menu .card-body .descripcion-platillo p, #menu-platillos .platillos-menu .card-body .prices h5, #menu-platillos .platillos-menu .card-body .prices p').css('color', menu.color_plato_desc_letra != null ? menu.color_plato_desc_letra : '#000')
+
+    }
 </script>
 
 <% include ../layouts/m/footer-close.ejs %>
