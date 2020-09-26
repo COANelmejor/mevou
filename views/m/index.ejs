@@ -89,6 +89,10 @@
     #menu-platillos .platillos-menu .card {
         border-radius: 0;
     }
+    #menu-platillos .platillos-menu .card.card.cat-creado {
+        border-radius: 5px;
+        border: none;
+    }
 
     #menu-platillos .platillos-menu .card-header {
         padding: 0;
@@ -140,7 +144,44 @@
     #menu-platillos .platillos-menu .card-body .descripcion-platillo * {
         color: #000;
     }
+
+    .btn.btn-add-cat:hover i, .btn.btn-add-cat:active i, .btn.btn-add-cat:focus i {
+        font-size: 1em;
+        transition: all 0.35s;
+    }
+    
+    .card.cat-creado:hover, .card.cat-creado:active, .card.cat-creado:focus {
+        cursor: pointer;
+        transform: scale(0.9);
+        transition: all 0.35s;
+    }
+
+    .card.cat-creado {
+        width: 100%;
+        height: 120px;
+        transition: all 0.35s;
+    }
+
+    .card.cat-creado > img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        object-position: bottom;
+    }
+
+    .card.cat-creado .card-img-overlay h4 {
+        color: #fff;
+    }
+
+    .card.cat-creado .card-img-overlay {
+        background-color: rgba(0,0,0,0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/ejs@3/ejs.min.js"></script>
 
 <% include ../layouts/m/header-close.ejs %>
 
@@ -153,10 +194,12 @@
                     <i class="fas fa-bars"></i>Categorías
                 </span>
             </button>
-            <div class="collapse navbar-collapse"
-                id="nav-menu">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="#tab-2" role="tab" data-toggle="tab">Desayunos</a></li>
+            <div class="collapse navbar-collapse" id="nav-menu">
+                <ul id="mevou-list-categorias" class="nav navbar-nav mr-auto">
+                    <!-- Categorías -->
+                    <li class="nav-item">
+                        <a id="btn-cat-default" class="nav-link active" href="#tabpanel-mevou-default" role="tab" data-toggle="tab">Inicio</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -182,15 +225,35 @@
                 </div>
 
                 <div class="col-12 col-md-6">
-                    <div class="row img-principal">
+                    <!-- <div class="row img-principal">
                         <div class="col-12 px-0">
                             <img id="mevou-img-principal" class="img-fluid" src="">
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-12 px-0"><div>
-                            <div id="categorias" class="tab-content">
+                            <div id="mevou-categorias-content" class="tab-content">
+
                                 <!-- Aqui van las categorías -->
+                                <div role="tabpanel" class="tab-pane tab-pane-cats active" id="tabpanel-mevou-default">
+                                    <div class="row no-gutters cat-name">
+                                        <div id class="col">
+                                                <img id="mevou-img-principal" class="img-fluid" src="" />
+                                            <div class="overlay-cat">
+                                                <h3 id="mevou-nombre-menu"></h3>
+                                            </div>
+                                
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters">
+                                        <div class="col px-0">
+                                            <div role="tablist" id="mevou-default-platillos-cats" class="platillos-menu py-3">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -226,18 +289,165 @@
         },
     })
     function setMenu(menu){
-        // Styles Colors
+        const categorias = menu.Categorias
+        const platillos = menu.Platillos
+        const li_categorias = `<li class="nav-item"><a id="btn-<%%=_id%>" class="nav-link" href="#tabpanel-<%%=_id%>" role="tab" data-toggle="tab"><%%= nombre %></a></li>`
+        // Mostrar categorias en default_inicio
+        const cats_show =`
+<div id="btn-<%%=_id%>" class="row justify-content-center no-gutters pb-2" data-aos="zoom-in" data-aos-delay="300">
+    <div class="col-12">
+        <div class="card cat-creado" id="btn-cat-default-<%%= _id%>" href="#tabpanel-<%%=_id%>" role="tab" data-toggle="tab">
+            <%% if(imagen != null){ %>
+                <img class="card-img w-100 d-block" src="<%%= imagen.location%>" />
+            <%% } %>
+            <div class="card-img-overlay">
+                <h4><%%= nombre %></h4>
+            </div>
+        </div>
+    </div>
+</div>`
+
+        // Contenido de los platillos
+        const mevou_content = `
+<div role="tabpanel" class="tab-pane tab-pane-cats" id="tabpanel-<%%= _id %>">
+    <div class="row no-gutters cat-name" style="height:300px;">
+        <div class="col">
+            <%% if(imagen != null){ %>
+                <img class="img-fluid" src="<%%= imagen.location%>" />
+            <%% } %>
+            <div class="overlay-cat">
+                <h3><%%= nombre %></h3>
+            </div>
+
+        </div>
+    </div>
+    <div class="row no-gutters">
+        <div class="col px-0">
+            <div role="tablist" id="panel-platillo-<%%= _id %>" class="platillos-menu">
+                
+            </div>
+        </div>
+    </div>
+</div>`
+
+        // Platillos Información
+        const mevou_platillo = `
+<div class="card" id="mevou-platillo-<%%= _id %>">
+    <div role="tab" class="card-header">
+        <h5 class="mb-0" href="#mevou-platillo-<%%= _id %>">
+            <a data-toggle="collapse" aria-expanded="false" aria-controls="panel-platillo-<%%= Categoria %> .item-<%%= _id%>" href="#panel-platillo-<%%= Categoria %> .item-<%%= _id%>" menu="mevou-platillo-<%%= _id %>">
+                <%% var precio_mostrar = '' 
+                    for (let price = 0; price < precios.length; price++) {
+                        const precio = precios[price];
+                        if(precio != null){
+                            if(precio.mostrar){
+                                precio_mostrar = precio.valor
+                            }
+                        }
+                    }
+                %>
+                <p><%%= nombre %><span class="price"> Q <%%= precio_mostrar %></span></p>
+            </a>
+        </h5>
+    </div>
+    <div role="tabpanel" data-parent="#panel-platillo-<%%= Categoria %>" class="collapse item-<%%= _id%>">
+        <div class="card-body">
+            
+            <%% if(imagen != null){ %>
+                <div class="row no-gutters img-platillo">
+                    <div class="col px-0">
+                        <img class="img-fluid" src="<%%= imagen%>" />
+                    </div>
+                </div>
+            <%% } %>
+            <div class="row no-gutters descripcion-platillo p-4">
+                <div class="col-12">
+                    <p><%%= descripcion %></p>
+                </div>
+            </div>
+            <div class="row no-gutters prices pb-3">
+                <%% for (let price = 0; price < precios.length; price++) {%>
+                    <%%const precio = precios[price];%>
+                    <%%if(precio != null){ %>
+                        <div class="col text-center">
+                            <h5><strong>Q <%%= precio.valor %></strong></h5>
+                            <p><%%=  precio.nombre %></p>
+                        </div>
+                    <%% }%>
+                <%% }%>
+
+            </div>
+        </div>
+    </div>
+</div>`
+
+        // Info Menú
         // --> All Menú
         $('#mevou-logo').attr('src', menu.logo != null ? menu.logo.location : logo_default)
+        $('#mevou-nombre-menu').html(menu.nombre)
         $('#mevou-description').html(menu.descripcion)
         $('#mevou-img-principal').attr('src', menu.imagen != null ? menu.imagen.location : logo_default)
         
-        $('#menu-platillos').css('background-color', menu.color_menu_fondo != null ? menu.color_menu_fondo : '#fff')
+        // Info
+        // --> Categorías
+        for (let cats = 0; cats < categorias.length; cats++) {
+            const categoria = categorias[cats];
+            $("#mevou-list-categorias").append(ejs.render(li_categorias, categoria))
+            $("#mevou-categorias-content").append(ejs.render(mevou_content, categoria))
+            $("#mevou-default-platillos-cats").append(ejs.render(cats_show, categoria))
+            // if (cats == 0) {
+            //     $(`#tabpanel-${categoria._id}`).addClass('active')
+            //     $(`#btn-${categoria._id}`).addClass('active')
+            // }
+            $(`#btn-${categoria._id}`).click(function(){
+                $(".tab-pane-cats").removeClass('active')
+                $(`#tabpanel-${categoria._id}`).addClass('active')
+                $("#nav-menu").removeClass('show')
+            })
+            $(`#btn-cat-default-${categoria._id}`).click(function(){
+                $(".tab-pane-cats").removeClass('active')
+                $(`#tabpanel-${categoria._id}`).addClass('active')
+                $("#nav-menu").removeClass('show')
+            })
+        }
+        // --> Categorías --> Platillos
+        for (let plate = 0; plate < platillos.length; plate++) {
+            const platillo = platillos[plate];
+            $(`#panel-platillo-${platillo.Categoria}`).append(ejs.render(mevou_platillo, platillo))
+        }
+        // Add smooth scrolling to all links
+        $("a").on('click', function(event) {
+                $('.collapse').removeClass('show');
+                    // Make sure this.hash has a value before overriding default behavior
+                    if (this.hash !== "") {
+                        console.log(this.hash);
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = $(this).attr('menu')
+                        console.log(hash);
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                       scrollTop: $(`#${hash}`).offset().top
+                    }, 500, function(){
+                
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+        });
+
+        // Styles Colors
+        // --> All Menú        
+        $('body, #menu-platillos').css('background-color', menu.color_menu_fondo != null ? menu.color_menu_fondo : '#fff')
         $('#menu-platillos #platillos .logo-restaurante').css('border-color', menu.color_menu_letra != null ? menu.color_menu_letra : '#cbcbcb')
         $('#menu-platillos .descripcion-restaurante').css('color', menu.color_menu_letra != null ? menu.color_menu_letra : '#000')
         
         // --> Tabs
         // --> --> Header
+        
         $('#menu-platillos .platillos-menu .card-header').css('background-color', menu.color_plato_nombre_fondo != null ? menu.color_plato_nombre_fondo : '#000')
         $('#menu-platillos .platillos-menu .card-header p, #menu-platillos .platillos-menu .card-header p span').css('color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
         
@@ -245,79 +455,8 @@
         $('#menu-platillos .platillos-menu .card-body').css('background-color', menu.color_plato_desc_fondo != null ? menu.color_plato_desc_fondo : '#fff')
         $('#menu-platillos .platillos-menu .card-body .descripcion-platillo p, #menu-platillos .platillos-menu .card-body .prices h5, #menu-platillos .platillos-menu .card-body .prices p').css('color', menu.color_plato_desc_letra != null ? menu.color_plato_desc_letra : '#000')
 
-        // Info
-        // --> Categorías
-        menu.Categorias.id = menu.Categorias._id
-        $("#categorias").append(ejs.render(mevou_content, menu))
-        var mevou_cats = menu.Categorias
-        var mevou_content = `<div role="tabpanel" class="tab-pane active" id="<%%= id %>">
-                            <div class="row no-gutters cat-name">
-                                <div class="col">
-
-                                    <img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-yanuar-putut-widjanarko-2232433.jpg" />
-                                    <div class="overlay-cat">
-                                        <h3>Desayunos</h3>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="row no-gutters">
-                                <div class="col px-0">
-                                    <div role="tablist" id="platillos-select-1" class="platillos-menu">
-                                        
-                                        <div class="card" id="id-platillo-5">
-                                            <div role="tab" class="card-header">
-                                                <h5 class="mb-0" href="#id-platillo-5">
-                                                    <a data-toggle="collapse" aria-expanded="false" aria-controls="platillos-select-1 .item-7" href="#platillos-select-1 .item-7" menu="id-platillo-5">
-                                                        <p>Sobredosis C<span class="price"> Q 29</span></p>
-                                                    </a>
-                                                </h5>
-                                            </div>
-                                            <div role="tabpanel" data-parent="#platillos-select-1" class="collapse item-7">
-                                                <div class="card-body">
-                                                    <div class="row no-gutters img-platillo">
-                                                        <div class="col px-0"><img class="img-fluid" src="https://mevouappcdn.s3.amazonaws.com/assetsHome/img/pexels-lukas-1352270.jpg" /></div>
-                                                    </div>
-                                                    <div class="row no-gutters descripcion-platillo p-4">
-                                                        <div class="col-12">
-                                                            <p>Antigripal hecho a base de maracuyá, manzana, uvas, jugo de naranja y miel orgánica. Abundante en vitamina C.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row no-gutters prices pb-3">
-                                                        <div class="col text-center">
-                                                            <h5><strong>Q25</strong></h5>
-                                                            <p>14 Ozn.</p>
-                                                        </div>
-                                                        <div class="col text-center">
-                                                            <h5><strong>Q25</strong></h5>
-                                                            <p>14 Ozn.</p>
-                                                        </div>
-                                                        <div class="col text-center">
-                                                            <h5><strong>Q50</strong></h5>
-                                                            <p>16 Ozn.</p>
-                                                        </div>
-                                                        <div class="col text-center">
-                                                            <h5><strong>Q50</strong></h5>
-                                                            <p>16 Ozn.</p>
-                                                        </div>
-                                                        <div class="col text-center">
-                                                            <h5><strong>Q50</strong></h5>
-                                                            <p>24 Ozn.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`
-
-        $('#categorias').html(mevou_content)
-        
-        console.log(mevou_cats)
     }
+
 
 </script>
 
