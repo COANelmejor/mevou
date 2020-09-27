@@ -268,7 +268,7 @@
             })
         }
         $(`.precio_escogido_${id}`).bind('change', function(e) {
-            document.getElementsByName('precio_escogido_5f67c3049dcae430a062bbb7').forEach(function (e) {
+            document.getElementsByName(`precio_escogido_${id}`).forEach(function (e) {
                 if (PreciosPlatillos[id][e.value] == null) {
                     PreciosPlatillos[id][e.value] = {
                         nombre: '',
