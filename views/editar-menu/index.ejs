@@ -69,6 +69,12 @@
                         data-placement="right" data-bs-tooltip="c"
                         title="Total de Visualizaciones del Menú desde que este se creó."></i></label>
                 </div>
+                <div class="form-group mb-0">
+                    <div class="btn btn-danger" id="del_menu">Eliminar menú</div>
+                    <i class="fas fa-info-circle" data-toggle="tooltip"
+                        data-placement="right" data-bs-tooltip="c"
+                        title="Esta acción eliminará toda la información relacionada a este menú: Imagenes, Textos, Categorías y Platillos"></i>
+                </div>
 
             </div>
         </div>
@@ -362,6 +368,65 @@
                 "hideMethod": "fadeOut"
             }
             toastr["success"]('<b style="color:white">Menú Cargado con Éxito</b>')
+
+            // Eliminar Menú
+            $('#del_menu').click(function(e){
+                var confirm_del = confirm('Está seguro de eliminar este menú')
+                if (confirm_del) {
+                    $.ajax({
+                        method: 'DELETE',
+                        url: `/api/v1/menus/${idMenu}`,
+                        success: function (menu) {
+                            toastr.options = {
+                                "closeButton": true,
+                                "debug": false,
+                                "newestOnTop": true,
+                                "progressBar": false,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": false,
+                                "onclick": function () {
+                                    location.href = '/menus'   
+                                },
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "15000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                            toastr["success"](`Menú eliminado con éxito.`)
+                            setTimeout(function(){
+                                location.href =  location.href = '/menus'   
+                            },2000)
+                        },
+                        error: function (a, b, c) {
+                            console.log(a)
+                            var Errores = 'Hubo un error al eliminar el menú.<br> Vuelve a intentarlo'
+                            toastr.options = {
+                                "closeButton": true,
+                                "debug": false,
+                                "newestOnTop": true,
+                                "progressBar": false,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "10000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                            toastr["error"](Errores)
+                        }
+                    })
+                }
+            })
+            
         },
         error: function(a, b, c) {
             toastr.options = {

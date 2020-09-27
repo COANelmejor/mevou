@@ -9,6 +9,16 @@
 
 <div class="row">
     <div class="col-12 col-md-4">
+        <div class="row justify-content-end">
+            <div class="col-10 text-right">
+                <div class="form-group mb-0">
+                    <i class="fas fa-info-circle" data-toggle="tooltip"
+                        data-placement="right" data-bs-tooltip="c"
+                        title="Esta acción eliminará toda la información relacionada a esta categoría: Imagenes, Textos y Platillos"></i>
+                    <div class="btn btn-danger" id="del_categoria">Eliminar categoría</div>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <label>Nombre de categoría</label>
             <input id="categoria_nombre" class="form-control" type="text" placeholder="Mariscos">
@@ -58,7 +68,64 @@
     var NombresPlatillos = Object({})
     var DescripcionesPlatillos = Object({})
     var PreciosPlatillos = Object({})
-
+    function delPlatillo(id){
+        $(`#del_platillo_${id}`).click(function(e){
+            var confirm_del = confirm('Está seguro de eliminar este platillo')
+            if (confirm_del) {
+                $(`#card-platillo-${id}`).remove()
+                $.ajax({
+                    method: 'DELETE',
+                    url: `/api/v1/platillos/${id}`,
+                    success: function (platillo) {
+                        console.log(platillo)
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "newestOnTop": true,
+                            "progressBar": false,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": false,
+                            "onclick": function () {
+                                location.reload()
+                            },
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "15000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                        toastr["success"](`Platillo eliminado con éxito.`)
+                    },
+                    error: function (a, b, c) {
+                        console.log(a)
+                        var Errores = 'Hubo un error al eliminar el platillo.<br> Vuelve a intentarlo'
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "newestOnTop": true,
+                            "progressBar": false,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "10000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                        toastr["error"](Errores)
+                    }
+                })
+            }
+        })
+    }
+    
     function GuardarPlatillo(id) {
         $(`#guardar_platillo_${id}`).click(function (e) {
             const platilloId = $(this).attr('data-id-platillo')
@@ -312,7 +379,66 @@
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
             }
-            toastr["success"]("Categoria obtenida con éxito.")
+            toastr["success"]("Categoría obtenida con éxito.")
+            // Delete Categoría
+            $('#del_categoria').click(function(e){
+                var confirm_del = confirm('Está seguro de eliminar esta categoría')
+                if (confirm_del) {
+                    $.ajax({
+                        method: 'DELETE',
+                        url: `/api/v1/categorias/${idCategoria}`,
+                        success: function (platillo) {
+                            console.log(platillo)
+                            toastr.options = {
+                                "closeButton": true,
+                                "debug": false,
+                                "newestOnTop": true,
+                                "progressBar": false,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": false,
+                                "onclick": function () {
+                                    location.href = `/editar-menu?id=${CategoriaAjax.Menu._id}/`   
+                                },
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "15000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                            toastr["success"](`Categoría eliminada con éxito.`)
+                            setTimeout(function(){
+                                location.href = `/editar-menu?id=${CategoriaAjax.Menu._id}/`   
+                            },2000)
+                        },
+                        error: function (a, b, c) {
+                            console.log(a)
+                            var Errores = 'Hubo un error al eliminar la categoría.<br> Vuelve a intentarlo'
+                            toastr.options = {
+                                "closeButton": true,
+                                "debug": false,
+                                "newestOnTop": true,
+                                "progressBar": false,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "10000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                            toastr["error"](Errores)
+                        }
+                    })
+                }
+            })
+
         },
         error: function(a, b, c) {
             console.log(a)
@@ -363,6 +489,7 @@
                 EditarNombre(platillo._id)
                 EditarDescripcion(platillo._id)
                 EditarPrecios(platillo._id)
+                delPlatillo(platillo._id)
             }
             toastr.options = {
                 "closeButton": true,
@@ -593,6 +720,8 @@
                 EditarNombre(platillo._id)
                 EditarDescripcion(platillo._id)
                 EditarPrecios(platillo._id)
+                delPlatillo(platillo._id)
+
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -645,7 +774,7 @@
  * imagen https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png
 */
 var PlatilloCard = `
-<div class="card">
+<div class="card" id="card-platillo-<%%= id%>">
     <div class="card-header" id="heading<%%= id %>" role="tab">
         <h5 class="mb-0">
             <a class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse_<%%= id %>" aria-expanded="true" aria-controls="collapse_<%%= id %>">
@@ -659,6 +788,10 @@ var PlatilloCard = `
                 <div class="col-12 add-plate">
                     <div class="form-row">
                         <div class="col-12 col-md-5">
+                            <div class="form-group mb-0">
+                                <div class="btn btn-danger" id="del_platillo_<%%= id %>">Eliminar platillo</div>
+                                <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="right" data-bs-tooltip="c" title="Esta acción eliminará toda la información relacionada a este platillo: Imagenes y Textos"></i>
+                            </div>
                             <div class="form-group">
                                 <label>Nombre del platillo</label>
                                 <input class="form-control" value="<%%= nombre %>" type="text" id="nombre_<%%= id %>">

@@ -76,7 +76,7 @@
 
     #menu-platillos #platillos .logo-restaurante {
         padding: 5%;
-        border-bottom: 2px solid #cbcbcb;
+        border-bottom: 2px solid;
     }
 
     #mevou-logo {
@@ -198,7 +198,7 @@
                 <ul id="mevou-list-categorias" class="nav navbar-nav mr-auto">
                     <!-- Categorías -->
                     <li class="nav-item">
-                        <a id="btn-cat-default" class="nav-link active" href="#tabpanel-mevou-default" role="tab" data-toggle="tab">Inicio</a>
+                        <a id="btn-cat-default" class="nav-link" href="#tabpanel-mevou-default" role="tab" data-toggle="tab">Inicio</a>
                     </li>
                 </ul>
             </div>
@@ -281,13 +281,62 @@
             mevou_data = res
             
             setMenu(res)
-
+            
         },
         error:function(a,b,c){
             console.log(a,b,c)
             alert('No se ha encontrado la información de este menú.')
         },
     })
+    const mevou_platillo = `
+<div class="card" id="mevou-platillo-<%%= _id %>">
+    <div role="tab" class="card-header">
+        <h5 class="mb-0" href="#mevou-platillo-<%%= _id %>">
+            <a data-toggle="collapse" aria-expanded="false" aria-controls="panel-platillo-<%%= Categoria %> .item-<%%= _id%>" href="#panel-platillo-<%%= Categoria %> .item-<%%= _id%>" menu="mevou-platillo-<%%= _id %>">
+                <%% var precio_mostrar = '' 
+                    for (let price = 0; price < precios.length; price++) {
+                        const precio = precios[price];
+                        if(precio != null){
+                            if(precio.mostrar){
+                                precio_mostrar = precio.valor
+                            }
+                        }
+                    }
+                %>
+                <p><%%= nombre %><span class="price"> Q <%%= precio_mostrar %></span></p>
+            </a>
+        </h5>
+    </div>
+    <div role="tabpanel" data-parent="#panel-platillo-<%%= Categoria %>" class="collapse item-<%%= _id%>">
+        <div class="card-body">
+            
+            <%% if(imagen != null){ %>
+                <div class="row no-gutters img-platillo">
+                    <div class="col px-0">
+                        <img class="img-fluid" src="<%%= imagen.location%>" />
+                    </div>
+                </div>
+            <%% } %>
+            <div class="row no-gutters descripcion-platillo p-4">
+                <div class="col-12">
+                    <p><%%- descripcion %></p>
+                </div>
+            </div>
+            <div class="row no-gutters prices pb-3">
+                <%% for (let price = 0; price < precios.length; price++) {%>
+                    <%%const precio = precios[price];%>
+                    <%%if(precio != null){ %>
+                        <div class="col text-center">
+                            <h5><strong>Q <%%= precio.valor %></strong></h5>
+                            <p><%%=  precio.nombre %></p>
+                        </div>
+                    <%% }%>
+                <%% }%>
+        
+            </div>
+        </div>
+    </div>
+</div>`
     function setMenu(menu){
         const categorias = menu.Categorias
         const platillos = menu.Platillos
@@ -331,55 +380,6 @@
 </div>`
 
         // Platillos Información
-        const mevou_platillo = `
-<div class="card" id="mevou-platillo-<%%= _id %>">
-    <div role="tab" class="card-header">
-        <h5 class="mb-0" href="#mevou-platillo-<%%= _id %>">
-            <a data-toggle="collapse" aria-expanded="false" aria-controls="panel-platillo-<%%= Categoria %> .item-<%%= _id%>" href="#panel-platillo-<%%= Categoria %> .item-<%%= _id%>" menu="mevou-platillo-<%%= _id %>">
-                <%% var precio_mostrar = '' 
-                    for (let price = 0; price < precios.length; price++) {
-                        const precio = precios[price];
-                        if(precio != null){
-                            if(precio.mostrar){
-                                precio_mostrar = precio.valor
-                            }
-                        }
-                    }
-                %>
-                <p><%%= nombre %><span class="price"> Q <%%= precio_mostrar %></span></p>
-            </a>
-        </h5>
-    </div>
-    <div role="tabpanel" data-parent="#panel-platillo-<%%= Categoria %>" class="collapse item-<%%= _id%>">
-        <div class="card-body">
-            
-            <%% if(imagen != null){ %>
-                <div class="row no-gutters img-platillo">
-                    <div class="col px-0">
-                        <img class="img-fluid" src="<%%= imagen.location%>" />
-                    </div>
-                </div>
-            <%% } %>
-            <div class="row no-gutters descripcion-platillo p-4">
-                <div class="col-12">
-                    <p><%%= descripcion %></p>
-                </div>
-            </div>
-            <div class="row no-gutters prices pb-3">
-                <%% for (let price = 0; price < precios.length; price++) {%>
-                    <%%const precio = precios[price];%>
-                    <%%if(precio != null){ %>
-                        <div class="col text-center">
-                            <h5><strong>Q <%%= precio.valor %></strong></h5>
-                            <p><%%=  precio.nombre %></p>
-                        </div>
-                    <%% }%>
-                <%% }%>
-
-            </div>
-        </div>
-    </div>
-</div>`
 
         // Info Menú
         // --> All Menú
@@ -404,19 +404,29 @@
                 $(`#tabpanel-${categoria._id}`).addClass('active')
                 $("#nav-menu").removeClass('show')
             })
-            $(`#btn-cat-default-${categoria._id}`).click(function(){
+            $('#btn-cat-default').click(function(){
                 $(".tab-pane-cats").removeClass('active')
                 $(`#tabpanel-${categoria._id}`).addClass('active')
                 $("#nav-menu").removeClass('show')
             })
+            $(`#btn-cat-default-${categoria._id}`).click(function(){
+                $(".tab-pane-cats").removeClass('active')
+                $(`#tabpanel-${categoria._id}`).addClass('active')
+                $("#nav-menu").removeClass('show')
+                
+                $('.nav-link').removeClass('active')
+                $(`#btn-${categoria._id}`).addClass('active')
+                
+            })
         }
+        
         // --> Categorías --> Platillos
         for (let plate = 0; plate < platillos.length; plate++) {
             const platillo = platillos[plate];
             $(`#panel-platillo-${platillo.Categoria}`).append(ejs.render(mevou_platillo, platillo))
         }
         // Add smooth scrolling to all links
-        $("a").on('click', function(event) {
+        $(".card-header a").on('click', function(event) {
                 $('.collapse').removeClass('show');
                     // Make sure this.hash has a value before overriding default behavior
                     if (this.hash !== "") {
@@ -442,7 +452,7 @@
         // Styles Colors
         // --> All Menú        
         $('body, #menu-platillos').css('background-color', menu.color_menu_fondo != null ? menu.color_menu_fondo : '#fff')
-        $('#menu-platillos #platillos .logo-restaurante').css('border-color', menu.color_menu_letra != null ? menu.color_menu_letra : '#cbcbcb')
+        $('#menu-platillos #platillos .logo-restaurante').css('border-bottom-color', menu.color_menu_letra != null ? menu.color_menu_letra : '#cbcbcb')
         $('#menu-platillos .descripcion-restaurante').css('color', menu.color_menu_letra != null ? menu.color_menu_letra : '#000')
         
         // --> Tabs
@@ -451,7 +461,8 @@
         $('#menu-platillos .platillos-menu .card-header, #m-nav.navigation-clean-button, #m-nav #nav-menu').css('background-color', menu.color_plato_nombre_fondo != null ? menu.color_plato_nombre_fondo : '#000')
         $('#menu-platillos .platillos-menu .card-header p, #menu-platillos .platillos-menu .card-header p span, #m-nav.navbar-light .navbar-toggler-icon, #m-nav.navbar-light .navbar-toggler-icon i').css('color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
         $('#m-nav.navigation-clean-button.navbar-light .navbar-nav .nav-link, #m-nav.navigation-clean-button.navbar-light .navbar-nav a.active').css('color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
-        $('#m-nav.navigation-clean-button .navbar-toggler,  #m-nav.navigation-clean-button.navbar-light .navbar-nav a.active').css('border-color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
+        $('#m-nav.navigation-clean-button .navbar-toggler').css('border-color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
+        $('.nav-link.active').css('border-bottom-color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
         
         // --> --> Body
         $('#menu-platillos .platillos-menu .card-body').css('background-color', menu.color_plato_desc_fondo != null ? menu.color_plato_desc_fondo : '#fff')
