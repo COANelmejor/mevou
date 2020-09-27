@@ -191,7 +191,6 @@
                     contentType: false,  // tell jQuery not to set contentType
                     enctype: 'multipart/form-data',
                     success: function (data) {
-                        ImagenPlatillos[id] = data
                         toastr.options = {
                             "closeButton": true,
                             "debug": false,
@@ -209,7 +208,8 @@
                             "showMethod": "fadeIn",
                             "hideMethod": "fadeOut"
                         }
-                        $('#categoria_imagen_img').attr('src', data.location)
+                        $(`#platillo_imagen_img_${id}`).attr('src', data.location)
+                        ImagenPlatillos[id] = data
                         toastr["success"]("Imagen subida con éxito.<br>No olvides guardar los cambios.")
                     },
                     error: function (a, b, c){
@@ -353,7 +353,8 @@
                 DescripcionesPlatillos[String(platillo._id)] = platillo.descripcion
                 DescripcionesPlatillos
                 if (platillo.imagen == null) {
-                    platillo.imagen = 'https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png'
+                    platillo.imagen = {}
+                    platillo.imagen.location = 'https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png'
                 }
                 platillo.id = platillo._id
                 $("#accordion_platillos").append(ejs.render(PlatilloCard, platillo))
@@ -576,15 +577,22 @@
             data: JSON.stringify(PlatilloToAjax),
             success: function(platillo) {
                 console.log(platillo)
+
                 ImagenPlatillos[String(platillo._id)] = platillo.imagen
                 NombresPlatillos[String(platillo._id)] = platillo.nombre
                 PreciosPlatillos[String(platillo._id)] = platillo.precios
+                DescripcionesPlatillos[String(platillo._id)] = platillo.descripcion
+
                 if (platillo.imagen == null) {
                     platillo.imagen = 'https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png'
                 }
                 platillo.id = platillo._id
                 $("#accordion_platillos").append(ejs.render(PlatilloCard, platillo))
-                GuardarPlatillo(platillo.id)
+                GuardarPlatillo(platillo._id)
+                EditarImagen(platillo._id)
+                EditarNombre(platillo._id)
+                EditarDescripcion(platillo._id)
+                EditarPrecios(platillo._id)
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -659,7 +667,7 @@ var PlatilloCard = `
                                 <label>Imagen platillo</label>
                                 <input type="file" class="w-100" id="platillo_imagen_<%%= id %>" data-id-platillo="<%%= id %>">
                             </div>
-                            <img src="<%%= imagen %>" id="platillo_imagen_img_<%%= id %>"class="w-100" alt="">
+                            <img src="<%%= imagen.location %>" id="platillo_imagen_img_<%%= id %>"class="w-100" alt="">
                         </div>
                         <div class="col-12 col-md-7">
                             <div class="form-row">
