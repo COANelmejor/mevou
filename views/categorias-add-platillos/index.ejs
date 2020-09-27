@@ -51,33 +51,235 @@
 <script>
     const user = <%- JSON.stringify(user) %>;
     const idCategoria = new URLSearchParams(window.location.search).get('categoria');
+    
     var CategoriaAjax = Object({})
     var PlatillosAjax = Array([])
     var ImagenPlatillos = Object({})
     var NombresPlatillos = Object({})
+    var DescripcionesPlatillos = Object({})
     var PreciosPlatillos = Object({})
+
     function GuardarPlatillo(id) {
         $(`#guardar_platillo_${id}`).click(function (e) {
             const platilloId = $(this).attr('data-id-platillo')
             console.log(platilloId)
+            console.log(ImagenPlatillos[platilloId])
+            console.log(NombresPlatillos[platilloId])
+            console.log(PreciosPlatillos[platilloId])
+            console.log(DescripcionesPlatillos[platilloId])
+
+            const imagen = ImagenPlatillos[platilloId]
+            const nombre = NombresPlatillos[platilloId]
+            let precios = PreciosPlatillos[platilloId]
+            let descripcion = DescripcionesPlatillos[platilloId]
+
+            for (let iprecio = 0; iprecio < precios.length; iprecio++) {
+                if (precios[iprecio] != null) {
+                    if (precios[iprecio].nombre == "" && precios[iprecio].valor == "") {
+                        precios[iprecio] = null
+                    }
+                }
+            }
+            const PlatilloSend = {
+                nombre,
+                imagen,
+                precios,
+                descripcion
+            }
+            $.ajax({
+                method: 'PATCH',
+                url: `/api/v1/platillos/${platilloId}`,
+                contentType: 'application/json',
+                data: JSON.stringify(PlatilloSend),
+                success: function (platillo) {
+                    console.log(platillo)
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": function () {
+                            location.reload()
+                        },
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "15000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    toastr["success"](`Platillo actualizado con éxito.<br><b style="color:white;font-size:1.125em"">Haz click aquí para recargar y ver los cambios.</b>`)
+                },
+                error: function (a, b, c) {
+                    console.log(a)
+                    var Errores = 'Hubo un error al guardar los cambios.<br> Vuelve a intentarlo'
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "10000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    toastr["error"](Errores)
+                }
+            })
         })
     }
     function EditarNombre(id) {
-        $(`#platillo_imagen_${id}`).bind('change', function (e) {
-            const platilloId = $(this).attr('data-id-platillo')
-            console.log(platilloId)
+        $(`#nombre_${id}`).bind('change', function (e) {
+            const nombre = $(this).val()
+            console.log(nombre)
+            NombresPlatillos[id] = nombre 
         })
     }
+    function EditarDescripcion(id) {
+        $(`#descripcion_${id}`).bind('change', function (e) {
+            const Descripcion = $(this).val()
+            console.log(Descripcion)
+            DescripcionesPlatillos[id] = Descripcion
+        })
+    }
+    
     function EditarImagen(id) {
         $(`#platillo_imagen_${id}`).bind('change', function (e) {
-            const platilloId = $(this).attr('data-id-platillo')
-            console.log(platilloId)
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            toastr["info"]("Convirtiendo imagen de Platillo.")
+            const file = document.getElementById(`platillo_imagen_${id}`).files[0]
+            imageConversion.compressAccurately(file, {
+                height: "600",
+                size: "56"
+            }).then(res => {
+                toastr["info"]("Subiendo imagen de Patillo.")
+                var formData = new FormData();
+                formData.append('archivo', res);
+                const urlEnvio = `/api/v1/archivos?documento=platillo&parametro=imagen&id=${id}`
+                $.ajax({
+                    url: urlEnvio,
+                    type: 'POST',
+                    data: formData,
+                    processData: false,  // tell jQuery not to process the data
+                    contentType: false,  // tell jQuery not to set contentType
+                    enctype: 'multipart/form-data',
+                    success: function (data) {
+                        ImagenPlatillos[id] = data
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "newestOnTop": true,
+                            "progressBar": false,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                        $('#categoria_imagen_img').attr('src', data.location)
+                        toastr["success"]("Imagen subida con éxito.<br>No olvides guardar los cambios.")
+                    },
+                    error: function (a, b, c){
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "newestOnTop": true,
+                            "progressBar": false,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": false,
+                            "onclick": null,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                        toastr["error"]("Hubo un problema al subir la imagen.<br>Vuelve a intentarlo.")
+                        console.error(a, b, c)
+                    }
+                });
+            })
+
         })
     }
+    
     function EditarPrecios(id) {
-        $(`#platillo_imagen_${id}`).bind('change', function (e) {
-            const platilloId = $(this).attr('data-id-platillo')
-            console.log(platilloId)
+        for (let iPrecio = 0; iPrecio < 5; iPrecio++) {
+            $(`#precio_nombre_${(iPrecio + 1)}_${id}`).bind('change', function (e) {
+                if (PreciosPlatillos[id][iPrecio] == null) {
+                    PreciosPlatillos[id][iPrecio] = {
+                        nombre: '',
+                        valor: null,
+                        mostrar: false
+                    }
+                }
+                const precio_nombre = $(this).val()
+                console.log(`#precio_nombre_${(iPrecio + 1)}_${id}`,precio_nombre)
+                PreciosPlatillos[id][iPrecio].nombre = precio_nombre
+            })
+            $(`#precio_valor_${(iPrecio + 1)}_${id}`).bind('change', function (e) {
+                if (PreciosPlatillos[id][iPrecio] == null) {
+                    PreciosPlatillos[id][iPrecio] = {
+                        nombre: '',
+                        valor: null,
+                        mostrar: false
+                    }
+                }
+                const precio_valor = $(this).val()
+                console.log(`#precio_valor_${(iPrecio + 1)}_${id}`,precio_valor)
+                PreciosPlatillos[id][iPrecio].valor = Number(precio_valor)
+
+            })
+        }
+        $(`.precio_escogido_${id}`).bind('change', function(e) {
+            document.getElementsByName('precio_escogido_5f67c3049dcae430a062bbb7').forEach(function (e) {
+                if (PreciosPlatillos[id][e.value] == null) {
+                    PreciosPlatillos[id][e.value] = {
+                        nombre: '',
+                        valor: null,
+                        mostrar: false
+                    }
+                }
+                PreciosPlatillos[id][e.value].mostrar = e.checked
+                console.log(`.precio_escogido_${id}`, e.value, e.checked)
+            })
+            console.log(PreciosPlatillos[id])
         })
     }
 // 
@@ -148,13 +350,18 @@
                 ImagenPlatillos[String(platillo._id)] = platillo.imagen
                 NombresPlatillos[String(platillo._id)] = platillo.nombre
                 PreciosPlatillos[String(platillo._id)] = platillo.precios
+                DescripcionesPlatillos[String(platillo._id)] = platillo.descripcion
+                DescripcionesPlatillos
                 if (platillo.imagen == null) {
                     platillo.imagen = 'https://mevouappcdn.s3.amazonaws.com/assets/img/no-disponible.png'
                 }
                 platillo.id = platillo._id
                 $("#accordion_platillos").append(ejs.render(PlatilloCard, platillo))
-                GuardarPlatillo(platillo.id)
-                EditarImagen(platillo.id)
+                GuardarPlatillo(platillo._id)
+                EditarImagen(platillo._id)
+                EditarNombre(platillo._id)
+                EditarDescripcion(platillo._id)
+                EditarPrecios(platillo._id)
             }
             toastr.options = {
                 "closeButton": true,
@@ -359,15 +566,7 @@
                 nombre: 'Personal',
                 valor: 50.00,
                 mostrar: true
-            }, {
-                nombre: 'Mediano',
-                valor: 75.00,
-                mostrar: false
-            }, {
-                nombre: 'Grande',
-                valor: 100.00,
-                mostrar: false
-            }, null, null]
+            }, null, null, null, null]
         }
         console.log(PlatilloToAjax)
         $.ajax({
@@ -465,6 +664,12 @@ var PlatilloCard = `
                         <div class="col-12 col-md-7">
                             <div class="form-row">
                                 <div class="col-12">
+                                    <label>Descripción</label>
+                                    <textarea class="form-control" rows="5" id="descripcion_<%%= id %>"><%%- descripcion %></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-12">
                                     <label>Precio(s)</label>
                                     <small class="form-text text-muted pt-0 pb-3">
                                         * Selecciona el precio que aparecerá al lado del nombre del platillo
@@ -500,7 +705,7 @@ var PlatilloCard = `
                                         <label class="d-block">
                                             <i class="fas fa-check-circle"></i>
                                         </label>
-                                        <input type="radio" value="0" name="precio_escogido_<%%= id %>" <%%- precio1.mostrar == true ? 'checked' : '' %>>
+                                        <input type="radio" value="0" class="precio_escogido_<%%= id %>" name="precio_escogido_<%%= id %>" <%%- precio1.mostrar == true ? 'checked' : '' %>>
                                     </div>
                                 </div>
                             </div>
@@ -528,7 +733,7 @@ var PlatilloCard = `
                                 </div>
                                 <div class="col-2 text-center pb-2">
                                     <div class="form-group">
-                                        <input type="radio" value="1" name="precio_escogido_<%%= id %>" <%%- precio2.mostrar == true ? 'checked' : '' %>>
+                                        <input type="radio" value="1" class="precio_escogido_<%%= id %>" name="precio_escogido_<%%= id %>" <%%- precio2.mostrar == true ? 'checked' : '' %>>
                                     </div>
                                 </div>
                             </div>
@@ -557,7 +762,7 @@ var PlatilloCard = `
                                 <div
                                     class="col-2 text-center pb-2">
                                     <div class="form-group">
-                                        <input type="radio" value="2" name="precio_escogido_<%%= id %>" <%%- precio3.mostrar == true ? 'checked' : '' %>>
+                                        <input type="radio" value="2" class="precio_escogido_<%%= id %>" name="precio_escogido_<%%= id %>" <%%- precio3.mostrar == true ? 'checked' : '' %>>
                                     </div>
                                 </div>
                             </div>
@@ -585,7 +790,7 @@ var PlatilloCard = `
                                 </div>
                                 <div class="col-2 text-center pb-2">
                                     <div class="form-group">
-                                        <input type="radio" value="3" name="precio_escogido_<%%= id %>" <%%- precio4.mostrar == true ? 'checked' : '' %>>
+                                        <input type="radio" value="3" class="precio_escogido_<%%= id %>" name="precio_escogido_<%%= id %>" <%%- precio4.mostrar == true ? 'checked' : '' %>>
                                     </div>
                                 </div>
                             </div>
@@ -613,12 +818,13 @@ var PlatilloCard = `
                                 </div>
                                 <div class="col-2 text-center pb-2">
                                     <div class="form-group">
-                                        <input type="radio" value="4" name="precio_escogido_<%%= id %>" <%%- precio5.mostrar == true ? 'checked' : '' %>>
+                                        <input type="radio" value="4" class="precio_escogido_<%%= id %>" name="precio_escogido_<%%= id %>" <%%- precio5.mostrar == true ? 'checked' : '' %>>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="form-row justify-content-between">
                         <div class="col-12 text-center pb-2">
                             <button class="btn btn-secondary btn-block guardar_platillo" id="guardar_platillo_<%%= id %>" data-id-platillo="<%%= id %>" type="button">Guardar Cambios</button>
