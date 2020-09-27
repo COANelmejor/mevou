@@ -13,7 +13,7 @@
     #menu-platillos {
         background-color: #ffffff;
     }
-
+    
     #menu-platillos #platillos .descripcion-restaurante {
         padding: 5%;
         text-align: center;
@@ -448,8 +448,10 @@
         // --> Tabs
         // --> --> Header
         
-        $('#menu-platillos .platillos-menu .card-header').css('background-color', menu.color_plato_nombre_fondo != null ? menu.color_plato_nombre_fondo : '#000')
-        $('#menu-platillos .platillos-menu .card-header p, #menu-platillos .platillos-menu .card-header p span').css('color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
+        $('#menu-platillos .platillos-menu .card-header, #m-nav.navigation-clean-button, #m-nav #nav-menu').css('background-color', menu.color_plato_nombre_fondo != null ? menu.color_plato_nombre_fondo : '#000')
+        $('#menu-platillos .platillos-menu .card-header p, #menu-platillos .platillos-menu .card-header p span, #m-nav.navbar-light .navbar-toggler-icon, #m-nav.navbar-light .navbar-toggler-icon i').css('color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
+        $('#m-nav.navigation-clean-button.navbar-light .navbar-nav .nav-link, #m-nav.navigation-clean-button.navbar-light .navbar-nav a.active').css('color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
+        $('#m-nav.navigation-clean-button .navbar-toggler,  #m-nav.navigation-clean-button.navbar-light .navbar-nav a.active').css('border-color', menu.color_plato_nombre_letra != null ? menu.color_plato_nombre_letra : '#eee')
         
         // --> --> Body
         $('#menu-platillos .platillos-menu .card-body').css('background-color', menu.color_plato_desc_fondo != null ? menu.color_plato_desc_fondo : '#fff')
