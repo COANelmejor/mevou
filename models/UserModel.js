@@ -130,7 +130,26 @@ const UserSchema = new Schema({
   max_fecha: {
     type: Number,
     required: [true, 'Se debe probeer un UnixTimeStamp en max_fecha'],
-  }
+  },
+  // Datos relacionadops con la Tributación Fiscal
+  /** Nombre fiscal */
+  fiscal_nombre:{
+    type: String,
+    required: false,
+    default: ""
+  },
+  /** Numero de tributación fiscal */
+  fiscal_numero:{
+    type: String,
+    required: false,
+    default: ""
+  },
+  /** Dirección  fiscal */
+  fiscal_direccion:{
+    type: String,
+    required: false,
+    default: ""
+  },
 }, {
   strict: true
 })
