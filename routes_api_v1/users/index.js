@@ -5,6 +5,7 @@ const changePassword = require('./passwordChange')
 const validateEmail = require('./validateEmail')
 const recoverPassword = require('./recoverPassword')
 const recoverPasswordChange = require('./recoverPasswordChange')
+const getMyProfile = require('./getMyProfile')
 // const myProfile = require('./myProfile')
 const isLoggedAPI = require('../../mw/isUserLoggedAPI')
 
@@ -14,6 +15,7 @@ router.post('/validate-email', validateEmail)
 router.post('/recover-password', recoverPassword)
 router.post('/recover-password-change', recoverPasswordChange)
 // router.post('/my-profile', myProfile)
+router.get('/my-profile', isLoggedAPI, getMyProfile)
 
 // TODO Agregar URL de consulta de perfil personal
 // TODO Agregar los siguiente parametros para que no se puedan cambiar en el Perfil 

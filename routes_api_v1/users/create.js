@@ -4,6 +4,7 @@ const aws = require('aws-sdk')
 const uuidv4 = require('uuid').v4
 
 const awskey = require('../../.secrets/awskey')
+const moment = require('moment')
 const ses = new aws.SES(awskey)
 
 module.exports = function (req, res) {
@@ -14,6 +15,8 @@ module.exports = function (req, res) {
     nuevoUsuario.password = ut.createHash(passRaw, nuevoUsuario.salt)
     nuevoUsuario.email_verificado = false
     nuevoUsuario.rcv = rcv
+    nuevoUsuario.max_fecha = moment().minute(0).hour(0).add(15, 'days').unix()
+    nuevoUsuario.max_platos = 100
     UserModel.create(nuevoUsuario, function (err, userCreado) {
       if (err) {
         console.log('/users/create.js:19')
@@ -52,13 +55,13 @@ module.exports = function (req, res) {
         console.log('/users/create.js:52')
           if (err) {
             res.status(500).send({
-              message: 'Hubo un error al enviar el correo de verificación. El usuario ha sido creado',
+              message: 'Hubo un error al enviar el correo de verificación. El usuario ha sido creado.',
               error: err,
               usuario: nuevoUsuario 
             });
           } else {
             res.status(201).send({
-              message: 'Usario regitrado con exito. Te hemos enviado un email para verficarlo.',
+              message: 'Usuario registrado con exito. Te hemos enviado un email para verficarlo.',
               usuario: userCreado,
               mail: dataMail
             })
